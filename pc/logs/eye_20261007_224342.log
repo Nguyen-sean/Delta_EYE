@@ -1,0 +1,142 @@
+22:43:42.325 ## Bắt đầu: pc/eye_movie.py --port /dev/cu.usbserial-2110 --duration 1800 --auto-clear
+22:43:42.829 << ets Jul 29 2019 12:21:46
+22:43:42.829 << rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+22:43:42.829 << configsip: 0, SPIWP:0xee
+22:43:42.829 << clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+22:43:42.829 << mode:DIO, clock div:2
+22:43:42.830 << load:0x3fff0030,len:4200
+22:43:42.830 << load:0x40078000,len:15236
+22:43:42.830 << load:0x40080400,len:3344
+22:43:42.830 << entry 0x400805a8
+22:43:42.830 >> status
+22:43:44.056 << OK master MAC F8:B3:B7:50:DD:D0
+22:43:44.122 << OK neutral = 12.857 12.857 12.857
+22:43:44.122 << Lệnh (gõ qua USB serial):
+22:43:44.122 << look az tilt [twist] [ms] : nhìn theo tọa độ cực (độ): hướng az, nghiêng tilt, xoay twist,
+22:43:44.147 << chạy trong ms mili-giây (3 trục cùng xuất phát, cùng tới đích)
+22:43:44.147 << ik az tilt [twist]  : chỉ tính và in góc 3 động cơ, không chạy
+22:43:44.147 << calib               : lưu vị trí hiện tại làm vị trí nhìn thẳng (az=0 tilt=0 twist=0)
+22:43:44.171 << range [twist]       : in góc nghiêng tối đa theo từng hướng (theo calib hiện tại)
+22:43:44.171 << move d1 d2 d3 [ms]  : 3 trục tới góc d1,d2,d3 (độ), cùng xuất phát và cùng dừng
+22:43:44.171 << goto n deg [ms]     : chỉ node n tới góc deg
+22:43:44.171 << home [n]            : home tất cả hoặc node n
+22:43:44.171 << stop                : dừng khẩn cấp tất cả
+22:43:44.196 << release [n] / enable [n]
+22:43:44.196 << clear [n]           : xóa lỗi
+22:43:44.196 << speed hz [accel]    : tốc độ tối đa (bước/s) và gia tốc (bước/s^2) cho cả 3 node (có lưu)
+22:43:44.196 << status              : bảng trạng thái
+22:43:44.220 << blink [n]           : đèn của node n (hoặc tất cả) nháy trắng 4 giây để nhận diện board
+22:43:44.220 << cfg                 : đọc và in cấu hình của các node
+22:43:44.220 << set <n|all> <tên> <giá trị> : đổi cấu hình node, node tự lưu vào flash
+22:43:44.220 << tên: min max homedir maxhz accel homefast homeslow
+22:43:44.244 << vd:  set all max 40      set 2 homedir 1      set all maxhz 1500
+22:43:44.244 << EVT n2 ONLINE F8:5B:1B:4B:83:6C
+22:43:44.244 << EVT n2 BOOT fw=1 reset=POWER_ON
+===== SỰ CỐ #1 lúc 22:43:44.244: EVT n2 BOOT fw=1 reset=POWER_ON =====
+  1 lệnh gửi trong 5 s trước đó (mới nhất ở dưới):
+    22:43:42.830 >> status
+  Master báo gần nhất:
+    22:43:44.196 << status              : bảng trạng thái
+    22:43:44.220 << blink [n]           : đèn của node n (hoặc tất cả) nháy trắng 4 giây để nhận diện board
+    22:43:44.220 << cfg                 : đọc và in cấu hình của các node
+    22:43:44.220 << set <n|all> <tên> <giá trị> : đổi cấu hình node, node tự lưu vào flash
+    22:43:44.220 << tên: min max homedir maxhz accel homefast homeslow
+    22:43:44.244 << vd:  set all max 40      set 2 homedir 1      set all maxhz 1500
+    22:43:44.244 << EVT n2 ONLINE F8:5B:1B:4B:83:6C
+    22:43:44.244 << EVT n2 BOOT fw=1 reset=POWER_ON
+22:43:44.244 << EVT n3 ONLINE F8:5B:1B:49:DA:70
+22:43:44.244 << EVT n3 BOOT fw=1 reset=POWER_ON
+22:43:44.269 << OK GETCFG
+22:43:44.269 << CFG n2 min=0.5 max=30 homedir=0 maxhz=2000 accel=6000 homefast=800 homeslow=150
+22:43:44.290 << EVT n2 - -> IDLE pos=12.857
+22:43:44.838 >> status
+22:43:44.838 << EVT n3 - -> IDLE pos=12.857
+22:43:44.838 << OK GETCFG
+22:43:44.838 << CFG n3 min=0.5 max=30 homedir=0 maxhz=2000 accel=6000 homefast=800 homeslow=150
+22:43:44.864 << STAT fault=False queue=0 inflight=-
+22:43:44.864 << STAT n1 OFF -        err=NONE           homed=0 sw=0 pos=   0.000 target=   0.000
+22:43:44.864 << STAT n2 ON  IDLE     err=NONE           homed=1 sw=0 pos=  12.857 target=  12.857
+22:43:44.889 << STAT n3 ON  IDLE     err=NONE           homed=1 sw=0 pos=  12.857 target=  12.857
+22:43:45.394 >> status
+22:43:45.419 << STAT fault=False queue=0 inflight=-
+22:43:45.419 << STAT n1 OFF -        err=NONE           homed=0 sw=0 pos=   0.000 target=   0.000
+22:43:45.442 << STAT n2 ON  IDLE     err=NONE           homed=1 sw=0 pos=  12.857 target=  12.857
+22:43:45.442 << STAT n3 ON  IDLE     err=NONE           homed=1 sw=0 pos=  12.857 target=  12.857
+22:43:45.947 >> status
+22:43:45.970 << STAT fault=False queue=0 inflight=-
+22:43:45.970 << STAT n1 OFF -        err=NONE           homed=0 sw=0 pos=   0.000 target=   0.000
+22:43:45.995 << STAT n2 ON  IDLE     err=NONE           homed=1 sw=0 pos=  12.857 target=  12.857
+22:43:45.995 << STAT n3 ON  IDLE     err=NONE           homed=1 sw=0 pos=  12.857 target=  12.857
+22:43:46.498 >> status
+22:43:46.522 << STAT fault=False queue=0 inflight=-
+22:43:46.523 << STAT n1 OFF -        err=NONE           homed=0 sw=0 pos=   0.000 target=   0.000
+22:43:46.545 << STAT n2 ON  IDLE     err=NONE           homed=1 sw=0 pos=  12.857 target=  12.857
+22:43:46.545 << STAT n3 ON  IDLE     err=NONE           homed=1 sw=0 pos=  12.857 target=  12.857
+22:43:47.049 >> status
+22:43:47.074 << STAT fault=False queue=0 inflight=-
+22:43:47.074 << STAT n1 OFF -        err=NONE           homed=0 sw=0 pos=   0.000 target=   0.000
+22:43:47.098 << STAT n2 ON  IDLE     err=NONE           homed=1 sw=0 pos=  12.857 target=  12.857
+22:43:47.098 << STAT n3 ON  IDLE     err=NONE           homed=1 sw=0 pos=  12.857 target=  12.857
+22:43:47.602 >> status
+22:43:47.627 << STAT fault=False queue=0 inflight=-
+22:43:47.627 << STAT n1 OFF -        err=NONE           homed=0 sw=0 pos=   0.000 target=   0.000
+22:43:47.650 << STAT n2 ON  IDLE     err=NONE           homed=1 sw=0 pos=  12.857 target=  12.857
+22:43:47.650 << STAT n3 ON  IDLE     err=NONE           homed=1 sw=0 pos=  12.857 target=  12.857
+22:43:48.154 >> status
+22:43:48.179 << STAT fault=False queue=0 inflight=-
+22:43:48.179 << STAT n1 OFF -        err=NONE           homed=0 sw=0 pos=   0.000 target=   0.000
+22:43:48.204 << STAT n2 ON  IDLE     err=NONE           homed=1 sw=0 pos=  12.857 target=  12.857
+22:43:48.205 << STAT n3 ON  IDLE     err=NONE           homed=1 sw=0 pos=  12.857 target=  12.857
+22:43:48.706 >> status
+22:43:48.729 << STAT fault=False queue=0 inflight=-
+22:43:48.730 << STAT n1 OFF -        err=NONE           homed=0 sw=0 pos=   0.000 target=   0.000
+22:43:48.751 << STAT n2 ON  IDLE     err=NONE           homed=1 sw=0 pos=  12.857 target=  12.857
+22:43:48.751 << STAT n3 ON  IDLE     err=NONE           homed=1 sw=0 pos=  12.857 target=  12.857
+22:43:49.256 >> status
+22:43:49.282 << STAT fault=False queue=0 inflight=-
+22:43:49.282 << STAT n1 OFF -        err=NONE           homed=0 sw=0 pos=   0.000 target=   0.000
+22:43:49.303 << STAT n2 ON  IDLE     err=NONE           homed=1 sw=0 pos=  12.857 target=  12.857
+22:43:49.303 << STAT n3 ON  IDLE     err=NONE           homed=1 sw=0 pos=  12.857 target=  12.857
+22:43:49.808 >> status
+22:43:49.832 << STAT fault=False queue=0 inflight=-
+22:43:49.833 << STAT n1 OFF -        err=NONE           homed=0 sw=0 pos=   0.000 target=   0.000
+22:43:49.855 << STAT n2 ON  IDLE     err=NONE           homed=1 sw=0 pos=  12.857 target=  12.857
+22:43:49.855 << STAT n3 ON  IDLE     err=NONE           homed=1 sw=0 pos=  12.857 target=  12.857
+22:43:50.356 >> status
+22:43:50.381 << STAT fault=False queue=0 inflight=-
+22:43:50.381 << STAT n1 OFF -        err=NONE           homed=0 sw=0 pos=   0.000 target=   0.000
+22:43:50.404 << STAT n2 ON  IDLE     err=NONE           homed=1 sw=0 pos=  12.857 target=  12.857
+22:43:50.404 << STAT n3 ON  IDLE     err=NONE           homed=1 sw=0 pos=  12.857 target=  12.857
+22:43:50.907 >> status
+22:43:50.933 << STAT fault=False queue=0 inflight=-
+22:43:50.933 << STAT n1 OFF -        err=NONE           homed=0 sw=0 pos=   0.000 target=   0.000
+22:43:50.958 << STAT n2 ON  IDLE     err=NONE           homed=1 sw=0 pos=  12.857 target=  12.857
+22:43:50.958 << STAT n3 ON  IDLE     err=NONE           homed=1 sw=0 pos=  12.857 target=  12.857
+22:43:51.463 >> status
+22:43:51.489 << STAT fault=False queue=0 inflight=-
+22:43:51.489 << STAT n1 OFF -        err=NONE           homed=0 sw=0 pos=   0.000 target=   0.000
+22:43:51.490 << STAT n2 ON  IDLE     err=NONE           homed=1 sw=0 pos=  12.857 target=  12.857
+22:43:51.512 << STAT n3 ON  IDLE     err=NONE           homed=1 sw=0 pos=  12.857 target=  12.857
+22:43:52.017 >> status
+22:43:52.038 << STAT fault=False queue=0 inflight=-
+22:43:52.039 << STAT n1 OFF -        err=NONE           homed=0 sw=0 pos=   0.000 target=   0.000
+22:43:52.064 << STAT n2 ON  IDLE     err=NONE           homed=1 sw=0 pos=  12.857 target=  12.857
+22:43:52.064 << STAT n3 ON  IDLE     err=NONE           homed=1 sw=0 pos=  12.857 target=  12.857
+22:43:52.567 >> status
+22:43:52.589 << STAT fault=False queue=0 inflight=-
+22:43:52.589 << STAT n1 OFF -        err=NONE           homed=0 sw=0 pos=   0.000 target=   0.000
+22:43:52.612 << STAT n2 ON  IDLE     err=NONE           homed=1 sw=0 pos=  12.857 target=  12.857
+22:43:52.612 << STAT n3 ON  IDLE     err=NONE           homed=1 sw=0 pos=  12.857 target=  12.857
+22:43:53.116 >> status
+22:43:53.139 << STAT fault=False queue=0 inflight=-
+22:43:53.139 << STAT n1 OFF -        err=NONE           homed=0 sw=0 pos=   0.000 target=   0.000
+22:43:53.164 << STAT n2 ON  IDLE     err=NONE           homed=1 sw=0 pos=  12.857 target=  12.857
+22:43:53.165 << STAT n3 ON  IDLE     err=NONE           homed=1 sw=0 pos=  12.857 target=  12.857
+22:43:53.165 ## !! Không đủ 3 node online: {1: {'online': False, 'state': '-', 'err': 'NONE', 'homed': False}, 2: {'online': True, 'state': 'IDLE', 'err': 'NONE', 'homed': True}, 3: {'online': True, 'state': 'IDLE', 'err': 'NONE', 'homed': True}}
+22:43:53.165 ## Robot chưa sẵn sàng -> thoát
+22:43:53.165 >> look 0 0 0 800
+22:43:53.368 << IK az=0.0 tilt=0.0 twist=0.0 -> n1=12.857 n2=12.857 n3=12.857
+22:43:53.369 << ERR move: n1 offline
+22:43:53.369 ## !! ERR move: n1 offline
+22:43:53.370 ## Tổng kết: 1 sự cố.
+22:43:53.370 ##    n2 BOOT                        1 lần

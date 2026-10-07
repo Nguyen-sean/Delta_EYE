@@ -1,0 +1,11 @@
+22:42:40.317 ## Bắt đầu: pc/eye_movie.py --port /dev/cu.usbserial-2110 --duration 1800 --auto-clear
+22:42:40.819 >> status
+22:42:42.830 >> status
+22:42:44.844 >> status
+22:42:46.862 >> status
+22:42:48.871 >> status
+22:42:50.879 >> status
+22:42:52.386 ## !! Không đủ 3 node online: {}
+22:42:52.387 ## Robot chưa sẵn sàng -> thoát
+22:42:52.387 >> look 0 0 0 800
+22:42:52.592 ## Tổng kết: 0 sự cố.

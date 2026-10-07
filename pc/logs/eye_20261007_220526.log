@@ -1,0 +1,2939 @@
+22:05:26.413 ## Bắt đầu: pc/eye_movie.py --port /dev/cu.usbserial-2110 --duration 1800 --auto-clear
+22:05:26.917 << ets Jul 29 2019 12:21:46
+22:05:26.917 << rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+22:05:26.918 << configsip: 0, SPIWP:0xee
+22:05:26.918 << clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+22:05:26.918 << mode:DIO, clock div:2
+22:05:26.918 << load:0x3fff0030,len:4200
+22:05:26.918 << load:0x40078000,len:15236
+22:05:26.918 << load:0x40080400,len:3344
+22:05:26.918 << entry 0x400805a8
+22:05:26.918 >> status
+22:05:27.941 << OK master MAC F8:B3:B7:50:DD:D0
+22:05:27.966 << OK neutral = 12.857 12.857 12.857
+22:05:27.966 << Lệnh (gõ qua USB serial):
+22:05:27.966 << look az tilt [twist] [ms] : nhìn theo tọa độ cực (độ): hướng az, nghiêng tilt, xoay twist,
+22:05:27.966 << chạy trong ms mili-giây (3 trục cùng xuất phát, cùng tới đích)
+22:05:27.991 << ik az tilt [twist]  : chỉ tính và in góc 3 động cơ, không chạy
+22:05:27.991 << calib               : lưu vị trí hiện tại làm vị trí nhìn thẳng (az=0 tilt=0 twist=0)
+22:05:27.991 << range [twist]       : in góc nghiêng tối đa theo từng hướng (theo calib hiện tại)
+22:05:28.016 << move d1 d2 d3 [ms]  : 3 trục tới góc d1,d2,d3 (độ), cùng xuất phát và cùng dừng
+22:05:28.016 << goto n deg [ms]     : chỉ node n tới góc deg
+22:05:28.016 << home [n]            : home tất cả hoặc node n
+22:05:28.016 << stop                : dừng khẩn cấp tất cả
+22:05:28.016 << release [n] / enable [n]
+22:05:28.016 << clear [n]           : xóa lỗi
+22:05:28.039 << speed hz [accel]    : tốc độ tối đa (bước/s) và gia tốc (bước/s^2) cho cả 3 node (có lưu)
+22:05:28.040 << status              : bảng trạng thái
+22:05:28.063 << blink [n]           : đèn của node n (hoặc tất cả) nháy trắng 4 giây để nhận diện board
+22:05:28.063 << cfg                 : đọc và in cấu hình của các node
+22:05:28.063 << set <n|all> <tên> <giá trị> : đổi cấu hình node, node tự lưu vào flash
+22:05:28.063 << tên: min max homedir maxhz accel homefast homeslow
+22:05:28.089 << vd:  set all max 40      set 2 homedir 1      set all maxhz 1500
+22:05:28.184 << EVT n2 ONLINE F8:5B:1B:4B:83:6C
+22:05:28.184 << EVT n2 - -> IDLE pos=0.498
+22:05:28.184 << EVT n3 ONLINE F8:5B:1B:49:DA:70
+22:05:28.184 << EVT n3 - -> IDLE pos=0.498
+22:05:28.184 << EVT n1 ONLINE F8:5B:1B:4C:81:C0
+22:05:28.184 << EVT n1 - -> IDLE pos=0.498
+22:05:28.207 << OK GETCFG
+22:05:28.233 << CFG n2 min=0.5 max=30 homedir=0 maxhz=2000 accel=6000 homefast=800 homeslow=150
+22:05:28.304 << OK GETCFG
+22:05:28.325 << CFG n3 min=0.5 max=30 homedir=0 maxhz=2000 accel=6000 homefast=800 homeslow=150
+22:05:28.347 << OK GETCFG
+22:05:28.369 << CFG n1 min=0.5 max=30 homedir=0 maxhz=2000 accel=6000 homefast=800 homeslow=150
+22:05:28.943 >> status
+22:05:28.969 << STAT fault=False queue=0 inflight=-
+22:05:28.969 << STAT n1 ON  IDLE     err=NONE           homed=1 sw=1 pos=   0.498 target=   0.498
+22:05:28.994 << STAT n2 ON  IDLE     err=NONE           homed=1 sw=1 pos=   0.498 target=   0.498
+22:05:28.995 << STAT n3 ON  IDLE     err=NONE           homed=1 sw=1 pos=   0.498 target=   0.498
+22:05:28.995 ## Robot sẵn sàng. Bắt đầu "xem phim"... (Ctrl+C để dừng)
+22:05:28.995 >> look 0.0 0.00 0 150              # fix     x= +0.00 y= +0.00 đổi  0.00°
+22:05:29.039 << IK az=0.0 tilt=0.0 twist=0.0 -> n1=12.857 n2=12.857 n3=12.857
+22:05:29.051 << WARN 150 ms quá nhanh với tốc độ hiện tại -> dùng 676 ms để 3 trục tới đích cùng lúc
+22:05:29.051 ## !! WARN 150 ms quá nhanh với tốc độ hiện tại -> dùng 676 ms để 3 trục tới đích cùng lúc
+22:05:29.076 << EVT n3 IDLE -> MOVING pos=0.498
+22:05:29.076 << OK MOVE
+22:05:29.088 << EVT n1 IDLE -> MOVING pos=0.498
+22:05:29.088 << EVT n2 IDLE -> MOVING pos=0.498
+22:05:29.432 >> look 89.2 7.22 0 522             # sacc    x= +0.11 y= +7.22 đổi  7.22°
+22:05:29.470 << IK az=89.2 tilt=7.22 twist=0.0 -> n1=13.784 n2=7.429 n3=17.627
+22:05:29.505 << OK MOVE
+22:05:30.138 << EVT n2 MOVING -> IDLE pos=7.425
+22:05:30.150 << EVT n1 MOVING -> IDLE pos=13.789
+22:05:30.161 << EVT n3 MOVING -> IDLE pos=17.630
+22:05:30.222 >> look 95.3 7.19 0 135             # sacc    x= -0.66 y= +7.16 đổi  0.77°
+22:05:30.269 << IK az=95.3 tilt=7.19 twist=0.0 -> n1=13.079 n2=7.744 n3=18.026
+22:05:30.316 << EVT n1 IDLE -> MOVING pos=13.789
+22:05:30.316 << EVT n3 IDLE -> MOVING pos=17.630
+22:05:30.316 << OK MOVE
+22:05:30.327 << EVT n2 IDLE -> MOVING pos=7.425
+22:05:30.425 << EVT n3 MOVING -> IDLE pos=18.032
+22:05:30.437 << EVT n2 MOVING -> IDLE pos=7.746
+22:05:30.437 << EVT n1 MOVING -> IDLE pos=13.082
+22:05:30.626 >> look 85.1 9.44 0 293             # sacc    x= +0.81 y= +9.40 đổi  2.68°
+22:05:30.663 << IK az=85.1 tilt=9.44 twist=0.0 -> n1=14.722 n2=5.632 n3=18.643
+22:05:30.687 << EVT n3 IDLE -> MOVING pos=18.032
+22:05:30.698 << OK MOVE
+22:05:30.710 << EVT n2 IDLE -> MOVING pos=7.746
+22:05:30.711 << EVT n1 IDLE -> MOVING pos=13.082
+22:05:30.976 << EVT n3 MOVING -> IDLE pos=18.643
+22:05:30.988 << EVT n2 MOVING -> IDLE pos=5.625
+22:05:30.988 << EVT n1 MOVING -> IDLE pos=14.721
+22:05:31.277 >> look 74.4 2.62 0 507             # sacc    x= +0.70 y= +2.52 đổi  6.88°
+22:05:31.324 << IK az=74.4 tilt=2.62 twist=0.0 -> n1=13.751 n2=10.668 n3=14.190
+22:05:31.348 << EVT n1 IDLE -> MOVING pos=14.721
+22:05:31.360 << EVT n2 IDLE -> MOVING pos=5.625
+22:05:31.360 << OK MOVE
+22:05:31.370 << EVT n3 IDLE -> MOVING pos=18.643
+22:05:31.842 << EVT n1 MOVING -> IDLE pos=13.757
+22:05:31.865 << EVT n2 MOVING -> IDLE pos=10.671
+22:05:31.876 << EVT n3 MOVING -> IDLE pos=14.191
+22:05:32.096 >> look 71.8 2.97 0 150             # pursuit x= +0.92 y= +2.82 đổi  0.37°
+22:05:32.142 << IK az=71.8 tilt=2.97 twist=0.0 -> n1=13.983 n2=10.366 n3=14.272
+22:05:32.165 << OK MOVE
+22:05:32.178 << EVT n1 IDLE -> MOVING pos=13.757
+22:05:32.178 << EVT n3 IDLE -> MOVING pos=14.191
+22:05:32.190 << EVT n2 IDLE -> MOVING pos=10.671
+22:05:32.202 >> look 64.7 3.72 0 150             # pursuit x= +1.59 y= +3.37 đổi  0.86°
+22:05:32.247 << IK az=64.7 tilt=3.72 twist=0.0 -> n1=14.638 n2=9.727 n3=14.284
+22:05:32.281 << OK MOVE
+22:05:32.306 >> look 60.0 4.51 0 150             # pursuit x= +2.26 y= +3.91 đổi  0.86°
+22:05:32.344 << IK az=60.0 tilt=4.51 twist=0.0 -> n1=15.306 n2=9.084 n3=14.295
+22:05:32.366 << EVT n3 MOVING -> IDLE pos=14.288
+22:05:32.367 << OK MOVE
+22:05:32.415 >> look 56.7 5.35 0 150             # pursuit x= +2.94 y= +4.47 đổi  0.89°
+22:05:32.452 << IK az=56.7 tilt=5.35 twist=0.0 -> n1=16.005 n2=8.417 n3=14.312
+22:05:32.489 << OK MOVE
+22:05:32.489 << EVT n3 IDLE -> MOVING pos=14.288
+22:05:32.526 >> look 54.2 6.23 0 150             # pursuit x= +3.65 y= +5.05 đổi  0.91°
+22:05:32.561 << IK az=54.2 tilt=6.23 twist=0.0 -> n1=16.742 n2=7.728 n3=14.325
+22:05:32.573 << EVT n3 MOVING -> IDLE pos=14.320
+22:05:32.607 << OK MOVE
+22:05:32.632 >> look 52.4 7.07 0 150             # pursuit x= +4.32 y= +5.60 đổi  0.87°
+22:05:32.677 << IK az=52.4 tilt=7.07 twist=0.0 -> n1=17.452 n2=7.074 n3=14.336
+22:05:32.701 << OK MOVE
+22:05:32.713 << EVT n3 IDLE -> MOVING pos=14.320
+22:05:32.725 << EVT n3 MOVING -> IDLE pos=14.336
+22:05:32.736 >> look 51.0 7.90 0 150             # pursuit x= +4.98 y= +6.14 đổi  0.85°
+22:05:32.785 << IK az=51.0 tilt=7.9 twist=0.0 -> n1=18.162 n2=6.431 n3=14.346
+22:05:32.807 << EVT n3 IDLE -> MOVING pos=14.336
+22:05:32.820 << OK MOVE
+22:05:32.820 << EVT n3 MOVING -> IDLE pos=14.352
+22:05:32.844 >> look 49.8 8.77 0 150             # pursuit x= +5.66 y= +6.70 đổi  0.88°
+22:05:32.879 << IK az=49.8 tilt=8.77 twist=0.0 -> n1=18.919 n2=5.759 n3=14.352
+22:05:32.915 << OK MOVE
+22:05:32.950 >> look 48.9 9.63 0 150             # pursuit x= +6.33 y= +7.25 đổi  0.87°
+22:05:32.999 << IK az=48.9 tilt=9.63 twist=0.0 -> n1=19.671 n2=5.092 n3=14.367
+22:05:33.023 << OK MOVE
+22:05:33.023 << EVT n3 IDLE -> MOVING pos=14.352
+22:05:33.045 << EVT n3 MOVING -> IDLE pos=14.368
+22:05:33.056 >> look 48.1 10.48 0 150            # pursuit x= +7.00 y= +7.80 đổi  0.87°
+22:05:33.104 << IK az=48.1 tilt=10.48 twist=0.0 -> n1=20.433 n2=4.435 n3=14.372
+22:05:33.126 << OK MOVE
+22:05:33.161 >> look 47.4 11.33 0 150            # pursuit x= +7.67 y= +8.35 đổi  0.86°
+22:05:33.208 << IK az=47.4 tilt=11.33 twist=0.0 -> n1=21.210 n2=3.778 n3=14.374
+22:05:33.220 << OK MOVE
+22:05:33.270 >> look 48.0 10.61 0 150            # pursuit x= +7.10 y= +7.88 đổi  0.73°
+22:05:33.318 << IK az=48.0 tilt=10.61 twist=0.0 -> n1=20.549 n2=4.334 n3=14.375
+22:05:33.343 << OK MOVE
+22:05:33.381 >> look 48.6 9.91 0 150             # fix     x= +6.56 y= +7.43 đổi  0.71°
+22:05:33.428 << IK az=48.6 tilt=9.91 twist=0.0 -> n1=19.923 n2=4.876 n3=14.366
+22:05:33.440 << OK MOVE
+22:05:33.591 << EVT n2 MOVING -> IDLE pos=4.870
+22:05:33.592 << EVT n1 MOVING -> IDLE pos=19.929
+22:05:33.683 >> look 27.1 7.99 0 362             # sacc    x= +7.12 y= +3.64 đổi  3.84°
+22:05:33.719 << IK az=27.1 tilt=7.99 twist=0.0 -> n1=19.743 n2=7.518 n3=11.760
+22:05:33.752 << EVT n2 IDLE -> MOVING pos=4.870
+22:05:33.765 << EVT n1 IDLE -> MOVING pos=19.929
+22:05:33.765 << OK MOVE
+22:05:33.765 << EVT n3 IDLE -> MOVING pos=14.368
+22:05:34.098 << EVT n1 MOVING -> IDLE pos=19.736
+22:05:34.110 << EVT n3 MOVING -> IDLE pos=11.764
+22:05:34.122 << EVT n2 MOVING -> IDLE pos=7.521
+22:05:34.459 >> look 25.4 8.33 0 150             # micro   x= +7.52 y= +3.57 đổi  0.41°
+22:05:34.517 << IK az=25.4 tilt=8.33 twist=0.0 -> n1=20.122 n2=7.415 n3=11.530
+22:05:34.543 << EVT n2 IDLE -> MOVING pos=7.521
+22:05:34.554 << EVT n1 IDLE -> MOVING pos=19.736
+22:05:34.555 << OK MOVE
+22:05:34.566 << EVT n3 IDLE -> MOVING pos=11.764
+22:05:34.566 >> look 31.2 6.41 0 249             # sacc    x= +5.48 y= +3.32 đổi  2.06°
+22:05:34.603 << IK az=31.2 tilt=6.41 twist=0.0 -> n1=18.161 n2=8.366 n3=12.321
+22:05:34.640 << OK MOVE
+22:05:34.865 >> look 3.3 11.40 0 490             # sacc    x=+11.38 y= +0.65 đổi  6.48°
+22:05:34.890 << EVT n3 MOVING -> IDLE pos=12.327
+22:05:34.902 << EVT n1 MOVING -> IDLE pos=18.161
+22:05:34.903 << EVT n2 MOVING -> IDLE pos=8.373
+22:05:34.937 << IK az=3.3 tilt=11.4 twist=0.0 -> n1=23.190 n2=8.270 n3=8.053
+22:05:34.962 << OK MOVE
+22:05:34.973 << EVT n1 IDLE -> MOVING pos=18.161
+22:05:34.986 << EVT n2 IDLE -> MOVING pos=8.373
+22:05:34.986 << EVT n3 IDLE -> MOVING pos=12.327
+22:05:35.376 << EVT n2 MOVING -> IDLE pos=8.277
+22:05:35.460 << EVT n1 MOVING -> IDLE pos=23.191
+22:05:35.470 << EVT n3 MOVING -> IDLE pos=8.052
+22:05:35.607 >> look 4.6 11.72 0 150             # micro   x=+11.68 y= +0.94 đổi  0.41°
+22:05:35.644 << IK az=4.6 tilt=11.72 twist=0.0 -> n1=23.550 n2=7.925 n3=8.108
+22:05:35.679 << EVT n1 IDLE -> MOVING pos=23.191
+22:05:35.679 << OK MOVE
+22:05:35.690 << EVT n2 IDLE -> MOVING pos=8.277
+22:05:35.691 << EVT n3 IDLE -> MOVING pos=8.052
+22:05:35.763 >> look 4.4 11.40 0 150             # pursuit x=+11.37 y= +0.88 đổi  0.32°
+22:05:35.776 << EVT n3 MOVING -> IDLE pos=8.100
+22:05:35.800 << IK az=4.4 tilt=11.4 twist=0.0 -> n1=23.227 n2=8.098 n3=8.196
+22:05:35.824 << EVT n2 MOVING -> IDLE pos=7.923
+22:05:35.824 << EVT n1 MOVING -> IDLE pos=23.545
+22:05:35.867 >> look 6.4 10.31 0 174             # pursuit x=+10.25 y= +1.15 đổi  1.15°
+22:05:35.914 << IK az=6.4 tilt=10.31 twist=0.0 -> n1=22.212 n2=8.302 n3=8.830
+22:05:35.925 << WARN 174 ms quá nhanh với tốc độ hiện tại -> dùng 183 ms để 3 trục tới đích cùng lúc
+22:05:35.925 ## !! WARN 174 ms quá nhanh với tốc độ hiện tại -> dùng 183 ms để 3 trục tới đích cùng lúc
+22:05:35.947 << EVT n3 IDLE -> MOVING pos=8.100
+22:05:35.969 << EVT n1 IDLE -> MOVING pos=23.545
+22:05:35.969 << EVT n2 IDLE -> MOVING pos=7.923
+22:05:35.969 >> look 8.8 9.24 0 173              # pursuit x= +9.13 y= +1.42 đổi  1.14°
+22:05:35.980 << OK MOVE
+22:05:36.028 << IK az=8.8 tilt=9.24 twist=0.0 -> n1=21.209 n2=8.509 n3=9.469
+22:05:36.053 << OK MOVE
+22:05:36.073 >> look 12.0 8.18 0 175             # pursuit x= +8.00 y= +1.69 đổi  1.17°
+22:05:36.107 << IK az=12.0 tilt=8.18 twist=0.0 -> n1=20.206 n2=8.702 n3=10.142
+22:05:36.154 << OK MOVE
+22:05:36.179 >> look 16.0 7.14 0 176             # pursuit x= +6.86 y= +1.97 đổi  1.17°
+22:05:36.227 << IK az=16.0 tilt=7.14 twist=0.0 -> n1=19.199 n2=8.911 n3=10.821
+22:05:36.263 << OK MOVE
+22:05:36.287 >> look 21.7 6.11 0 179             # pursuit x= +5.68 y= +2.26 đổi  1.21°
+22:05:36.322 << IK az=21.7 tilt=6.11 twist=0.0 -> n1=18.159 n2=9.116 n3=11.553
+22:05:36.372 << OK MOVE
+22:05:36.392 >> look 296.9 0.62 0 473            # sacc    x= +0.28 y= -0.55 đổi  6.09°
+22:05:36.440 << IK az=296.9 tilt=0.62 twist=0.0 -> n1=13.034 n2=13.202 n3=12.337
+22:05:36.475 << OK MOVE
+22:05:36.982 << EVT n3 MOVING -> IDLE pos=12.343
+22:05:36.993 << EVT n2 MOVING -> IDLE pos=13.195
+22:05:37.005 << EVT n1 MOVING -> IDLE pos=13.034
+22:05:37.230 >> look 267.8 0.83 0 92             # sacc    x= -0.03 y= -0.83 đổi  0.42°
+22:05:37.278 << IK az=267.8 tilt=0.83 twist=0.0 -> n1=12.742 n2=13.525 n3=12.308
+22:05:37.290 << OK MOVE
+22:05:37.301 << EVT n2 IDLE -> MOVING pos=13.195
+22:05:37.311 << EVT n3 IDLE -> MOVING pos=12.343
+22:05:37.311 << EVT n1 IDLE -> MOVING pos=13.034
+22:05:37.336 << EVT n3 MOVING -> IDLE pos=12.311
+22:05:37.386 << EVT n2 MOVING -> IDLE pos=13.532
+22:05:37.386 << EVT n1 MOVING -> IDLE pos=12.745
+22:05:37.510 >> look 275.3 0.94 0 51             # sacc    x= +0.09 y= -0.93 đổi  0.16°
+22:05:37.546 << IK az=275.3 tilt=0.94 twist=0.0 -> n1=12.830 n2=13.572 n3=12.175
+22:05:37.591 << EVT n2 IDLE -> MOVING pos=13.532
+22:05:37.591 << OK MOVE
+22:05:37.604 << EVT n1 IDLE -> MOVING pos=12.745
+22:05:37.604 << EVT n3 IDLE -> MOVING pos=12.311
+22:05:37.615 << EVT n2 MOVING -> IDLE pos=13.564
+22:05:37.615 << EVT n1 MOVING -> IDLE pos=12.825
+22:05:37.639 << EVT n3 MOVING -> IDLE pos=12.182
+22:05:38.005 >> look 271.3 1.96 0 162            # sacc    x= +0.05 y= -1.96 đổi  1.03°
+22:05:38.054 << IK az=271.3 tilt=1.96 twist=0.0 -> n1=12.687 n2=14.412 n3=11.496
+22:05:38.079 << EVT n2 IDLE -> MOVING pos=13.564
+22:05:38.092 << EVT n1 IDLE -> MOVING pos=12.825
+22:05:38.092 << OK MOVE
+22:05:38.104 << EVT n3 IDLE -> MOVING pos=12.182
+22:05:38.222 << EVT n1 MOVING -> IDLE pos=12.680
+22:05:38.233 << EVT n2 MOVING -> IDLE pos=14.416
+22:05:38.244 << EVT n3 MOVING -> IDLE pos=11.491
+22:05:38.515 >> look 74.2 4.25 0 476             # sacc    x= +1.16 y= +4.09 đổi  6.15°
+22:05:38.560 << IK az=74.2 tilt=4.25 twist=0.0 -> n1=14.345 n2=9.334 n3=14.990
+22:05:38.609 << EVT n1 IDLE -> MOVING pos=12.680
+22:05:38.609 << OK MOVE
+22:05:38.609 << EVT n2 IDLE -> MOVING pos=14.416
+22:05:38.619 << EVT n3 IDLE -> MOVING pos=11.491
+22:05:39.059 << EVT n1 MOVING -> IDLE pos=14.352
+22:05:39.072 << EVT n3 MOVING -> IDLE pos=14.995
+22:05:39.072 << EVT n2 MOVING -> IDLE pos=9.338
+22:05:39.143 >> look 354.8 3.30 0 416            # sacc    x= +3.29 y= -0.30 đổi  4.88°
+22:05:39.190 << IK az=354.8 tilt=3.3 twist=0.0 -> n1=15.635 n2=11.984 n3=11.019
+22:05:39.237 << OK MOVE
+22:05:39.237 << EVT n2 IDLE -> MOVING pos=9.338
+22:05:39.249 << EVT n3 IDLE -> MOVING pos=14.995
+22:05:39.249 << EVT n1 IDLE -> MOVING pos=14.352
+22:05:39.624 << EVT n1 MOVING -> IDLE pos=15.638
+22:05:39.636 << EVT n3 MOVING -> IDLE pos=11.025
+22:05:39.648 << EVT n2 MOVING -> IDLE pos=11.989
+22:05:39.816 >> look 349.8 2.88 0 150            # micro   x= +2.83 y= -0.51 đổi  0.50°
+22:05:39.862 << IK az=349.8 tilt=2.88 twist=0.0 -> n1=15.216 n2=12.308 n3=11.097
+22:05:39.887 << EVT n3 IDLE -> MOVING pos=11.025
+22:05:39.898 << EVT n2 IDLE -> MOVING pos=11.989
+22:05:39.898 << OK MOVE
+22:05:39.898 << EVT n1 IDLE -> MOVING pos=15.638
+22:05:39.993 << EVT n3 MOVING -> IDLE pos=11.089
+22:05:39.993 >> look 299.2 2.15 0 263            # sacc    x= +1.05 y= -1.88 đổi  2.25°
+22:05:40.017 << EVT n1 MOVING -> IDLE pos=15.220
+22:05:40.029 << EVT n2 MOVING -> IDLE pos=12.311
+22:05:40.065 << IK az=299.2 tilt=2.15 twist=0.0 -> n1=13.533 n2=14.015 n3=11.050
+22:05:40.090 << EVT n3 IDLE -> MOVING pos=11.089
+22:05:40.100 << OK MOVE
+22:05:40.101 << EVT n2 IDLE -> MOVING pos=12.311
+22:05:40.111 << EVT n1 IDLE -> MOVING pos=15.220
+22:05:40.182 << EVT n3 MOVING -> IDLE pos=11.057
+22:05:40.345 << EVT n2 MOVING -> IDLE pos=14.014
+22:05:40.346 << EVT n1 MOVING -> IDLE pos=13.532
+22:05:40.547 >> look 300.0 2.58 0 150            # pursuit x= +1.29 y= -2.23 đổi  0.43°
+22:05:40.594 << IK az=300.0 tilt=2.58 twist=0.0 -> n1=13.693 n2=14.229 n3=10.688
+22:05:40.619 << OK MOVE
+22:05:40.619 << EVT n2 IDLE -> MOVING pos=14.014
+22:05:40.632 << EVT n3 IDLE -> MOVING pos=11.057
+22:05:40.632 << EVT n1 IDLE -> MOVING pos=13.532
+22:05:40.654 >> look 301.9 3.79 0 180            # pursuit x= +2.00 y= -3.22 đổi  1.22°
+22:05:40.701 << IK az=301.9 tilt=3.79 twist=0.0 -> n1=14.170 n2=14.809 n3=9.673
+22:05:40.724 << OK MOVE
+22:05:40.758 >> look 302.8 4.99 0 178            # pursuit x= +2.70 y= -4.19 đổi  1.19°
+22:05:40.807 << IK az=302.8 tilt=4.99 twist=0.0 -> n1=14.628 n2=15.403 n3=8.677
+22:05:40.832 << OK MOVE
+22:05:40.865 >> look 303.4 6.21 0 181            # pursuit x= +3.42 y= -5.18 đổi  1.23°
+22:05:40.912 << IK az=303.4 tilt=6.21 twist=0.0 -> n1=15.089 n2=16.019 n3=7.671
+22:05:40.936 << OK MOVE
+22:05:40.971 >> look 303.8 7.42 0 180            # pursuit x= +4.13 y= -6.17 đổi  1.22°
+22:05:41.018 << IK az=303.8 tilt=7.42 twist=0.0 -> n1=15.535 n2=16.646 n3=6.680
+22:05:41.053 << OK MOVE
+22:05:41.075 >> look 304.1 8.62 0 178            # pursuit x= +4.83 y= -7.14 đổi  1.20°
+22:05:41.121 << IK az=304.1 tilt=8.62 twist=0.0 -> n1=15.970 n2=17.281 n3=5.702
+22:05:41.154 << OK MOVE
+22:05:41.177 >> look 304.3 9.79 0 176            # pursuit x= +5.51 y= -8.09 đổi  1.17°
+22:05:41.224 << IK az=304.3 tilt=9.79 twist=0.0 -> n1=16.382 n2=17.918 n3=4.753
+22:05:41.262 << OK MOVE
+22:05:41.286 >> look 304.4 11.04 0 183           # pursuit x= +6.24 y= -9.10 đổi  1.25°
+22:05:41.333 << IK az=304.4 tilt=11.04 twist=0.0 -> n1=16.802 n2=18.625 n3=3.741
+22:05:41.356 << OK MOVE
+22:05:41.393 >> look 304.4 10.57 0 150           # pursuit x= +5.97 y= -8.73 đổi  0.46°
+22:05:41.440 << IK az=304.4 tilt=10.57 twist=0.0 -> n1=16.650 n2=18.352 n3=4.121
+22:05:41.488 << OK MOVE
+22:05:41.499 >> look 304.2 9.35 0 181            # pursuit x= +5.26 y= -7.73 đổi  1.22°
+22:05:41.546 << IK az=304.2 tilt=9.35 twist=0.0 -> n1=16.225 n2=17.680 n3=5.109
+22:05:41.570 << OK MOVE
+22:05:41.591 << EVT n1 MOVING -> IDLE pos=16.232
+22:05:41.604 >> look 304.0 8.15 0 178            # pursuit x= +4.56 y= -6.76 đổi  1.20°
+22:05:41.651 << IK az=304.0 tilt=8.15 twist=0.0 -> n1=15.802 n2=17.029 n3=6.085
+22:05:41.662 << EVT n2 MOVING -> IDLE pos=17.679
+22:05:41.685 << OK MOVE
+22:05:41.686 << EVT n2 IDLE -> MOVING pos=17.679
+22:05:41.698 << EVT n1 IDLE -> MOVING pos=16.232
+22:05:41.709 >> look 303.7 6.94 0 179            # pursuit x= +3.85 y= -5.78 đổi  1.21°
+22:05:41.754 << IK az=303.7 tilt=6.94 twist=0.0 -> n1=15.363 n2=16.391 n3=7.073
+22:05:41.790 << OK MOVE
+22:05:41.815 >> look 303.2 5.74 0 179            # pursuit x= +3.14 y= -4.80 đổi  1.21°
+22:05:41.863 << IK az=303.2 tilt=5.74 twist=0.0 -> n1=14.913 n2=15.780 n3=8.058
+22:05:41.920 >> look 302.5 4.53 0 180            # pursuit x= +2.43 y= -3.82 đổi  1.21°
+22:05:41.969 << IK az=302.5 tilt=4.53 twist=0.0 -> n1=14.453 n2=15.174 n3=9.058
+22:05:42.018 << OK MOVE
+22:05:42.030 >> look 301.2 3.27 0 184            # pursuit x= +1.70 y= -2.79 đổi  1.26°
+22:05:42.068 << IK az=301.2 tilt=3.27 twist=0.0 -> n1=13.964 n2=14.560 n3=10.108
+22:05:42.116 << OK MOVE
+22:05:42.138 >> look 90.8 0.59 0 359             # sacc    x= -0.01 y= +0.59 đổi  3.79°
+22:05:42.174 << IK az=90.8 tilt=0.59 twist=0.0 -> n1=12.914 n2=12.397 n3=13.262
+22:05:42.212 << OK MOVE
+22:05:42.637 << EVT n1 MOVING -> IDLE pos=12.921
+22:05:42.650 << EVT n2 MOVING -> IDLE pos=12.391
+22:05:42.650 << EVT n3 MOVING -> IDLE pos=13.259
+22:05:42.733 >> look 195.4 1.17 0 199            # sacc    x= -1.12 y= -0.31 đổi  1.43°
+22:05:42.781 << IK az=195.4 tilt=1.17 twist=0.0 -> n1=11.874 n2=13.471 n3=13.234
+22:05:42.804 << OK MOVE
+22:05:42.816 << EVT n1 IDLE -> MOVING pos=12.921
+22:05:42.817 << EVT n2 IDLE -> MOVING pos=12.391
+22:05:42.829 << EVT n3 IDLE -> MOVING pos=13.259
+22:05:42.909 << EVT n3 MOVING -> IDLE pos=13.227
+22:05:42.992 << EVT n2 MOVING -> IDLE pos=13.468
+22:05:43.003 << EVT n1 MOVING -> IDLE pos=11.877
+22:05:43.158 >> look 189.9 2.86 0 222            # sacc    x= -2.82 y= -0.49 đổi  1.70°
+22:05:43.203 << IK az=189.9 tilt=2.86 twist=0.0 -> n1=10.450 n2=14.153 n3=14.015
+22:05:43.228 << EVT n2 IDLE -> MOVING pos=13.468
+22:05:43.239 << EVT n3 IDLE -> MOVING pos=13.227
+22:05:43.239 << OK MOVE
+22:05:43.252 << EVT n1 IDLE -> MOVING pos=11.877
+22:05:43.439 << EVT n2 MOVING -> IDLE pos=14.159
+22:05:43.440 << EVT n3 MOVING -> IDLE pos=14.014
+22:05:43.452 << EVT n1 MOVING -> IDLE pos=10.446
+22:05:43.764 >> look 199.8 2.90 0 150            # micro   x= -2.73 y= -0.98 đổi  0.50°
+22:05:43.803 << IK az=199.8 tilt=2.9 twist=0.0 -> n1=10.483 n2=14.512 n3=13.623
+22:05:43.839 << EVT n2 IDLE -> MOVING pos=14.159
+22:05:43.851 << EVT n1 IDLE -> MOVING pos=10.446
+22:05:43.851 << OK MOVE
+22:05:43.864 << EVT n3 IDLE -> MOVING pos=14.014
+22:05:43.921 << EVT n1 MOVING -> IDLE pos=10.479
+22:05:43.981 << EVT n2 MOVING -> IDLE pos=14.512
+22:05:43.982 << EVT n3 MOVING -> IDLE pos=13.629
+22:05:44.053 >> look 134.5 2.87 0 320            # sacc    x= -2.01 y= +2.04 đổi  3.11°
+22:05:44.102 << IK az=134.5 tilt=2.87 twist=0.0 -> n1=11.351 n2=11.939 n3=15.333
+22:05:44.137 << EVT n1 IDLE -> MOVING pos=10.479
+22:05:44.149 << OK MOVE
+22:05:44.149 << EVT n3 IDLE -> MOVING pos=13.629
+22:05:44.160 << EVT n2 IDLE -> MOVING pos=14.512
+22:05:44.440 << EVT n1 MOVING -> IDLE pos=11.346
+22:05:44.452 << EVT n3 MOVING -> IDLE pos=15.332
+22:05:44.452 << EVT n2 MOVING -> IDLE pos=11.941
+22:05:44.638 >> look 127.6 2.63 0 150            # micro   x= -1.61 y= +2.09 đổi  0.40°
+22:05:44.683 << IK az=127.6 tilt=2.63 twist=0.0 -> n1=11.703 n2=11.778 n3=15.134
+22:05:44.706 << EVT n3 IDLE -> MOVING pos=15.332
+22:05:44.706 << OK MOVE
+22:05:44.718 << EVT n2 IDLE -> MOVING pos=11.941
+22:05:44.730 << EVT n1 IDLE -> MOVING pos=11.346
+22:05:44.741 >> look 165.5 1.79 0 217            # sacc    x= -1.73 y= +0.45 đổi  1.64°
+22:05:44.789 << IK az=165.5 tilt=1.79 twist=0.0 -> n1=11.438 n2=13.073 n3=14.079
+22:05:44.812 << OK MOVE
+22:05:44.998 << EVT n1 MOVING -> IDLE pos=11.443
+22:05:45.031 << EVT n3 MOVING -> IDLE pos=14.079
+22:05:45.031 << EVT n2 MOVING -> IDLE pos=13.066
+22:05:45.056 >> look 162.7 11.40 0 613           # sacc    x=-10.88 y= +3.40 đổi  9.61°
+22:05:45.102 << IK az=162.7 tilt=11.4 twist=0.0 -> n1=3.948 n2=13.676 n3=21.799
+22:05:45.138 << EVT n1 IDLE -> MOVING pos=11.443
+22:05:45.139 << OK MOVE
+22:05:45.149 << EVT n2 IDLE -> MOVING pos=13.066
+22:05:45.149 << EVT n3 IDLE -> MOVING pos=14.079
+22:05:45.731 << EVT n2 MOVING -> IDLE pos=13.677
+22:05:45.754 << EVT n1 MOVING -> IDLE pos=3.954
+22:05:45.764 << EVT n3 MOVING -> IDLE pos=21.793
+22:05:46.078 >> look 157.8 11.40 0 155           # sacc    x=-10.56 y= +4.30 đổi  0.96°
+22:05:46.122 << IK az=157.8 tilt=11.4 twist=0.0 -> n1=4.255 n2=12.941 n3=22.276
+22:05:46.147 << OK MOVE
+22:05:46.147 << EVT n1 IDLE -> MOVING pos=3.954
+22:05:46.158 << EVT n3 IDLE -> MOVING pos=21.793
+22:05:46.171 << EVT n2 IDLE -> MOVING pos=13.677
+22:05:46.284 << EVT n1 MOVING -> IDLE pos=4.259
+22:05:46.295 << EVT n3 MOVING -> IDLE pos=22.275
+22:05:46.296 << EVT n2 MOVING -> IDLE pos=12.938
+22:05:46.572 >> look 154.0 2.73 0 579            # sacc    x= -2.45 y= +1.20 đổi  8.68°
+22:05:46.614 << IK az=154.0 tilt=2.73 twist=0.0 -> n1=10.897 n2=12.729 n3=14.991
+22:05:46.648 << EVT n1 IDLE -> MOVING pos=4.259
+22:05:46.658 << EVT n2 IDLE -> MOVING pos=12.938
+22:05:46.658 << OK MOVE
+22:05:46.671 << EVT n3 IDLE -> MOVING pos=22.275
+22:05:47.198 << EVT n2 MOVING -> IDLE pos=12.729
+22:05:47.234 << EVT n1 MOVING -> IDLE pos=10.896
+22:05:47.247 << EVT n3 MOVING -> IDLE pos=14.995
+22:05:47.331 >> look 192.9 1.34 0 236            # sacc    x= -1.30 y= -0.30 đổi  1.89°
+22:05:47.378 << IK az=192.9 tilt=1.34 twist=0.0 -> n1=11.726 n2=13.520 n3=13.336
+22:05:47.413 << EVT n2 IDLE -> MOVING pos=12.729
+22:05:47.425 << EVT n1 IDLE -> MOVING pos=10.896
+22:05:47.425 << OK MOVE
+22:05:47.437 << EVT n3 IDLE -> MOVING pos=14.995
+22:05:47.633 << EVT n2 MOVING -> IDLE pos=13.516
+22:05:47.645 << EVT n1 MOVING -> IDLE pos=11.732
+22:05:47.645 << EVT n3 MOVING -> IDLE pos=13.339
+22:05:47.868 >> look 205.2 1.53 0 150            # micro   x= -1.39 y= -0.65 đổi  0.36°
+22:05:47.914 << IK az=205.2 tilt=1.53 twist=0.0 -> n1=11.628 n2=13.823 n3=13.134
+22:05:47.939 << EVT n2 IDLE -> MOVING pos=13.516
+22:05:47.951 << EVT n1 IDLE -> MOVING pos=11.732
+22:05:47.951 << OK MOVE
+22:05:47.951 << EVT n3 IDLE -> MOVING pos=13.339
+22:05:47.974 >> look 282.0 3.82 0 359            # sacc    x= +0.80 y= -3.73 đổi  3.78°
+22:05:48.033 << IK az=282.0 tilt=3.82 twist=0.0 -> n1=13.118 n2=15.641 n3=9.902
+22:05:48.056 << OK MOVE
+22:05:48.360 >> look 234.8 3.73 0 314            # sacc    x= -2.15 y= -3.05 đổi  3.02°
+22:05:48.408 << IK az=234.8 tilt=3.73 twist=0.0 -> n1=10.789 n2=16.001 n3=11.867
+22:05:48.421 << EVT n1 MOVING -> IDLE pos=13.114
+22:05:48.421 << EVT n3 MOVING -> IDLE pos=9.900
+22:05:48.431 << EVT n2 MOVING -> IDLE pos=15.638
+22:05:48.467 << EVT n2 IDLE -> MOVING pos=15.638
+22:05:48.467 << OK MOVE
+22:05:48.479 << EVT n3 IDLE -> MOVING pos=9.900
+22:05:48.479 << EVT n1 IDLE -> MOVING pos=13.114
+22:05:48.747 << EVT n2 MOVING -> IDLE pos=16.007
+22:05:48.771 << EVT n1 MOVING -> IDLE pos=10.784
+22:05:48.783 << EVT n3 MOVING -> IDLE pos=11.861
+22:05:48.899 >> look 285.1 4.35 0 342            # sacc    x= +1.14 y= -4.20 đổi  3.48°
+22:05:48.946 << IK az=285.1 tilt=4.35 twist=0.0 -> n1=13.344 n2=15.924 n3=9.419
+22:05:48.969 << OK MOVE
+22:05:48.969 << EVT n1 IDLE -> MOVING pos=10.784
+22:05:48.979 << EVT n2 IDLE -> MOVING pos=16.007
+22:05:48.991 << EVT n3 IDLE -> MOVING pos=11.861
+22:05:49.240 << EVT n2 MOVING -> IDLE pos=15.927
+22:05:49.308 << EVT n3 MOVING -> IDLE pos=9.418
+22:05:49.320 << EVT n1 MOVING -> IDLE pos=13.339
+22:05:49.673 >> look 275.6 4.37 0 130            # sacc    x= +0.42 y= -4.35 đổi  0.73°
+22:05:49.709 << IK az=275.6 tilt=4.37 twist=0.0 -> n1=12.755 n2=16.279 n3=9.659
+22:05:49.744 << EVT n3 IDLE -> MOVING pos=9.418
+22:05:49.754 << OK MOVE
+22:05:49.755 << EVT n2 IDLE -> MOVING pos=15.927
+22:05:49.766 << EVT n1 IDLE -> MOVING pos=13.339
+22:05:49.869 << EVT n1 MOVING -> IDLE pos=12.761
+22:05:49.870 << EVT n2 MOVING -> IDLE pos=16.280
+22:05:49.881 << EVT n3 MOVING -> IDLE pos=9.659
+22:05:50.271 >> look 292.0 11.40 0 525           # sacc    x= +4.27 y=-10.57 đổi  7.31°
+22:05:50.318 << IK az=292.0 tilt=11.4 twist=0.0 -> n1=15.074 n2=20.684 n3=3.563
+22:05:50.342 << OK MOVE
+22:05:50.342 << EVT n3 IDLE -> MOVING pos=9.659
+22:05:50.354 << EVT n2 IDLE -> MOVING pos=16.280
+22:05:50.354 << EVT n1 IDLE -> MOVING pos=12.761
+22:05:50.858 << EVT n1 MOVING -> IDLE pos=15.075
+22:05:50.869 << EVT n2 MOVING -> IDLE pos=20.684
+22:05:50.882 << EVT n3 MOVING -> IDLE pos=3.568
+22:05:51.400 >> look 287.9 1.85 0 611            # sacc    x= +0.57 y= -1.76 đổi  9.56°
+22:05:51.446 << IK az=287.9 tilt=1.85 twist=0.0 -> n1=13.145 n2=14.079 n3=11.368
+22:05:51.482 << OK MOVE
+22:05:51.482 << EVT n3 IDLE -> MOVING pos=3.568
+22:05:51.493 << EVT n2 IDLE -> MOVING pos=20.684
+22:05:51.494 << EVT n1 IDLE -> MOVING pos=15.075
+22:05:51.543 >> look 12.0 2.94 0 331             # cut     x= +2.87 y= +0.61 đổi  3.30°
+22:05:51.590 << IK az=12.0 tilt=2.94 twist=0.0 -> n1=15.404 n2=11.402 n3=11.821
+22:05:51.614 << OK MOVE
+22:05:52.000 >> look 176.8 3.00 0 464            # sacc    x= -3.00 y= +0.17 đổi  5.89°
+22:05:52.037 << IK az=176.8 tilt=3.0 twist=0.0 -> n1=10.355 n2=13.694 n3=14.574
+22:05:52.072 << OK MOVE
+22:05:52.549 << EVT n2 MOVING -> IDLE pos=13.693
+22:05:52.550 << EVT n1 MOVING -> IDLE pos=10.350
+22:05:52.562 << EVT n3 MOVING -> IDLE pos=14.577
+22:05:52.737 >> look 183.1 3.03 0 150            # pursuit x= -3.02 y= -0.17 đổi  0.33°
+22:05:52.775 << IK az=183.1 tilt=3.03 twist=0.0 -> n1=10.303 n2=13.961 n3=14.359
+22:05:52.798 << OK MOVE
+22:05:52.810 << EVT n3 IDLE -> MOVING pos=14.577
+22:05:52.822 << EVT n2 IDLE -> MOVING pos=13.693
+22:05:52.822 << EVT n1 IDLE -> MOVING pos=10.350
+22:05:52.847 >> look 196.5 3.21 0 150            # pursuit x= -3.08 y= -0.91 đổi  0.75°
+22:05:52.893 << IK az=196.5 tilt=3.21 twist=0.0 -> n1=10.201 n2=14.565 n3=13.863
+22:05:52.916 << EVT n1 MOVING -> IDLE pos=10.302
+22:05:52.950 << EVT n1 IDLE -> MOVING pos=10.302
+22:05:52.950 << OK MOVE
+22:05:52.951 >> look 207.2 3.52 0 150            # pursuit x= -3.13 y= -1.61 đổi  0.70°
+22:05:52.997 << IK az=207.2 tilt=3.52 twist=0.0 -> n1=10.103 n2=15.136 n3=13.401
+22:05:53.022 << OK MOVE
+22:05:53.058 >> look 216.4 3.95 0 150            # pursuit x= -3.18 y= -2.35 đổi  0.74°
+22:05:53.103 << IK az=216.4 tilt=3.95 twist=0.0 -> n1=10.009 n2=15.743 n3=12.908
+22:05:53.151 << OK MOVE
+22:05:53.163 >> look 223.4 4.45 0 150            # pursuit x= -3.24 y= -3.06 đổi  0.72°
+22:05:53.210 << IK az=223.4 tilt=4.45 twist=0.0 -> n1=9.913 n2=16.342 n3=12.432
+22:05:53.245 << OK MOVE
+22:05:53.268 >> look 228.9 5.01 0 150            # pursuit x= -3.29 y= -3.77 đổi  0.72°
+22:05:53.317 << IK az=228.9 tilt=5.01 twist=0.0 -> n1=9.814 n2=16.954 n3=11.954
+22:05:53.340 << OK MOVE
+22:05:53.374 >> look 233.3 5.60 0 150            # pursuit x= -3.34 y= -4.49 đổi  0.72°
+22:05:53.410 << IK az=233.3 tilt=5.6 twist=0.0 -> n1=9.723 n2=17.569 n3=11.474
+22:05:53.444 << OK MOVE
+22:05:53.479 >> look 236.8 6.21 0 150            # pursuit x= -3.40 y= -5.20 đổi  0.71°
+22:05:53.523 << IK az=236.8 tilt=6.21 twist=0.0 -> n1=9.633 n2=18.187 n3=10.998
+22:05:53.546 << OK MOVE
+22:05:53.581 >> look 239.7 6.83 0 150            # pursuit x= -3.45 y= -5.89 đổi  0.70°
+22:05:53.625 << IK az=239.7 tilt=6.83 twist=0.0 -> n1=9.552 n2=18.805 n3=10.520
+22:05:53.659 << OK MOVE
+22:05:53.684 >> look 242.0 7.47 0 150            # pursuit x= -3.50 y= -6.60 đổi  0.70°
+22:05:53.729 << IK az=242.0 tilt=7.47 twist=0.0 -> n1=9.461 n2=19.435 n3=10.050
+22:05:53.751 << OK MOVE
+22:05:53.789 >> look 244.1 8.12 0 150            # pursuit x= -3.55 y= -7.31 đổi  0.71°
+22:05:53.825 << IK az=244.1 tilt=8.12 twist=0.0 -> n1=9.388 n2=20.077 n3=9.560
+22:05:53.871 << OK MOVE
+22:05:53.893 >> look 245.8 8.79 0 150            # pursuit x= -3.61 y= -8.02 đổi  0.71°
+22:05:53.940 << IK az=245.8 tilt=8.79 twist=0.0 -> n1=9.303 n2=20.738 n3=9.074
+22:05:53.988 << OK MOVE
+22:05:54.000 >> look 247.3 9.48 0 150            # pursuit x= -3.66 y= -8.74 đổi  0.73°
+22:05:54.036 << IK az=247.3 tilt=9.48 twist=0.0 -> n1=9.221 n2=21.422 n3=8.574
+22:05:54.071 << OK MOVE
+22:05:54.108 >> look 248.6 10.17 0 150           # pursuit x= -3.71 y= -9.47 đổi  0.73°
+22:05:54.144 << IK az=248.6 tilt=10.17 twist=0.0 -> n1=9.143 n2=22.112 n3=8.076
+22:05:54.180 << OK MOVE
+22:05:54.218 >> look 249.8 10.89 0 150           # pursuit x= -3.77 y=-10.22 đổi  0.75°
+22:05:54.262 << IK az=249.8 tilt=10.89 twist=0.0 -> n1=9.067 n2=22.839 n3=7.553
+22:05:54.320 >> look 250.3 11.24 0 150           # pursuit x= -3.80 y=-10.58 đổi  0.37°
+22:05:54.366 << IK az=250.3 tilt=11.24 twist=0.0 -> n1=9.028 n2=23.196 n3=7.303
+22:05:54.423 << OK MOVE
+22:05:54.423 >> look 249.3 10.57 0 150           # pursuit x= -3.74 y= -9.88 đổi  0.71°
+22:05:54.469 << IK az=249.3 tilt=10.57 twist=0.0 -> n1=9.102 n2=22.515 n3=7.784
+22:05:54.493 << OK MOVE
+22:05:54.505 << EVT n1 MOVING -> IDLE pos=9.096
+22:05:54.517 << EVT n3 MOVING -> IDLE pos=7.779
+22:05:54.529 >> look 248.1 9.88 0 150            # pursuit x= -3.69 y= -9.16 đổi  0.72°
+22:05:54.540 << EVT n2 MOVING -> IDLE pos=22.516
+22:05:54.577 << IK az=248.1 tilt=9.88 twist=0.0 -> n1=9.178 n2=21.822 n3=8.282
+22:05:54.611 << EVT n1 IDLE -> MOVING pos=9.096
+22:05:54.611 << EVT n2 IDLE -> MOVING pos=22.516
+22:05:54.611 << OK MOVE
+22:05:54.624 << EVT n3 IDLE -> MOVING pos=7.779
+22:05:54.636 >> look 246.7 9.19 0 150            # pursuit x= -3.64 y= -8.44 đổi  0.73°
+22:05:54.684 << IK az=246.7 tilt=9.19 twist=0.0 -> n1=9.255 n2=21.134 n3=8.784
+22:05:54.708 << OK MOVE
+22:05:54.742 >> look 245.8 8.80 0 150            # fix     x= -3.60 y= -8.03 đổi  0.41°
+22:05:54.786 << IK az=245.8 tilt=8.8 twist=0.0 -> n1=9.300 n2=20.748 n3=9.069
+22:05:54.823 << OK MOVE
+22:05:54.955 << EVT n1 MOVING -> IDLE pos=9.305
+22:05:54.967 << EVT n3 MOVING -> IDLE pos=9.064
+22:05:54.967 >> look 245.6 8.48 0 150            # pursuit x= -3.51 y= -7.72 đổi  0.32°
+22:05:54.978 << EVT n2 MOVING -> IDLE pos=20.748
+22:05:55.002 << IK az=245.6 tilt=8.48 twist=0.0 -> n1=9.397 n2=20.441 n3=9.236
+22:05:55.037 << OK MOVE
+22:05:55.037 << EVT n3 IDLE -> MOVING pos=9.064
+22:05:55.047 << EVT n2 IDLE -> MOVING pos=20.748
+22:05:55.047 << EVT n1 IDLE -> MOVING pos=9.305
+22:05:55.070 >> look 245.2 8.00 0 150            # pursuit x= -3.36 y= -7.26 đổi  0.48°
+22:05:55.113 << IK az=245.2 tilt=8.0 twist=0.0 -> n1=9.538 n2=19.984 n3=9.492
+22:05:55.163 << OK MOVE
+22:05:55.175 >> look 244.7 7.52 0 150            # pursuit x= -3.22 y= -6.80 đổi  0.49°
+22:05:55.211 << IK az=244.7 tilt=7.52 twist=0.0 -> n1=9.676 n2=19.529 n3=9.753
+22:05:55.244 << OK MOVE
+22:05:55.279 >> look 244.1 7.04 0 150            # pursuit x= -3.07 y= -6.34 đổi  0.49°
+22:05:55.327 << IK az=244.1 tilt=7.04 twist=0.0 -> n1=9.814 n2=19.076 n3=10.016
+22:05:55.364 << OK MOVE
+22:05:55.387 >> look 243.5 6.55 0 150            # pursuit x= -2.92 y= -5.86 đổi  0.50°
+22:05:55.431 << IK az=243.5 tilt=6.55 twist=0.0 -> n1=9.964 n2=18.619 n3=10.274
+22:05:55.454 << OK MOVE
+22:05:55.490 >> look 242.8 6.08 0 150            # pursuit x= -2.78 y= -5.40 đổi  0.48°
+22:05:55.536 << IK az=242.8 tilt=6.08 twist=0.0 -> n1=10.108 n2=18.183 n3=10.524
+22:05:55.573 << OK MOVE
+22:05:55.598 >> look 241.9 5.59 0 150            # pursuit x= -2.63 y= -4.93 đổi  0.50°
+22:05:55.646 << IK az=241.9 tilt=5.59 twist=0.0 -> n1=10.258 n2=17.729 n3=10.788
+22:05:55.678 << OK MOVE
+22:05:55.703 >> look 240.9 5.11 0 150            # pursuit x= -2.48 y= -4.47 đổi  0.49°
+22:05:55.747 << IK az=240.9 tilt=5.11 twist=0.0 -> n1=10.409 n2=17.288 n3=11.042
+22:05:55.805 << OK MOVE
+22:05:55.806 >> look 239.8 4.64 0 150            # pursuit x= -2.34 y= -4.01 đổi  0.48°
+22:05:55.851 << IK az=239.8 tilt=4.64 twist=0.0 -> n1=10.565 n2=16.858 n3=11.285
+22:05:55.888 << OK MOVE
+22:05:55.912 >> look 238.3 4.16 0 150            # pursuit x= -2.19 y= -3.54 đổi  0.50°
+22:05:55.950 << IK az=238.3 tilt=4.16 twist=0.0 -> n1=10.721 n2=16.419 n3=11.540
+22:05:55.986 << OK MOVE
+22:05:56.021 >> look 236.3 3.68 0 150            # pursuit x= -2.04 y= -3.06 đổi  0.50°
+22:05:56.064 << IK az=236.3 tilt=3.68 twist=0.0 -> n1=10.876 n2=15.979 n3=11.801
+22:05:56.087 << OK MOVE
+22:05:56.123 >> look 234.0 3.23 0 150            # pursuit x= -1.90 y= -2.61 đổi  0.47°
+22:05:56.159 << IK az=234.0 tilt=3.23 twist=0.0 -> n1=11.029 n2=15.565 n3=12.040
+22:05:56.219 << OK MOVE
+22:05:56.231 >> look 230.7 2.75 0 150            # pursuit x= -1.74 y= -2.13 đổi  0.50°
+22:05:56.277 << IK az=230.7 tilt=2.75 twist=0.0 -> n1=11.199 n2=15.121 n3=12.297
+22:05:56.324 << OK MOVE
+22:05:56.336 >> look 226.2 2.31 0 150            # pursuit x= -1.60 y= -1.66 đổi  0.49°
+22:05:56.382 << IK az=226.2 tilt=2.31 twist=0.0 -> n1=11.357 n2=14.703 n3=12.543
+22:05:56.418 << OK MOVE
+22:05:56.442 >> look 221.3 1.97 0 150            # fix     x= -1.48 y= -1.30 đổi  0.38°
+22:05:56.491 << IK az=221.3 tilt=1.97 twist=0.0 -> n1=11.488 n2=14.370 n3=12.735
+22:05:56.515 << OK MOVE
+22:05:56.657 << EVT n1 MOVING -> IDLE pos=11.491
+22:05:56.657 >> look 237.3 2.16 0 116            # sacc    x= -1.17 y= -1.82 đổi  0.61°
+22:05:56.670 << EVT n3 MOVING -> IDLE pos=12.729
+22:05:56.670 << EVT n2 MOVING -> IDLE pos=14.368
+22:05:56.707 << IK az=237.3 tilt=2.16 twist=0.0 -> n1=11.699 n2=14.687 n3=12.213
+22:05:56.738 << EVT n2 IDLE -> MOVING pos=14.368
+22:05:56.750 << EVT n3 IDLE -> MOVING pos=12.729
+22:05:56.750 << OK MOVE
+22:05:56.750 << EVT n1 IDLE -> MOVING pos=11.491
+22:05:56.842 << EVT n1 MOVING -> IDLE pos=11.700
+22:05:56.842 << EVT n2 MOVING -> IDLE pos=14.689
+22:05:56.852 << EVT n3 MOVING -> IDLE pos=12.214
+22:05:57.025 >> look 302.5 7.40 0 503            # sacc    x= +3.97 y= -6.25 đổi  6.78°
+22:05:57.071 << IK az=302.5 tilt=7.4 twist=0.0 -> n1=15.403 n2=16.763 n3=6.697
+22:05:57.095 << EVT n3 IDLE -> MOVING pos=12.214
+22:05:57.106 << EVT n2 IDLE -> MOVING pos=14.689
+22:05:57.106 << OK MOVE
+22:05:57.117 << EVT n1 IDLE -> MOVING pos=11.700
+22:05:57.334 >> look 324.2 3.41 0 393            # cut     x= +2.77 y= -2.00 đổi  4.42°
+22:05:57.381 << IK az=324.2 tilt=3.41 twist=0.0 -> n1=14.961 n2=13.538 n3=10.136
+22:05:57.404 << OK MOVE
+22:05:57.789 << EVT n1 MOVING -> IDLE pos=14.962
+22:05:57.789 << EVT n2 MOVING -> IDLE pos=13.532
+22:05:57.800 << EVT n3 MOVING -> IDLE pos=10.141
+22:05:57.905 >> look 319.9 3.22 0 150            # micro   x= +2.46 y= -2.07 đổi  0.32°
+22:05:57.943 << IK az=319.9 tilt=3.22 twist=0.0 -> n1=14.695 n2=13.706 n3=10.228
+22:05:57.978 << EVT n3 IDLE -> MOVING pos=10.141
+22:05:57.978 << EVT n2 IDLE -> MOVING pos=13.532
+22:05:57.978 << OK MOVE
+22:05:57.989 << EVT n1 IDLE -> MOVING pos=14.962
+22:05:58.014 >> look 329.4 2.01 0 185            # sacc    x= +1.73 y= -1.03 đổi  1.27°
+22:05:58.051 << IK az=329.4 tilt=2.01 twist=0.0 -> n1=14.206 n2=13.096 n3=11.292
+22:05:58.089 << OK MOVE
+22:05:58.267 << EVT n1 MOVING -> IDLE pos=14.207
+22:05:58.267 << EVT n2 MOVING -> IDLE pos=13.098
+22:05:58.279 << EVT n3 MOVING -> IDLE pos=11.298
+22:05:58.447 >> look 335.5 1.77 0 150            # micro   x= +1.61 y= -0.73 đổi  0.32°
+22:05:58.483 << IK az=335.5 tilt=1.77 twist=0.0 -> n1=14.140 n2=12.904 n3=11.546
+22:05:58.517 << EVT n2 IDLE -> MOVING pos=13.098
+22:05:58.530 << EVT n3 IDLE -> MOVING pos=11.298
+22:05:58.530 << OK MOVE
+22:05:58.530 << EVT n1 IDLE -> MOVING pos=14.207
+22:05:58.553 >> look 123.9 1.80 0 339            # sacc    x= -1.00 y= +1.49 đổi  3.43°
+22:05:58.601 << IK az=123.9 tilt=1.8 twist=0.0 -> n1=12.159 n2=12.029 n3=14.404
+22:05:58.625 << OK MOVE
+22:05:58.959 << EVT n2 MOVING -> IDLE pos=12.021
+22:05:58.959 << EVT n1 MOVING -> IDLE pos=12.166
+22:05:58.971 << EVT n3 MOVING -> IDLE pos=14.400
+22:05:59.257 >> look 65.4 5.06 0 392             # sacc    x= +2.11 y= +4.60 đổi  4.40°
+22:05:59.305 << IK az=65.4 tilt=5.06 twist=0.0 -> n1=15.268 n2=8.618 n3=14.825
+22:05:59.330 << EVT n3 IDLE -> MOVING pos=14.400
+22:05:59.343 << EVT n2 IDLE -> MOVING pos=12.021
+22:05:59.343 << OK MOVE
+22:05:59.355 << EVT n1 IDLE -> MOVING pos=12.166
+22:05:59.703 << EVT n3 MOVING -> IDLE pos=14.818
+22:05:59.728 << EVT n1 MOVING -> IDLE pos=15.268
+22:05:59.728 << EVT n2 MOVING -> IDLE pos=8.614
+22:06:00.155 >> look 43.1 4.21 0 243             # sacc    x= +3.08 y= +2.88 đổi  1.98°
+22:06:00.191 << IK az=43.1 tilt=4.21 twist=0.0 -> n1=15.897 n2=9.574 n3=13.209
+22:06:00.228 << OK MOVE
+22:06:00.239 << EVT n1 IDLE -> MOVING pos=15.268
+22:06:00.252 << EVT n3 IDLE -> MOVING pos=14.818
+22:06:00.252 << EVT n2 IDLE -> MOVING pos=8.614
+22:06:00.452 << EVT n1 MOVING -> IDLE pos=15.895
+22:06:00.464 << EVT n2 MOVING -> IDLE pos=9.579
+22:06:00.474 << EVT n3 MOVING -> IDLE pos=13.211
+22:06:00.852 >> look 70.8 11.40 0 549            # sacc    x= +3.76 y=+10.76 đổi  7.92°
+22:06:00.888 << IK az=70.8 tilt=11.4 twist=0.0 -> n1=17.757 n2=3.565 n3=17.843
+22:06:00.925 << EVT n1 IDLE -> MOVING pos=15.895
+22:06:00.937 << EVT n3 IDLE -> MOVING pos=13.211
+22:06:00.937 << OK MOVE
+22:06:00.949 << EVT n2 IDLE -> MOVING pos=9.579
+22:06:01.461 << EVT n1 MOVING -> IDLE pos=17.759
+22:06:01.473 << EVT n3 MOVING -> IDLE pos=17.839
+22:06:01.483 << EVT n2 MOVING -> IDLE pos=3.568
+22:06:01.582 >> look 72.5 10.33 0 171            # sacc    x= +3.10 y= +9.85 đổi  1.12°
+22:06:01.627 << IK az=72.5 tilt=10.33 twist=0.0 -> n1=16.982 n2=4.455 n3=17.631
+22:06:01.675 << EVT n2 IDLE -> MOVING pos=3.568
+22:06:01.686 << OK MOVE
+22:06:01.687 << EVT n3 IDLE -> MOVING pos=17.839
+22:06:01.699 << EVT n1 IDLE -> MOVING pos=17.759
+22:06:01.805 << EVT n3 MOVING -> IDLE pos=17.630
+22:06:01.827 << EVT n2 MOVING -> IDLE pos=4.452
+22:06:01.839 << EVT n1 MOVING -> IDLE pos=16.988
+22:06:02.100 >> look 70.7 10.24 0 150            # micro   x= +3.38 y= +9.66 đổi  0.33°
+22:06:02.138 << IK az=70.7 tilt=10.24 twist=0.0 -> n1=17.221 n2=4.481 n3=17.363
+22:06:02.172 << OK MOVE
+22:06:02.172 << EVT n1 IDLE -> MOVING pos=16.988
+22:06:02.183 << EVT n2 IDLE -> MOVING pos=4.452
+22:06:02.196 << EVT n3 IDLE -> MOVING pos=17.630
+22:06:02.208 >> look 320.7 1.83 0 661            # sacc    x= +1.42 y= -1.16 đổi 11.00°
+22:06:02.255 << IK az=320.7 tilt=1.83 twist=0.0 -> n1=13.924 n2=13.311 n3=11.355
+22:06:02.255 << EVT n2 MOVING -> IDLE pos=4.484
+22:06:02.303 << EVT n2 IDLE -> MOVING pos=4.484
+22:06:02.314 << OK MOVE
+22:06:02.959 << EVT n1 MOVING -> IDLE pos=13.918
+22:06:02.959 << EVT n3 MOVING -> IDLE pos=11.362
+22:06:02.972 << EVT n2 MOVING -> IDLE pos=13.307
+22:06:03.094 >> look 313.3 2.03 0 150            # micro   x= +1.39 y= -1.48 đổi  0.32°
+22:06:03.132 << IK az=313.3 tilt=2.03 twist=0.0 -> n1=13.867 n2=13.577 n3=11.151
+22:06:03.168 << EVT n1 IDLE -> MOVING pos=13.918
+22:06:03.180 << EVT n2 IDLE -> MOVING pos=13.307
+22:06:03.180 << OK MOVE
+22:06:03.191 << EVT n3 IDLE -> MOVING pos=11.362
+22:06:03.203 >> look 130.3 2.67 0 407            # sacc    x= -1.72 y= +2.03 đổi  4.70°
+22:06:03.241 << IK az=130.3 tilt=2.67 twist=0.0 -> n1=11.593 n2=11.854 n3=15.169
+22:06:03.253 << EVT n1 MOVING -> IDLE pos=13.870
+22:06:03.278 << OK MOVE
+22:06:03.301 << EVT n1 IDLE -> MOVING pos=13.870
+22:06:03.692 << EVT n2 MOVING -> IDLE pos=11.861
+22:06:03.703 << EVT n3 MOVING -> IDLE pos=15.171
+22:06:03.703 << EVT n1 MOVING -> IDLE pos=11.588
+22:06:03.894 >> look 93.6 8.35 0 487             # sacc    x= -0.53 y= +8.33 đổi  6.41°
+22:06:03.939 << IK az=93.6 tilt=8.35 twist=0.0 -> n1=13.347 n2=6.867 n3=18.720
+22:06:03.972 << EVT n2 IDLE -> MOVING pos=11.861
+22:06:03.972 << OK MOVE
+22:06:03.984 << EVT n3 IDLE -> MOVING pos=15.171
+22:06:03.984 << EVT n1 IDLE -> MOVING pos=11.588
+22:06:04.441 << EVT n1 MOVING -> IDLE pos=13.339
+22:06:04.453 << EVT n3 MOVING -> IDLE pos=18.723
+22:06:04.464 << EVT n2 MOVING -> IDLE pos=6.862
+22:06:04.747 >> look 115.0 7.87 0 315            # sacc    x= -3.32 y= +7.13 đổi  3.04°
+22:06:04.785 << IK az=115.0 tilt=7.87 twist=0.0 -> n1=10.682 n2=8.689 n3=19.597
+22:06:04.820 << EVT n3 IDLE -> MOVING pos=18.723
+22:06:04.820 << EVT n1 IDLE -> MOVING pos=13.339
+22:06:04.820 << OK MOVE
+22:06:04.831 << EVT n2 IDLE -> MOVING pos=6.862
+22:06:05.114 << EVT n3 MOVING -> IDLE pos=19.591
+22:06:05.127 << EVT n2 MOVING -> IDLE pos=8.695
+22:06:05.139 << EVT n1 MOVING -> IDLE pos=10.688
+22:06:05.332 >> look 111.1 2.55 0 438            # sacc    x= -0.92 y= +2.38 đổi  5.32°
+22:06:05.377 << IK az=111.1 tilt=2.55 twist=0.0 -> n1=12.324 n2=11.327 n3=14.960
+22:06:05.400 << OK MOVE
+22:06:05.400 << EVT n3 IDLE -> MOVING pos=19.591
+22:06:05.411 << EVT n2 IDLE -> MOVING pos=8.695
+22:06:05.411 << EVT n1 IDLE -> MOVING pos=10.688
+22:06:05.839 << EVT n2 MOVING -> IDLE pos=11.330
+22:06:05.850 << EVT n3 MOVING -> IDLE pos=14.962
+22:06:05.851 << EVT n1 MOVING -> IDLE pos=12.327
+22:06:05.986 >> look 110.5 3.05 0 150            # micro   x= -1.07 y= +2.85 đổi  0.49°
+22:06:06.030 << IK az=110.5 tilt=3.05 twist=0.0 -> n1=12.244 n2=11.017 n3=15.366
+22:06:06.064 << EVT n2 IDLE -> MOVING pos=11.330
+22:06:06.077 << EVT n1 IDLE -> MOVING pos=12.327
+22:06:06.077 << OK MOVE
+22:06:06.089 << EVT n3 IDLE -> MOVING pos=14.962
+22:06:06.163 >> look 17.3 11.33 0 692            # sacc    x=+10.82 y= +3.36 đổi 11.90°
+22:06:06.175 << EVT n1 MOVING -> IDLE pos=12.246
+22:06:06.213 << IK az=17.3 tilt=11.33 twist=0.0 -> n1=23.276 n2=6.321 n3=9.964
+22:06:06.213 << EVT n2 MOVING -> IDLE pos=11.025
+22:06:06.225 << EVT n3 MOVING -> IDLE pos=15.364
+22:06:06.248 << OK MOVE
+22:06:06.248 << EVT n1 IDLE -> MOVING pos=12.246
+22:06:06.258 << EVT n3 IDLE -> MOVING pos=15.364
+22:06:06.271 << EVT n2 IDLE -> MOVING pos=11.025
+22:06:06.949 << EVT n2 MOVING -> IDLE pos=6.316
+22:06:06.962 << EVT n1 MOVING -> IDLE pos=23.271
+22:06:06.962 << EVT n3 MOVING -> IDLE pos=9.964
+22:06:07.110 >> look 19.1 11.36 0 150            # pursuit x=+10.74 y= +3.72 đổi  0.37°
+22:06:07.146 << IK az=19.1 tilt=11.36 twist=0.0 -> n1=23.275 n2=6.081 n3=10.211
+22:06:07.183 << EVT n2 IDLE -> MOVING pos=6.316
+22:06:07.195 << OK MOVE
+22:06:07.207 << EVT n3 IDLE -> MOVING pos=9.964
+22:06:07.220 >> look 183.2 0.88 0 702            # sacc    x= -0.88 y= -0.05 đổi 12.21°
+22:06:07.267 << IK az=183.2 tilt=0.88 twist=0.0 -> n1=12.110 n2=13.184 n3=13.282
+22:06:07.290 << OK MOVE
+22:06:07.300 << EVT n1 IDLE -> MOVING pos=23.271
+22:06:07.997 << EVT n3 MOVING -> IDLE pos=13.275
+22:06:07.998 << EVT n1 MOVING -> IDLE pos=12.118
+22:06:08.010 << EVT n2 MOVING -> IDLE pos=13.179
+22:06:08.094 >> look 14.9 0.04 0 151             # sacc    x= +0.04 y= +0.01 đổi  0.92°
+22:06:08.142 << IK az=14.9 tilt=0.04 twist=0.0 -> n1=12.891 n2=12.836 n3=12.844
+22:06:08.177 << EVT n2 IDLE -> MOVING pos=13.179
+22:06:08.189 << EVT n1 IDLE -> MOVING pos=12.118
+22:06:08.189 << OK MOVE
+22:06:08.202 << EVT n3 IDLE -> MOVING pos=13.275
+22:06:08.321 << EVT n2 MOVING -> IDLE pos=12.841
+22:06:08.332 << EVT n1 MOVING -> IDLE pos=12.889
+22:06:08.332 << EVT n3 MOVING -> IDLE pos=12.841
+22:06:08.506 >> look 264.6 1.56 0 212            # sacc    x= -0.15 y= -1.56 đổi  1.58°
+22:06:08.556 << IK az=264.6 tilt=1.56 twist=0.0 -> n1=12.570 n2=14.144 n3=11.871
+22:06:08.602 << EVT n2 IDLE -> MOVING pos=12.841
+22:06:08.602 << EVT n1 IDLE -> MOVING pos=12.889
+22:06:08.602 << OK MOVE
+22:06:08.613 << EVT n3 IDLE -> MOVING pos=12.841
+22:06:08.790 << EVT n1 MOVING -> IDLE pos=12.568
+22:06:08.791 << EVT n3 MOVING -> IDLE pos=11.877
+22:06:08.802 << EVT n2 MOVING -> IDLE pos=14.143
+22:06:08.895 >> look 241.4 1.28 0 119            # sacc    x= -0.61 y= -1.12 đổi  0.64°
+22:06:08.941 << IK az=241.4 tilt=1.28 twist=0.0 -> n1=12.226 n2=13.950 n3=12.405
+22:06:08.988 << EVT n2 IDLE -> MOVING pos=14.143
+22:06:08.988 << OK MOVE
+22:06:08.988 << EVT n1 IDLE -> MOVING pos=12.568
+22:06:08.999 << EVT n3 IDLE -> MOVING pos=11.877
+22:06:09.092 << EVT n2 MOVING -> IDLE pos=13.950
+22:06:09.093 << EVT n3 MOVING -> IDLE pos=12.407
+22:06:09.104 << EVT n1 MOVING -> IDLE pos=12.230
+22:06:09.219 >> look 31.9 0.97 0 258             # sacc    x= +0.82 y= +0.51 đổi  2.18°
+22:06:09.264 << IK az=31.9 tilt=0.97 twist=0.0 -> n1=13.616 n2=12.180 n3=12.781
+22:06:09.287 << OK MOVE
+22:06:09.288 << EVT n2 IDLE -> MOVING pos=13.950
+22:06:09.299 << EVT n1 IDLE -> MOVING pos=12.230
+22:06:09.299 << EVT n3 IDLE -> MOVING pos=12.407
+22:06:09.531 << EVT n3 MOVING -> IDLE pos=12.777
+22:06:09.544 << EVT n1 MOVING -> IDLE pos=13.612
+22:06:09.556 << EVT n2 MOVING -> IDLE pos=12.182
+22:06:09.685 >> look 67.9 1.96 0 189             # sacc    x= +0.74 y= +1.82 đổi  1.31°
+22:06:09.730 << IK az=67.9 tilt=1.96 twist=0.0 -> n1=13.695 n2=11.198 n3=13.700
+22:06:09.768 << EVT n1 IDLE -> MOVING pos=13.612
+22:06:09.768 << OK MOVE
+22:06:09.778 << EVT n2 IDLE -> MOVING pos=12.182
+22:06:09.779 << EVT n3 IDLE -> MOVING pos=12.777
+22:06:09.909 << EVT n1 MOVING -> IDLE pos=13.693
+22:06:09.947 << EVT n2 MOVING -> IDLE pos=11.202
+22:06:09.959 << EVT n3 MOVING -> IDLE pos=13.693
+22:06:10.066 >> look 55.6 2.12 0 150             # micro   x= +1.20 y= +1.75 đổi  0.46°
+22:06:10.115 << IK az=55.6 tilt=2.12 twist=0.0 -> n1=14.088 n2=11.092 n3=13.418
+22:06:10.139 << OK MOVE
+22:06:10.151 << EVT n3 IDLE -> MOVING pos=13.693
+22:06:10.151 << EVT n1 IDLE -> MOVING pos=13.693
+22:06:10.162 << EVT n2 IDLE -> MOVING pos=11.202
+22:06:10.270 << EVT n2 MOVING -> IDLE pos=11.089
+22:06:10.281 << EVT n3 MOVING -> IDLE pos=13.420
+22:06:10.281 << EVT n1 MOVING -> IDLE pos=14.095
+22:06:10.390 >> look 121.3 1.15 0 241            # sacc    x= -0.60 y= +0.98 đổi  1.95°
+22:06:10.439 << IK az=121.3 tilt=1.15 twist=0.0 -> n1=12.453 n2=12.288 n3=13.838
+22:06:10.462 << EVT n2 IDLE -> MOVING pos=11.089
+22:06:10.474 << OK MOVE
+22:06:10.474 << EVT n1 IDLE -> MOVING pos=14.095
+22:06:10.486 << EVT n3 IDLE -> MOVING pos=13.420
+22:06:10.692 << EVT n3 MOVING -> IDLE pos=13.838
+22:06:10.704 << EVT n1 MOVING -> IDLE pos=12.455
+22:06:10.704 << EVT n2 MOVING -> IDLE pos=12.295
+22:06:10.902 >> look 138.8 0.78 0 150            # micro   x= -0.59 y= +0.51 đổi  0.47°
+22:06:10.950 << IK az=138.8 tilt=0.78 twist=0.0 -> n1=12.413 n2=12.648 n3=13.513
+22:06:10.970 << OK MOVE
+22:06:10.982 << EVT n2 IDLE -> MOVING pos=12.295
+22:06:10.993 << EVT n1 IDLE -> MOVING pos=12.455
+22:06:11.005 << EVT n3 IDLE -> MOVING pos=13.838
+22:06:11.063 >> look 287.0 3.45 0 378            # sacc    x= +1.01 y= -3.29 đổi  4.13°
+22:06:11.075 << EVT n1 MOVING -> IDLE pos=12.407
+22:06:11.109 << IK az=287.0 tilt=3.45 twist=0.0 -> n1=13.341 n2=15.204 n3=10.098
+22:06:11.110 << EVT n3 MOVING -> IDLE pos=13.516
+22:06:11.122 << EVT n2 MOVING -> IDLE pos=12.648
+22:06:11.144 << OK MOVE
+22:06:11.156 << EVT n2 IDLE -> MOVING pos=12.648
+22:06:11.156 << EVT n1 IDLE -> MOVING pos=12.407
+22:06:11.168 << EVT n3 IDLE -> MOVING pos=13.516
+22:06:11.510 << EVT n1 MOVING -> IDLE pos=13.339
+22:06:11.522 << EVT n2 MOVING -> IDLE pos=15.204
+22:06:11.535 << EVT n3 MOVING -> IDLE pos=10.093
+22:06:11.691 >> look 348.6 5.91 0 434            # sacc    x= +5.79 y= -1.17 đổi  5.24°
+22:06:11.728 << IK az=348.6 tilt=5.91 twist=0.0 -> n1=17.689 n2=11.812 n3=9.281
+22:06:11.751 << OK MOVE
+22:06:11.763 << EVT n1 IDLE -> MOVING pos=13.339
+22:06:11.776 << EVT n2 IDLE -> MOVING pos=15.204
+22:06:11.787 << EVT n3 IDLE -> MOVING pos=10.093
+22:06:12.181 << EVT n3 MOVING -> IDLE pos=9.273
+22:06:12.191 << EVT n2 MOVING -> IDLE pos=11.812
+22:06:12.202 << EVT n1 MOVING -> IDLE pos=17.695
+22:06:12.534 >> look 318.4 8.69 0 405            # sacc    x= +6.49 y= -5.78 đổi  4.66°
+22:06:12.580 << IK az=318.4 tilt=8.69 twist=0.0 -> n1=17.538 n2=15.484 n3=5.912
+22:06:12.605 << EVT n3 IDLE -> MOVING pos=9.273
+22:06:12.617 << OK MOVE
+22:06:12.617 << EVT n1 IDLE -> MOVING pos=17.695
+22:06:12.630 << EVT n2 IDLE -> MOVING pos=11.812
+22:06:12.968 << EVT n1 MOVING -> IDLE pos=17.534
+22:06:13.015 << EVT n3 MOVING -> IDLE pos=5.914
+22:06:13.015 << EVT n2 MOVING -> IDLE pos=15.477
+22:06:13.121 >> look 312.5 7.04 0 232            # sacc    x= +4.75 y= -5.19 đổi  1.84°
+22:06:13.166 << IK az=312.5 tilt=7.04 twist=0.0 -> n1=16.185 n2=15.573 n3=7.064
+22:06:13.202 << EVT n2 IDLE -> MOVING pos=15.477
+22:06:13.213 << EVT n3 IDLE -> MOVING pos=5.914
+22:06:13.213 << OK MOVE
+22:06:13.225 << EVT n1 IDLE -> MOVING pos=17.534
+22:06:13.382 << EVT n2 MOVING -> IDLE pos=15.573
+22:06:13.429 << EVT n3 MOVING -> IDLE pos=7.071
+22:06:13.429 << EVT n1 MOVING -> IDLE pos=16.184
+22:06:13.825 >> look 284.8 6.22 0 329            # sacc    x= +1.59 y= -6.02 đổi  3.27°
+22:06:13.872 << IK az=284.8 tilt=6.22 twist=0.0 -> n1=13.514 n2=17.348 n3=7.949
+22:06:13.896 << OK MOVE
+22:06:13.896 << EVT n2 IDLE -> MOVING pos=15.573
+22:06:13.908 << EVT n3 IDLE -> MOVING pos=7.071
+22:06:13.908 << EVT n1 IDLE -> MOVING pos=16.184
+22:06:14.209 << EVT n3 MOVING -> IDLE pos=7.955
+22:06:14.220 << EVT n2 MOVING -> IDLE pos=17.341
+22:06:14.231 << EVT n1 MOVING -> IDLE pos=13.516
+22:06:14.435 >> look 319.8 5.05 0 347            # sacc    x= +3.86 y= -3.26 đổi  3.57°
+22:06:14.482 << IK az=319.8 tilt=5.05 twist=0.0 -> n1=15.710 n2=14.222 n3=8.774
+22:06:14.504 << OK MOVE
+22:06:14.504 << EVT n2 IDLE -> MOVING pos=17.341
+22:06:14.515 << EVT n1 IDLE -> MOVING pos=13.516
+22:06:14.525 << EVT n3 IDLE -> MOVING pos=7.955
+22:06:14.833 << EVT n3 MOVING -> IDLE pos=8.775
+22:06:14.856 << EVT n2 MOVING -> IDLE pos=14.223
+22:06:14.856 << EVT n1 MOVING -> IDLE pos=15.718
+22:06:15.093 >> look 295.4 4.21 0 254            # sacc    x= +1.81 y= -3.80 đổi  2.12°
+22:06:15.139 << IK az=295.4 tilt=4.21 twist=0.0 -> n1=13.938 n2=15.367 n3=9.368
+22:06:15.163 << EVT n2 IDLE -> MOVING pos=14.223
+22:06:15.163 << OK MOVE
+22:06:15.175 << EVT n1 IDLE -> MOVING pos=15.718
+22:06:15.175 << EVT n3 IDLE -> MOVING pos=8.775
+22:06:15.421 << EVT n3 MOVING -> IDLE pos=9.370
+22:06:15.431 << EVT n2 MOVING -> IDLE pos=15.364
+22:06:15.431 << EVT n1 MOVING -> IDLE pos=13.934
+22:06:15.613 >> look 289.9 4.10 0 150            # micro   x= +1.40 y= -3.85 đổi  0.41°
+22:06:15.648 << IK az=289.9 tilt=4.1 twist=0.0 -> n1=13.596 n2=15.546 n3=9.529
+22:06:15.684 << EVT n2 IDLE -> MOVING pos=15.364
+22:06:15.696 << EVT n1 IDLE -> MOVING pos=13.934
+22:06:15.696 << OK MOVE
+22:06:15.706 << EVT n3 IDLE -> MOVING pos=9.370
+22:06:15.813 << EVT n3 MOVING -> IDLE pos=9.530
+22:06:15.823 << EVT n2 MOVING -> IDLE pos=15.541
+22:06:15.823 << EVT n1 MOVING -> IDLE pos=13.596
+22:06:15.824 >> look 294.0 4.25 0 150            # pursuit x= +1.73 y= -3.88 đổi  0.34°
+22:06:15.870 << IK az=294.0 tilt=4.25 twist=0.0 -> n1=13.866 n2=15.460 n3=9.351
+22:06:15.894 << EVT n2 IDLE -> MOVING pos=15.541
+22:06:15.905 << EVT n1 IDLE -> MOVING pos=13.596
+22:06:15.905 << OK MOVE
+22:06:15.905 << EVT n3 IDLE -> MOVING pos=9.530
+22:06:15.926 >> look 304.3 4.79 0 156            # pursuit x= +2.70 y= -3.96 đổi  0.97°
+22:06:15.973 << IK az=304.3 tilt=4.79 twist=0.0 -> n1=14.655 n2=15.202 n3=8.840
+22:06:15.997 << OK MOVE
+22:06:16.030 >> look 312.3 5.47 0 158            # pursuit x= +3.68 y= -4.04 đổi  0.99°
+22:06:16.079 << IK az=312.3 tilt=5.47 twist=0.0 -> n1=15.456 n2=14.948 n3=8.325
+22:06:16.104 << OK MOVE
+22:06:16.137 >> look 318.7 6.24 0 160            # pursuit x= +4.69 y= -4.12 đổi  1.01°
+22:06:16.181 << IK az=318.7 tilt=6.24 twist=0.0 -> n1=16.284 n2=14.669 n3=7.819
+22:06:16.205 << OK MOVE
+22:06:16.241 >> look 323.5 7.06 0 158            # pursuit x= +5.67 y= -4.20 đổi  0.99°
+22:06:16.287 << IK az=323.5 tilt=7.06 twist=0.0 -> n1=17.100 n2=14.398 n3=7.325
+22:06:16.310 << OK MOVE
+22:06:16.346 >> look 327.3 7.92 0 159            # pursuit x= +6.66 y= -4.28 đổi  1.00°
+22:06:16.393 << IK az=327.3 tilt=7.92 twist=0.0 -> n1=17.924 n2=14.122 n3=6.840
+22:06:16.416 << OK MOVE
+22:06:16.451 >> look 330.3 8.81 0 158            # pursuit x= +7.65 y= -4.37 đổi  0.99°
+22:06:16.494 << IK az=330.3 tilt=8.81 twist=0.0 -> n1=18.753 n2=13.848 n3=6.360
+22:06:16.519 << OK MOVE
+22:06:16.555 >> look 332.8 9.71 0 158            # pursuit x= +8.64 y= -4.45 đổi  0.99°
+22:06:16.592 << IK az=332.8 tilt=9.71 twist=0.0 -> n1=19.587 n2=13.561 n3=5.899
+22:06:16.628 << OK MOVE
+22:06:16.663 >> look 334.9 10.66 0 161           # pursuit x= +9.65 y= -4.53 đổi  1.02°
+22:06:16.711 << IK az=334.9 tilt=10.66 twist=0.0 -> n1=20.456 n2=13.267 n3=5.426
+22:06:16.735 << OK MOVE
+22:06:16.772 >> look 3.5 2.88 0 562              # sacc    x= +2.88 y= +0.17 đổi  8.25°
+22:06:16.808 << IK az=3.5 tilt=2.88 twist=0.0 -> n1=15.343 n2=11.747 n3=11.533
+22:06:16.843 << OK MOVE
+22:06:17.394 << EVT n2 MOVING -> IDLE pos=11.748
+22:06:17.407 << EVT n1 MOVING -> IDLE pos=15.348
+22:06:17.407 << EVT n3 MOVING -> IDLE pos=11.539
+22:06:17.586 >> look 102.9 3.97 0 436            # sacc    x= -0.89 y= +3.87 đổi  5.28°
+22:06:17.631 << IK az=102.9 tilt=3.97 twist=0.0 -> n1=12.510 n2=10.202 n3=15.951
+22:06:17.654 << EVT n2 IDLE -> MOVING pos=11.748
+22:06:17.655 << OK MOVE
+22:06:17.667 << EVT n3 IDLE -> MOVING pos=11.539
+22:06:17.667 << EVT n1 IDLE -> MOVING pos=15.348
+22:06:18.077 << EVT n2 MOVING -> IDLE pos=10.205
+22:06:18.101 << EVT n1 MOVING -> IDLE pos=12.504
+22:06:18.101 << EVT n3 MOVING -> IDLE pos=15.959
+22:06:18.409 >> look 25.9 0.60 0 364             # sacc    x= +0.54 y= +0.26 đổi  3.88°
+22:06:18.444 << IK az=25.9 tilt=0.6 twist=0.0 -> n1=13.345 n2=12.471 n3=12.757
+22:06:18.481 << EVT n1 IDLE -> MOVING pos=12.504
+22:06:18.492 << EVT n2 IDLE -> MOVING pos=10.205
+22:06:18.492 << OK MOVE
+22:06:18.492 << EVT n3 IDLE -> MOVING pos=15.959
+22:06:18.858 << EVT n3 MOVING -> IDLE pos=12.761
+22:06:18.880 << EVT n2 MOVING -> IDLE pos=12.471
+22:06:18.892 << EVT n1 MOVING -> IDLE pos=13.339
+22:06:18.995 >> look 25.4 0.97 0 150             # pursuit x= +0.88 y= +0.42 đổi  0.37°
+22:06:19.041 << IK az=25.4 tilt=0.97 twist=0.0 -> n1=13.650 n2=12.238 n3=12.689
+22:06:19.075 << EVT n2 IDLE -> MOVING pos=12.471
+22:06:19.076 << OK MOVE
+22:06:19.076 << EVT n3 IDLE -> MOVING pos=12.761
+22:06:19.088 << EVT n1 IDLE -> MOVING pos=13.339
+22:06:19.099 >> look 25.0 2.03 0 165             # pursuit x= +1.84 y= +0.86 đổi  1.06°
+22:06:19.146 << IK az=25.0 tilt=2.03 twist=0.0 -> n1=14.535 n2=11.564 n3=12.498
+22:06:19.194 << EVT n3 MOVING -> IDLE pos=12.696
+22:06:19.194 << OK MOVE
+22:06:19.205 >> look 24.9 3.12 0 168             # pursuit x= +2.83 y= +1.31 đổi  1.09°
+22:06:19.218 << EVT n3 IDLE -> MOVING pos=12.696
+22:06:19.243 << IK az=24.9 tilt=3.12 twist=0.0 -> n1=15.460 n2=10.866 n3=12.307
+22:06:19.266 << OK MOVE
+22:06:19.315 >> look 24.8 4.24 0 171             # pursuit x= +3.85 y= +1.78 đổi  1.12°
+22:06:19.326 << EVT n1 MOVING -> ERROR pos=13.998
+22:06:19.326 << ERR n1 INTERNAL pos=13.998
+===== SỰ CỐ #1 lúc 22:06:19.326: ERR n1 INTERNAL pos=13.998 =====
+  19 lệnh gửi trong 5 s trước đó (mới nhất ở dưới):
+    22:06:17.586 >> look 102.9 3.97 0 436            # sacc    x= -0.89 y= +3.87 đổi  5.28°
+    22:06:18.409 >> look 25.9 0.60 0 364             # sacc    x= +0.54 y= +0.26 đổi  3.88°
+    22:06:18.995 >> look 25.4 0.97 0 150             # pursuit x= +0.88 y= +0.42 đổi  0.37°
+    22:06:19.099 >> look 25.0 2.03 0 165             # pursuit x= +1.84 y= +0.86 đổi  1.06°
+    22:06:19.205 >> look 24.9 3.12 0 168             # pursuit x= +2.83 y= +1.31 đổi  1.09°
+    22:06:19.315 >> look 24.8 4.24 0 171             # pursuit x= +3.85 y= +1.78 đổi  1.12°
+  Master báo gần nhất:
+    22:06:19.146 << IK az=25.0 tilt=2.03 twist=0.0 -> n1=14.535 n2=11.564 n3=12.498
+    22:06:19.194 << EVT n3 MOVING -> IDLE pos=12.696
+    22:06:19.194 << OK MOVE
+    22:06:19.218 << EVT n3 IDLE -> MOVING pos=12.696
+    22:06:19.243 << IK az=24.9 tilt=3.12 twist=0.0 -> n1=15.460 n2=10.866 n3=12.307
+    22:06:19.266 << OK MOVE
+    22:06:19.326 << EVT n1 MOVING -> ERROR pos=13.998
+    22:06:19.326 << ERR n1 INTERNAL pos=13.998
+22:06:19.327 ## !! ERR n1 INTERNAL pos=13.998
+22:06:19.336 << FAULT n1 INTERNAL
+22:06:19.336 ## !! FAULT n1 INTERNAL
+22:06:19.337 << WARN STOP tất cả (n1 INTERNAL)
+22:06:19.337 ## !! WARN STOP tất cả (n1 INTERNAL)
+22:06:19.337 ## .. Tạm dừng gửi lệnh vì FAULT: n1 INTERNAL
+22:06:19.369 << IK az=24.8 tilt=4.24 twist=0.0 -> n1=16.430 n2=10.146 n3=12.113
+22:06:19.382 << ERR move: hệ thống đang FAULT, gõ 'clear' trước
+22:06:19.391 ## !! ERR move: hệ thống đang FAULT, gõ 'clear' trước
+22:06:19.404 << EVT n3 MOVING -> IDLE pos=12.504
+22:06:19.404 << OK STOP
+22:06:19.404 << EVT n2 MOVING -> IDLE pos=11.604
+22:06:21.336 >> clear
+22:06:21.336 ## .. Đã gửi clear
+22:06:21.348 ## .. Robot chưa sẵn sàng -> tạm dừng gửi lệnh, kiểm tra trạng thái
+22:06:21.348 >> status
+22:06:21.371 << STAT fault=False queue=0 inflight=CLEAR
+22:06:21.371 << STAT n1 ON  ERROR    err=INTERNAL       homed=1 sw=0 pos=  13.998 target=  13.998
+22:06:21.395 << STAT n2 ON  IDLE     err=NONE           homed=1 sw=0 pos=  11.604 target=  11.604
+22:06:21.395 << STAT n3 ON  IDLE     err=NONE           homed=1 sw=0 pos=  12.504 target=  12.504
+22:06:21.395 >> clear
+22:06:21.395 >> home
+22:06:21.395 ## .. Gửi home (lần 1)
+22:06:21.406 << EVT n1 ERROR -> IDLE pos=13.998
+22:06:21.406 << OK CLEAR
+22:06:21.443 << OK CLEAR
+22:06:21.479 << EVT n2 IDLE -> HOMING pos=11.604
+22:06:21.492 << EVT n1 IDLE -> HOMING pos=13.998
+22:06:21.493 << OK HOME
+22:06:21.504 << EVT n3 IDLE -> HOMING pos=12.504
+22:06:24.358 >> status
+22:06:24.382 << STAT fault=False queue=0 inflight=-
+22:06:24.382 << STAT n1 ON  HOMING   err=NONE           homed=0 sw=0 pos=   4.195 target=  13.998
+22:06:24.405 << STAT n2 ON  HOMING   err=NONE           homed=0 sw=0 pos=   0.932 target=  11.604
+22:06:24.405 << STAT n3 ON  HOMING   err=NONE           homed=0 sw=0 pos=   4.452 target=  12.504
+22:06:24.826 << EVT n2 HOMING -> IDLE pos=0.498
+22:06:25.909 << EVT n1 HOMING -> IDLE pos=0.498
+22:06:26.235 << EVT n3 HOMING -> IDLE pos=0.498
+22:06:27.362 >> status
+22:06:27.386 << STAT fault=False queue=0 inflight=-
+22:06:27.386 << STAT n1 ON  IDLE     err=NONE           homed=1 sw=1 pos=   0.498 target=   0.498
+22:06:27.409 << STAT n2 ON  IDLE     err=NONE           homed=1 sw=1 pos=   0.498 target=   0.498
+22:06:27.410 << STAT n3 ON  IDLE     err=NONE           homed=1 sw=1 pos=   0.498 target=   0.498
+22:06:27.410 ## .. Robot sẵn sàng -> chạy tiếp
+22:06:27.410 >> look 89.6 0.87 0 20              # cut     x= +0.01 y= +0.87 đổi  0.00°
+22:06:27.457 << IK az=89.6 tilt=0.87 twist=0.0 -> n1=12.957 n2=12.174 n3=13.444
+22:06:27.457 << WARN 20 ms quá nhanh với tốc độ hiện tại -> dùng 695 ms để 3 trục tới đích cùng lúc
+22:06:27.457 ## !! WARN 20 ms quá nhanh với tốc độ hiện tại -> dùng 695 ms để 3 trục tới đích cùng lúc
+22:06:27.479 << OK MOVE
+22:06:27.480 << EVT n1 IDLE -> MOVING pos=0.498
+22:06:27.489 << EVT n2 IDLE -> MOVING pos=0.498
+22:06:27.502 << EVT n3 IDLE -> MOVING pos=0.498
+22:06:28.190 << EVT n2 MOVING -> IDLE pos=12.166
+22:06:28.191 << EVT n3 MOVING -> IDLE pos=13.452
+22:06:28.201 << EVT n1 MOVING -> IDLE pos=12.954
+22:06:28.342 >> look 107.2 0.99 0 150            # micro   x= -0.29 y= +0.95 đổi  0.31°
+22:06:28.386 << IK az=107.2 tilt=0.99 twist=0.0 -> n1=12.709 n2=12.215 n3=13.652
+22:06:28.410 << EVT n2 IDLE -> MOVING pos=12.166
+22:06:28.422 << EVT n3 IDLE -> MOVING pos=13.452
+22:06:28.422 << OK MOVE
+22:06:28.422 << EVT n1 IDLE -> MOVING pos=12.954
+22:06:28.447 >> look 208.3 3.44 0 358            # sacc    x= -3.03 y= -1.63 đổi  3.76°
+22:06:28.484 << IK az=208.3 tilt=3.44 twist=0.0 -> n1=10.185 n2=15.122 n3=13.330
+22:06:28.507 << EVT n2 MOVING -> IDLE pos=12.214
+22:06:28.519 << OK MOVE
+22:06:28.530 << EVT n2 IDLE -> MOVING pos=12.214
+22:06:28.848 << EVT n3 MOVING -> IDLE pos=13.323
+22:06:28.882 << EVT n2 MOVING -> IDLE pos=15.123
+22:06:28.894 << EVT n1 MOVING -> IDLE pos=10.189
+22:06:28.917 >> look 216.3 3.42 0 150            # micro   x= -2.76 y= -2.02 đổi  0.48°
+22:06:28.965 << IK az=216.3 tilt=3.42 twist=0.0 -> n1=10.378 n2=15.354 n3=12.906
+22:06:29.002 << EVT n3 IDLE -> MOVING pos=13.323
+22:06:29.003 << EVT n2 IDLE -> MOVING pos=15.123
+22:06:29.003 << OK MOVE
+22:06:29.015 << EVT n1 IDLE -> MOVING pos=10.189
+22:06:29.088 >> look 38.0 4.48 0 549             # sacc    x= +3.53 y= +2.76 đổi  7.90°
+22:06:29.134 << IK az=38.0 tilt=4.48 twist=0.0 -> n1=16.290 n2=9.502 n3=12.906
+22:06:29.134 << EVT n1 MOVING -> IDLE pos=10.382
+22:06:29.146 << EVT n2 MOVING -> IDLE pos=15.348
+22:06:29.147 << EVT n3 MOVING -> IDLE pos=12.905
+22:06:29.182 << EVT n2 IDLE -> MOVING pos=15.348
+22:06:29.194 << EVT n1 IDLE -> MOVING pos=10.382
+22:06:29.199 << OK MOVE
+22:06:29.726 << EVT n1 MOVING -> IDLE pos=16.296
+22:06:29.738 << EVT n2 MOVING -> IDLE pos=9.498
+22:06:29.883 >> look 26.3 7.42 0 323             # sacc    x= +6.66 y= +3.28 đổi  3.17°
+22:06:29.919 << IK az=26.3 tilt=7.42 twist=0.0 -> n1=19.244 n2=7.961 n3=11.752
+22:06:29.944 << OK MOVE
+22:06:29.956 << EVT n3 IDLE -> MOVING pos=12.905
+22:06:29.956 << EVT n1 IDLE -> MOVING pos=16.296
+22:06:29.968 << EVT n2 IDLE -> MOVING pos=9.498
+22:06:30.261 << EVT n2 MOVING -> IDLE pos=7.955
+22:06:30.271 << EVT n3 MOVING -> IDLE pos=11.748
+22:06:30.283 << EVT n1 MOVING -> IDLE pos=19.238
+22:06:30.404 >> look 33.8 3.47 0 372             # sacc    x= +2.88 y= +1.93 đổi  4.01°
+22:06:30.442 << IK az=33.8 tilt=3.47 twist=0.0 -> n1=15.593 n2=10.368 n3=12.686
+22:06:30.479 << EVT n3 IDLE -> MOVING pos=11.748
+22:06:30.479 << EVT n2 IDLE -> MOVING pos=7.955
+22:06:30.479 << OK MOVE
+22:06:30.492 << EVT n1 IDLE -> MOVING pos=19.238
+22:06:30.827 << EVT n3 MOVING -> IDLE pos=12.680
+22:06:30.840 << EVT n2 MOVING -> IDLE pos=10.366
+22:06:30.852 << EVT n1 MOVING -> IDLE pos=15.589
+22:06:31.187 >> look 16.2 1.99 0 220             # sacc    x= +1.91 y= +0.55 đổi  1.68°
+22:06:31.223 << IK az=16.2 tilt=1.99 twist=0.0 -> n1=14.558 n2=11.778 n3=12.260
+22:06:31.259 << EVT n3 IDLE -> MOVING pos=12.680
+22:06:31.259 << EVT n2 IDLE -> MOVING pos=10.366
+22:06:31.259 << OK MOVE
+22:06:31.271 << EVT n1 IDLE -> MOVING pos=15.589
+22:06:31.463 << EVT n3 MOVING -> IDLE pos=12.262
+22:06:31.474 << EVT n1 MOVING -> IDLE pos=14.561
+22:06:31.474 << EVT n2 MOVING -> IDLE pos=11.780
+22:06:31.685 >> look 7.1 2.04 0 150              # pursuit x= +2.03 y= +0.25 đổi  0.32°
+22:06:31.722 << IK az=7.1 tilt=2.04 twist=0.0 -> n1=14.617 n2=11.978 n3=12.002
+22:06:31.747 << OK MOVE
+22:06:31.759 << EVT n2 IDLE -> MOVING pos=11.780
+22:06:31.771 << EVT n1 IDLE -> MOVING pos=14.561
+22:06:31.771 << EVT n3 IDLE -> MOVING pos=12.262
+22:06:31.795 >> look 354.3 2.22 0 150            # pursuit x= +2.21 y= -0.22 đổi  0.51°
+22:06:31.843 << IK az=354.3 tilt=2.22 twist=0.0 -> n1=14.716 n2=12.290 n3=11.595
+22:06:31.866 << OK MOVE
+22:06:31.902 >> look 344.0 2.49 0 150            # pursuit x= +2.39 y= -0.68 đổi  0.50°
+22:06:31.950 << IK az=344.0 tilt=2.49 twist=0.0 -> n1=14.814 n2=12.601 n3=11.193
+22:06:31.988 << OK MOVE
+22:06:32.012 >> look 335.8 2.82 0 150            # pursuit x= +2.57 y= -1.16 đổi  0.51°
+22:06:32.050 << IK az=335.8 tilt=2.82 twist=0.0 -> n1=14.906 n2=12.919 n3=10.792
+22:06:32.095 << OK MOVE
+22:06:32.119 >> look 329.5 3.20 0 150            # pursuit x= +2.75 y= -1.62 đổi  0.50°
+22:06:32.166 << IK az=329.5 tilt=3.2 twist=0.0 -> n1=15.002 n2=13.237 n3=10.389
+22:06:32.191 << OK MOVE
+22:06:32.225 >> look 324.7 3.59 0 150            # pursuit x= +2.93 y= -2.08 đổi  0.49°
+22:06:32.271 << IK az=324.7 tilt=3.59 twist=0.0 -> n1=15.089 n2=13.548 n3=10.005
+22:06:32.283 << OK MOVE
+22:06:32.331 >> look 320.8 4.01 0 150            # pursuit x= +3.11 y= -2.53 đổi  0.49°
+22:06:32.378 << IK az=320.8 tilt=4.01 twist=0.0 -> n1=15.178 n2=13.869 n3=9.611
+22:06:32.440 >> look 317.6 4.46 0 150            # pursuit x= +3.29 y= -3.00 đổi  0.50°
+22:06:32.452 << OK MOVE
+22:06:32.486 << IK az=317.6 tilt=4.46 twist=0.0 -> n1=15.272 n2=14.201 n3=9.206
+22:06:32.519 << OK MOVE
+22:06:32.544 >> look 315.1 4.89 0 150            # pursuit x= +3.47 y= -3.46 đổi  0.48°
+22:06:32.590 << IK az=315.1 tilt=4.89 twist=0.0 -> n1=15.355 n2=14.517 n3=8.827
+22:06:32.624 << OK MOVE
+22:06:32.754 << EVT n1 MOVING -> IDLE pos=15.348
+22:06:32.765 << EVT n3 MOVING -> IDLE pos=8.823
+22:06:32.778 << EVT n2 MOVING -> IDLE pos=14.512
+22:06:33.015 >> look 322.1 4.86 0 114            # sacc    x= +3.83 y= -2.99 đổi  0.59°
+22:06:33.058 << IK az=322.1 tilt=4.86 twist=0.0 -> n1=15.729 n2=13.999 n3=8.969
+22:06:33.082 << EVT n3 IDLE -> MOVING pos=8.823
+22:06:33.082 << OK MOVE
+22:06:33.094 << EVT n2 IDLE -> MOVING pos=14.512
+22:06:33.094 << EVT n1 IDLE -> MOVING pos=15.348
+22:06:33.185 << EVT n3 MOVING -> IDLE pos=8.968
+22:06:33.198 << EVT n2 MOVING -> IDLE pos=13.998
+22:06:33.198 << EVT n1 MOVING -> IDLE pos=15.734
+22:06:33.436 >> look 354.2 4.10 0 286            # sacc    x= +4.08 y= -0.42 đổi  2.58°
+22:06:33.482 << IK az=354.2 tilt=4.1 twist=0.0 -> n1=16.307 n2=11.802 n3=10.566
+22:06:33.530 << EVT n2 IDLE -> MOVING pos=13.998
+22:06:33.530 << OK MOVE
+22:06:33.543 << EVT n1 IDLE -> MOVING pos=15.734
+22:06:33.543 << EVT n3 IDLE -> MOVING pos=8.968
+22:06:33.797 << EVT n1 MOVING -> IDLE pos=16.312
+22:06:33.809 << EVT n2 MOVING -> IDLE pos=11.796
+22:06:33.809 << EVT n3 MOVING -> IDLE pos=10.559
+22:06:34.046 >> look 7.4 3.98 0 153              # sacc    x= +3.95 y= +0.51 đổi  0.94°
+22:06:34.082 << IK az=7.4 tilt=3.98 twist=0.0 -> n1=16.328 n2=11.107 n3=11.239
+22:06:34.115 << EVT n3 IDLE -> MOVING pos=10.559
+22:06:34.116 << OK MOVE
+22:06:34.126 << EVT n1 IDLE -> MOVING pos=16.312
+22:06:34.126 << EVT n2 IDLE -> MOVING pos=11.796
+22:06:34.138 << EVT n1 MOVING -> IDLE pos=16.329
+22:06:34.256 << EVT n3 MOVING -> IDLE pos=11.234
+22:06:34.269 << EVT n2 MOVING -> IDLE pos=11.105
+22:06:34.365 >> look 11.6 3.68 0 150             # micro   x= +3.60 y= +0.74 đổi  0.42°
+22:06:34.410 << IK az=11.6 tilt=3.68 twist=0.0 -> n1=16.060 n2=11.047 n3=11.552
+22:06:34.445 << EVT n2 IDLE -> MOVING pos=11.105
+22:06:34.457 << EVT n1 IDLE -> MOVING pos=16.329
+22:06:34.457 << OK MOVE
+22:06:34.470 << EVT n3 IDLE -> MOVING pos=11.234
+22:06:34.549 << EVT n2 MOVING -> IDLE pos=11.041
+22:06:34.584 << EVT n1 MOVING -> IDLE pos=16.055
+22:06:34.585 << EVT n3 MOVING -> IDLE pos=11.555
+22:06:34.702 >> look 6.4 3.74 0 150              # pursuit x= +3.71 y= +0.41 đổi  0.35°
+22:06:34.748 << IK az=6.4 tilt=3.74 twist=0.0 -> n1=16.112 n2=11.263 n3=11.286
+22:06:34.772 << EVT n2 IDLE -> MOVING pos=11.041
+22:06:34.772 << OK MOVE
+22:06:34.783 << EVT n3 IDLE -> MOVING pos=11.555
+22:06:34.784 << EVT n1 IDLE -> MOVING pos=16.055
+22:06:34.806 >> look 352.2 4.10 0 162            # pursuit x= +4.06 y= -0.55 đổi  1.03°
+22:06:34.856 << IK az=352.2 tilt=4.1 twist=0.0 -> n1=16.271 n2=11.922 n3=10.480
+22:06:34.877 << EVT n1 MOVING -> IDLE pos=16.120
+22:06:34.888 << EVT n1 IDLE -> MOVING pos=16.120
+22:06:34.900 << OK MOVE
+22:06:34.911 >> look 340.9 4.67 0 163            # pursuit x= +4.41 y= -1.53 đổi  1.03°
+22:06:34.956 << IK az=340.9 tilt=4.67 twist=0.0 -> n1=16.432 n2=12.591 n3=9.674
+22:06:34.991 << OK MOVE
+22:06:35.016 >> look 332.3 5.38 0 163            # pursuit x= +4.76 y= -2.50 đổi  1.04°
+22:06:35.071 << IK az=332.3 tilt=5.38 twist=0.0 -> n1=16.587 n2=13.274 n3=8.867
+22:06:35.108 << OK MOVE
+22:06:35.120 >> look 325.8 6.18 0 162            # pursuit x= +5.11 y= -3.47 đổi  1.03°
+22:06:35.167 << IK az=325.8 tilt=6.18 twist=0.0 -> n1=16.736 n2=13.973 n3=8.061
+22:06:35.189 << OK MOVE
+22:06:35.224 >> look 320.9 7.03 0 162            # pursuit x= +5.46 y= -4.44 đổi  1.03°
+22:06:35.270 << IK az=320.9 tilt=7.03 twist=0.0 -> n1=16.879 n2=14.676 n3=7.264
+22:06:35.305 << OK MOVE
+22:06:35.328 >> look 317.0 7.94 0 163            # pursuit x= +5.81 y= -5.41 đổi  1.03°
+22:06:35.366 << IK az=317.0 tilt=7.94 twist=0.0 -> n1=17.021 n2=15.410 n3=6.449
+22:06:35.403 << OK MOVE
+22:06:35.437 >> look 313.8 8.91 0 167            # pursuit x= +6.17 y= -6.43 đổi  1.08°
+22:06:35.483 << IK az=313.8 tilt=8.91 twist=0.0 -> n1=17.159 n2=16.188 n3=5.606
+22:06:35.518 << OK MOVE
+22:06:35.542 >> look 311.4 9.87 0 163            # pursuit x= +6.52 y= -7.41 đổi  1.04°
+22:06:35.590 << IK az=311.4 tilt=9.87 twist=0.0 -> n1=17.299 n2=16.944 n3=4.790
+22:06:35.614 << OK MOVE
+22:06:35.646 >> look 309.4 10.83 0 161           # pursuit x= +6.87 y= -8.37 đổi  1.02°
+22:06:35.692 << IK az=309.4 tilt=10.83 twist=0.0 -> n1=17.425 n2=17.713 n3=3.983
+22:06:35.717 << OK MOVE
+22:06:35.809 >> look 309.8 10.54 0 150           # pursuit x= +6.74 y= -8.10 đổi  0.30°
+22:06:35.854 << IK az=309.8 tilt=10.54 twist=0.0 -> n1=17.366 n2=17.506 n3=4.223
+22:06:35.890 << OK MOVE
+22:06:35.914 >> look 311.9 9.57 0 163            # pursuit x= +6.39 y= -7.13 đổi  1.04°
+22:06:35.960 << IK az=311.9 tilt=9.57 twist=0.0 -> n1=17.233 n2=16.735 n3=5.039
+22:06:35.985 << OK MOVE
+22:06:36.020 >> look 150.4 3.08 0 713            # sacc    x= -2.68 y= +1.52 đổi 12.53°
+22:06:36.070 << IK az=150.4 tilt=3.08 twist=0.0 -> n1=10.736 n2=12.554 n3=15.341
+22:06:36.105 << OK MOVE
+22:06:36.824 << EVT n1 MOVING -> IDLE pos=10.736
+22:06:36.847 << EVT n3 MOVING -> IDLE pos=15.348
+22:06:36.859 << EVT n2 MOVING -> IDLE pos=12.552
+22:06:36.989 >> look 152.6 2.75 0 150            # pursuit x= -2.44 y= +1.27 đổi  0.35°
+22:06:37.037 << IK az=152.6 tilt=2.75 twist=0.0 -> n1=10.914 n2=12.673 n3=15.032
+22:06:37.060 << EVT n3 IDLE -> MOVING pos=15.348
+22:06:37.060 << OK MOVE
+22:06:37.071 << EVT n1 IDLE -> MOVING pos=10.736
+22:06:37.071 << EVT n2 IDLE -> MOVING pos=12.552
+22:06:37.093 >> look 156.7 2.32 0 150            # pursuit x= -2.13 y= +0.92 đổi  0.47°
+22:06:37.141 << IK az=156.7 tilt=2.32 twist=0.0 -> n1=11.145 n2=12.839 n3=14.620
+22:06:37.179 << OK MOVE
+22:06:37.203 >> look 163.0 1.89 0 150            # pursuit x= -1.80 y= +0.55 đổi  0.49°
+22:06:37.250 << IK az=163.0 tilt=1.89 twist=0.0 -> n1=11.385 n2=13.016 n3=14.192
+22:06:37.284 << OK MOVE
+22:06:37.306 >> look 172.2 1.51 0 150            # pursuit x= -1.50 y= +0.21 đổi  0.46°
+22:06:37.353 << IK az=172.2 tilt=1.51 twist=0.0 -> n1=11.615 n2=13.186 n3=13.784
+22:06:37.378 << OK MOVE
+22:06:37.415 >> look 187.7 1.18 0 150            # pursuit x= -1.17 y= -0.16 đổi  0.49°
+22:06:37.460 << IK az=187.7 tilt=1.18 twist=0.0 -> n1=11.854 n2=13.364 n3=13.360
+22:06:37.484 << OK MOVE
+22:06:37.520 >> look 210.8 1.00 0 150            # pursuit x= -0.86 y= -0.51 đổi  0.47°
+22:06:37.569 << IK az=210.8 tilt=1.0 twist=0.0 -> n1=12.080 n2=13.543 n3=12.954
+22:06:37.594 << OK MOVE
+22:06:37.630 >> look 239.0 1.02 0 150            # pursuit x= -0.53 y= -0.88 đổi  0.49°
+22:06:37.675 << IK az=239.0 tilt=1.02 twist=0.0 -> n1=12.324 n2=13.722 n3=12.531
+22:06:37.710 << OK MOVE
+22:06:37.733 >> look 259.6 1.24 0 150            # pursuit x= -0.22 y= -1.22 đổi  0.46°
+22:06:37.780 << IK az=259.6 tilt=1.24 twist=0.0 -> n1=12.540 n2=13.901 n3=12.139
+22:06:37.804 << OK MOVE
+22:06:37.839 >> look 273.4 1.58 0 150            # pursuit x= +0.09 y= -1.58 đổi  0.48°
+22:06:37.887 << IK az=273.4 tilt=1.58 twist=0.0 -> n1=12.768 n2=14.085 n3=11.733
+22:06:37.945 >> look 282.0 1.97 0 150            # pursuit x= +0.41 y= -1.93 đổi  0.48°
+22:06:37.982 << IK az=282.0 tilt=1.97 twist=0.0 -> n1=12.994 n2=14.266 n3=11.334
+22:06:38.053 >> look 287.7 2.41 0 150            # pursuit x= +0.73 y= -2.29 đổi  0.49°
+22:06:38.101 << IK az=287.7 tilt=2.41 twist=0.0 -> n1=13.223 n2=14.463 n3=10.921
+22:06:38.159 >> look 291.6 2.85 0 150            # pursuit x= +1.05 y= -2.65 đổi  0.48°
+22:06:38.204 << IK az=291.6 tilt=2.85 twist=0.0 -> n1=13.446 n2=14.651 n3=10.523
+22:06:38.260 >> look 294.3 3.27 0 150            # pursuit x= +1.35 y= -2.98 đổi  0.45°
+22:06:38.297 << IK az=294.3 tilt=3.27 twist=0.0 -> n1=13.654 n2=14.828 n3=10.152
+22:06:38.371 >> look 296.6 3.75 0 150            # pursuit x= +1.68 y= -3.36 đổi  0.50°
+22:06:38.416 << IK az=296.6 tilt=3.75 twist=0.0 -> n1=13.886 n2=15.030 n3=9.736
+22:06:38.478 >> look 298.3 4.22 0 150            # pursuit x= +2.00 y= -3.71 đổi  0.48°
+22:06:38.521 << IK az=298.3 tilt=4.22 twist=0.0 -> n1=14.109 n2=15.229 n3=9.335
+22:06:38.580 >> look 299.6 4.67 0 150            # pursuit x= +2.31 y= -4.06 đổi  0.46°
+22:06:38.627 << IK az=299.6 tilt=4.67 twist=0.0 -> n1=14.319 n2=15.421 n3=8.954
+22:06:38.688 >> look 300.7 5.14 0 150            # pursuit x= +2.63 y= -4.42 đổi  0.48°
+22:06:38.736 << IK az=300.7 tilt=5.14 twist=0.0 -> n1=14.536 n2=15.622 n3=8.560
+22:06:38.795 << ERR n1 OFFLINE
+===== SỰ CỐ #2 lúc 22:06:38.795: ERR n1 OFFLINE =====
+  32 lệnh gửi trong 5 s trước đó (mới nhất ở dưới):
+    22:06:38.159 >> look 291.6 2.85 0 150            # pursuit x= +1.05 y= -2.65 đổi  0.48°
+    22:06:38.260 >> look 294.3 3.27 0 150            # pursuit x= +1.35 y= -2.98 đổi  0.45°
+    22:06:38.371 >> look 296.6 3.75 0 150            # pursuit x= +1.68 y= -3.36 đổi  0.50°
+    22:06:38.478 >> look 298.3 4.22 0 150            # pursuit x= +2.00 y= -3.71 đổi  0.48°
+    22:06:38.580 >> look 299.6 4.67 0 150            # pursuit x= +2.31 y= -4.06 đổi  0.46°
+    22:06:38.688 >> look 300.7 5.14 0 150            # pursuit x= +2.63 y= -4.42 đổi  0.48°
+  Master báo gần nhất:
+    22:06:38.101 << IK az=287.7 tilt=2.41 twist=0.0 -> n1=13.223 n2=14.463 n3=10.921
+    22:06:38.204 << IK az=291.6 tilt=2.85 twist=0.0 -> n1=13.446 n2=14.651 n3=10.523
+    22:06:38.297 << IK az=294.3 tilt=3.27 twist=0.0 -> n1=13.654 n2=14.828 n3=10.152
+    22:06:38.416 << IK az=296.6 tilt=3.75 twist=0.0 -> n1=13.886 n2=15.030 n3=9.736
+    22:06:38.521 << IK az=298.3 tilt=4.22 twist=0.0 -> n1=14.109 n2=15.229 n3=9.335
+    22:06:38.627 << IK az=299.6 tilt=4.67 twist=0.0 -> n1=14.319 n2=15.421 n3=8.954
+    22:06:38.736 << IK az=300.7 tilt=5.14 twist=0.0 -> n1=14.536 n2=15.622 n3=8.560
+    22:06:38.795 << ERR n1 OFFLINE
+22:06:38.795 ## !! ERR n1 OFFLINE
+22:06:38.795 << FAULT n1 mất liên lạc
+22:06:38.795 ## !! FAULT n1 mất liên lạc
+22:06:38.795 ## .. Tạm dừng gửi lệnh vì FAULT: n1 mất liên lạc
+22:06:38.808 << WARN STOP tất cả (n1 mất liên lạc)
+22:06:38.808 ## !! WARN STOP tất cả (n1 mất liên lạc)
+22:06:38.821 << OK STOP
+22:06:38.834 << EVT n3 MOVING -> IDLE pos=9.305
+22:06:38.835 << EVT n2 MOVING -> IDLE pos=15.284
+22:06:39.753 << EVT n1 ONLINE F8:5B:1B:4C:81:C0
+22:06:39.754 << EVT n1 BOOT fw=1 reset=WATCHDOG
+22:06:39.766 << WARN n1 vừa bị watchdog reset!
+22:06:39.767 ## !! WARN n1 vừa bị watchdog reset!
+22:06:39.767 << OK GETCFG
+22:06:39.777 << EVT n1 - -> IDLE pos=0.000
+22:06:39.790 << WARN n1 mất home -> sẽ dừng hết và HOME LẠI TẤT CẢ
+22:06:39.791 ## !! WARN n1 mất home -> sẽ dừng hết và HOME LẠI TẤT CẢ
+22:06:40.787 << EVT HOME LẠI TẤT CẢ (lần 1)
+22:06:40.800 >> clear
+22:06:40.800 ## .. Đã gửi clear
+22:06:40.812 << OK ENABLE
+22:06:40.812 ## .. Robot chưa sẵn sàng -> tạm dừng gửi lệnh, kiểm tra trạng thái
+22:06:40.813 >> status
+22:06:40.861 << STAT fault=False queue=2 inflight=CLEAR
+22:06:40.861 << STAT n1 ON  IDLE     err=NONE           homed=0 sw=0 pos=   0.000 target=   0.000
+22:06:40.861 << STAT n2 ON  IDLE     err=NONE           homed=1 sw=0 pos=  15.284 target=  15.284
+22:06:40.886 << STAT n3 ON  IDLE     err=NONE           homed=1 sw=0 pos=   9.305 target=   9.305
+22:06:40.886 << OK CLEAR
+22:06:40.886 >> clear
+22:06:40.886 >> home
+22:06:40.886 ## .. Gửi home (lần 1)
+22:06:40.910 << EVT n1 IDLE -> HOMING pos=0.000
+22:06:40.922 << EVT n2 IDLE -> HOMING pos=15.284
+22:06:40.922 << OK HOME
+22:06:40.933 << EVT n3 IDLE -> HOMING pos=9.305
+22:06:40.933 << ERR home: n1 đang HOMING
+22:06:40.933 ## !! ERR home: n1 đang HOMING
+22:06:40.968 << OK CLEAR
+22:06:40.992 << OK CLEAR
+22:06:43.821 >> status
+22:06:43.846 << STAT fault=False queue=0 inflight=-
+22:06:43.846 << STAT n1 ON  HOMING   err=NONE           homed=0 sw=0 pos=  -9.546 target=   0.000
+22:06:43.869 << STAT n2 ON  HOMING   err=NONE           homed=0 sw=0 pos=   1.575 target=  15.284
+22:06:43.869 << STAT n3 ON  HOMING   err=NONE           homed=0 sw=0 pos=   3.616 target=   9.305
+22:06:44.549 << EVT n2 HOMING -> IDLE pos=0.498
+22:06:44.959 << EVT n1 HOMING -> IDLE pos=0.498
+22:06:45.400 << EVT n3 HOMING -> IDLE pos=0.498
+22:06:46.825 >> status
+22:06:46.847 << STAT fault=False queue=0 inflight=-
+22:06:46.847 << STAT n1 ON  IDLE     err=NONE           homed=1 sw=1 pos=   0.498 target=   0.498
+22:06:46.870 << STAT n2 ON  IDLE     err=NONE           homed=1 sw=1 pos=   0.498 target=   0.498
+22:06:46.871 << STAT n3 ON  IDLE     err=NONE           homed=1 sw=1 pos=   0.498 target=   0.498
+22:06:46.871 ## .. Robot sẵn sàng -> chạy tiếp
+22:06:46.871 >> look 164.6 2.80 0 20             # cut     x= -2.70 y= +0.74 đổi  0.00°
+22:06:46.915 << IK az=164.6 tilt=2.8 twist=0.0 -> n1=10.651 n2=13.155 n3=14.812
+22:06:46.920 << WARN 20 ms quá nhanh với tốc độ hiện tại -> dùng 740 ms để 3 trục tới đích cùng lúc
+22:06:46.920 ## !! WARN 20 ms quá nhanh với tốc độ hiện tại -> dùng 740 ms để 3 trục tới đích cùng lúc
+22:06:46.943 << EVT n1 IDLE -> MOVING pos=0.498
+22:06:46.955 << EVT n2 IDLE -> MOVING pos=0.498
+22:06:46.955 << OK MOVE
+22:06:46.955 << EVT n3 IDLE -> MOVING pos=0.498
+22:06:47.651 >> look 238.9 3.48 0 361            # sacc    x= -1.80 y= -2.98 đổi  3.83°
+22:06:47.698 << IK az=238.9 tilt=3.48 twist=0.0 -> n1=11.081 n2=15.835 n3=11.731
+22:06:47.699 << EVT n2 MOVING -> IDLE pos=13.162
+22:06:47.709 << EVT n3 MOVING -> IDLE pos=14.818
+22:06:47.709 << EVT n1 MOVING -> IDLE pos=10.655
+22:06:47.743 << EVT n2 IDLE -> MOVING pos=13.162
+22:06:47.743 << EVT n3 IDLE -> MOVING pos=14.818
+22:06:47.743 << OK MOVE
+22:06:47.754 << EVT n1 IDLE -> MOVING pos=10.655
+22:06:48.192 << EVT n1 MOVING -> IDLE pos=11.073
+22:06:48.224 << EVT n3 MOVING -> IDLE pos=11.732
+22:06:48.224 << EVT n2 MOVING -> IDLE pos=15.830
+22:06:48.354 >> look 200.3 1.69 0 274            # sacc    x= -1.58 y= -0.58 đổi  2.40°
+22:06:48.398 << IK az=200.3 tilt=1.69 twist=0.0 -> n1=11.466 n2=13.836 n3=13.285
+22:06:48.446 << OK MOVE
+22:06:48.457 << EVT n2 IDLE -> MOVING pos=15.830
+22:06:48.457 << EVT n3 IDLE -> MOVING pos=11.732
+22:06:48.481 << EVT n1 IDLE -> MOVING pos=11.073
+22:06:48.712 << EVT n1 MOVING -> IDLE pos=11.459
+22:06:48.723 << EVT n3 MOVING -> IDLE pos=13.291
+22:06:48.733 << EVT n2 MOVING -> IDLE pos=13.838
+22:06:49.072 >> look 337.4 0.90 0 275            # sacc    x= +0.83 y= -0.35 đổi  2.42°
+22:06:49.119 << IK az=337.4 tilt=0.9 twist=0.0 -> n1=13.523 n2=12.855 n3=12.198
+22:06:49.166 << EVT n3 IDLE -> MOVING pos=13.291
+22:06:49.191 << OK MOVE
+22:06:49.204 << EVT n1 IDLE -> MOVING pos=11.459
+22:06:49.204 << EVT n2 IDLE -> MOVING pos=13.838
+22:06:49.413 << EVT n3 MOVING -> IDLE pos=12.198
+22:06:49.424 << EVT n2 MOVING -> IDLE pos=12.857
+22:06:49.424 << EVT n1 MOVING -> IDLE pos=13.516
+22:06:49.774 >> look 351.5 1.08 0 150            # pursuit x= +1.07 y= -0.16 đổi  0.30°
+22:06:49.821 << IK az=351.5 tilt=1.08 twist=0.0 -> n1=13.747 n2=12.628 n3=12.204
+22:06:49.858 << EVT n1 IDLE -> MOVING pos=13.516
+22:06:49.858 << OK MOVE
+22:06:49.871 << EVT n2 IDLE -> MOVING pos=12.857
+22:06:49.883 >> look 6.6 1.51 0 150              # pursuit x= +1.50 y= +0.17 đổi  0.55°
+22:06:49.921 << IK az=6.6 tilt=1.51 twist=0.0 -> n1=14.156 n2=12.218 n3=12.211
+22:06:49.946 << EVT n3 IDLE -> MOVING pos=12.198
+22:06:49.958 << OK MOVE
+22:06:49.969 << EVT n3 MOVING -> IDLE pos=12.214
+22:06:49.992 >> look 14.6 2.00 0 150             # pursuit x= +1.94 y= +0.51 đổi  0.55°
+22:06:50.030 << IK az=14.6 tilt=2.0 twist=0.0 -> n1=14.573 n2=11.810 n3=12.214
+22:06:50.087 << OK MOVE
+22:06:50.097 >> look 19.3 2.50 0 150             # pursuit x= +2.36 y= +0.83 đổi  0.53°
+22:06:50.132 << IK az=19.3 tilt=2.5 twist=0.0 -> n1=14.982 n2=11.411 n3=12.217
+22:06:50.189 << OK MOVE
+22:06:50.201 >> look 22.4 3.00 0 150             # pursuit x= +2.77 y= +1.14 đổi  0.52°
+22:06:50.238 << IK az=22.4 tilt=3.0 twist=0.0 -> n1=15.387 n2=11.019 n3=12.222
+22:06:50.293 << OK MOVE
+22:06:50.304 >> look 24.6 3.50 0 150             # pursuit x= +3.18 y= +1.46 đổi  0.52°
+22:06:50.340 << IK az=24.6 tilt=3.5 twist=0.0 -> n1=15.791 n2=10.632 n3=12.228
+22:06:50.374 << OK MOVE
+22:06:50.384 << EVT n3 IDLE -> MOVING pos=12.214
+22:06:50.394 << EVT n3 MOVING -> IDLE pos=12.230
+22:06:50.406 >> look 26.2 4.00 0 150             # pursuit x= +3.59 y= +1.77 đổi  0.51°
+22:06:50.442 << IK az=26.2 tilt=4.0 twist=0.0 -> n1=16.196 n2=10.248 n3=12.231
+22:06:50.514 << EVT n2 MOVING -> IDLE pos=10.639
+22:06:50.514 >> look 27.6 4.53 0 150             # pursuit x= +4.02 y= +2.10 đổi  0.54°
+22:06:50.526 << EVT n1 MOVING -> IDLE pos=15.798
+22:06:50.562 << IK az=27.6 tilt=4.53 twist=0.0 -> n1=16.626 n2=9.839 n3=12.241
+22:06:50.586 << EVT n2 IDLE -> MOVING pos=10.639
+22:06:50.598 << EVT n1 IDLE -> MOVING pos=15.798
+22:06:50.610 << OK MOVE
+22:06:50.621 >> look 28.6 5.06 0 150             # pursuit x= +4.44 y= +2.42 đổi  0.54°
+22:06:50.633 << EVT n3 IDLE -> MOVING pos=12.230
+22:06:50.634 << EVT n3 MOVING -> IDLE pos=12.246
+22:06:50.669 << IK az=28.6 tilt=5.06 twist=0.0 -> n1=17.062 n2=9.435 n3=12.243
+22:06:50.701 << OK MOVE
+22:06:50.725 >> look 29.4 5.58 0 150             # pursuit x= +4.86 y= +2.74 đổi  0.52°
+22:06:50.762 << IK az=29.4 tilt=5.58 twist=0.0 -> n1=17.493 n2=9.039 n3=12.246
+22:06:50.798 << OK MOVE
+22:06:50.834 >> look 30.1 6.12 0 150             # pursuit x= +5.29 y= +3.07 đổi  0.55°
+22:06:50.871 << IK az=30.1 tilt=6.12 twist=0.0 -> n1=17.945 n2=8.628 n3=12.250
+22:06:50.929 << OK MOVE
+22:06:50.942 >> look 30.7 6.65 0 150             # pursuit x= +5.72 y= +3.40 đổi  0.54°
+22:06:50.978 << IK az=30.7 tilt=6.65 twist=0.0 -> n1=18.392 n2=8.223 n3=12.257
+22:06:51.013 << OK MOVE
+22:06:51.026 << EVT n3 IDLE -> MOVING pos=12.246
+22:06:51.038 << EVT n3 MOVING -> IDLE pos=12.262
+22:06:51.191 << EVT n2 MOVING -> IDLE pos=8.229
+22:06:51.191 << EVT n1 MOVING -> IDLE pos=18.386
+22:06:51.616 >> look 42.5 7.95 0 243             # sacc    x= +5.86 y= +5.37 đổi  1.97°
+22:06:51.651 << IK az=42.5 tilt=7.95 twist=0.0 -> n1=18.874 n2=6.671 n3=13.430
+22:06:51.696 << EVT n2 IDLE -> MOVING pos=8.229
+22:06:51.707 << EVT n1 IDLE -> MOVING pos=18.386
+22:06:51.707 << OK MOVE
+22:06:51.707 << EVT n3 IDLE -> MOVING pos=12.262
+22:06:51.917 << EVT n1 MOVING -> IDLE pos=18.868
+22:06:51.917 << EVT n3 MOVING -> IDLE pos=13.436
+22:06:51.930 << EVT n2 MOVING -> IDLE pos=6.670
+22:06:52.332 >> look 31.1 11.40 0 367            # sacc    x= +9.76 y= +5.89 đổi  3.93°
+22:06:52.368 << IK az=31.1 tilt=11.4 twist=0.0 -> n1=22.795 n2=4.788 n3=11.945
+22:06:52.415 << EVT n2 IDLE -> MOVING pos=6.670
+22:06:52.415 << EVT n1 IDLE -> MOVING pos=18.868
+22:06:52.416 << OK MOVE
+22:06:52.426 << EVT n3 IDLE -> MOVING pos=13.436
+22:06:52.780 << EVT n3 MOVING -> IDLE pos=11.941
+22:06:52.780 << EVT n2 MOVING -> IDLE pos=4.789
+22:06:52.780 << EVT n1 MOVING -> IDLE pos=22.789
+22:06:53.365 >> look 9.7 9.92 0 383              # sacc    x= +9.78 y= +1.67 đổi  4.22°
+22:06:53.414 << IK az=9.7 tilt=9.92 twist=0.0 -> n1=21.879 n2=8.060 n3=9.354
+22:06:53.437 << OK MOVE
+22:06:53.448 << EVT n3 IDLE -> MOVING pos=11.941
+22:06:53.448 << EVT n2 IDLE -> MOVING pos=4.789
+22:06:53.460 << EVT n1 IDLE -> MOVING pos=22.789
+22:06:53.812 << EVT n1 MOVING -> IDLE pos=21.873
+22:06:53.825 << EVT n2 MOVING -> IDLE pos=8.068
+22:06:53.825 << EVT n3 MOVING -> IDLE pos=9.354
+22:06:54.045 >> look 11.2 10.07 0 150            # micro   x= +9.88 y= +1.96 đổi  0.30°
+22:06:54.079 << IK az=11.2 tilt=10.07 twist=0.0 -> n1=22.038 n2=7.796 n3=9.489
+22:06:54.138 << EVT n2 IDLE -> MOVING pos=8.068
+22:06:54.138 << EVT n1 IDLE -> MOVING pos=21.873
+22:06:54.138 << OK MOVE
+22:06:54.149 << EVT n3 IDLE -> MOVING pos=9.354
+22:06:54.249 << EVT n3 MOVING -> IDLE pos=9.482
+22:06:54.262 << EVT n2 MOVING -> IDLE pos=7.795
+22:06:54.262 << EVT n1 MOVING -> IDLE pos=22.034
+22:06:54.371 >> look 13.0 10.06 0 150            # pursuit x= +9.80 y= +2.26 đổi  0.31°
+22:06:54.421 << IK az=13.0 tilt=10.06 twist=0.0 -> n1=22.032 n2=7.581 n3=9.712
+22:06:54.444 << EVT n2 IDLE -> MOVING pos=7.795
+22:06:54.444 << OK MOVE
+22:06:54.455 << EVT n3 IDLE -> MOVING pos=9.482
+22:06:54.478 >> look 15.5 10.06 0 150            # pursuit x= +9.69 y= +2.68 đổi  0.43°
+22:06:54.524 << IK az=15.5 tilt=10.06 twist=0.0 -> n1=22.020 n2=7.286 n3=10.023
+22:06:54.561 << OK MOVE
+22:06:54.573 << EVT n1 IDLE -> MOVING pos=22.034
+22:06:54.584 << EVT n1 MOVING -> IDLE pos=22.018
+22:06:54.584 >> look 17.9 10.07 0 150            # pursuit x= +9.58 y= +3.10 đổi  0.43°
+22:06:54.631 << IK az=17.9 tilt=10.07 twist=0.0 -> n1=22.001 n2=7.009 n3=10.322
+22:06:54.654 << OK MOVE
+22:06:54.654 << EVT n1 IDLE -> MOVING pos=22.018
+22:06:54.666 << EVT n1 MOVING -> IDLE pos=22.002
+22:06:54.688 >> look 20.3 10.11 0 150            # pursuit x= +9.48 y= +3.51 đổi  0.43°
+22:06:54.737 << IK az=20.3 tilt=10.11 twist=0.0 -> n1=21.993 n2=6.726 n3=10.620
+22:06:54.785 << OK MOVE
+22:06:54.786 << EVT n1 IDLE -> MOVING pos=22.002
+22:06:54.797 << EVT n1 MOVING -> IDLE pos=21.986
+22:06:54.797 >> look 22.8 10.16 0 150            # pursuit x= +9.37 y= +3.94 đổi  0.45°
+22:06:54.843 << IK az=22.8 tilt=10.16 twist=0.0 -> n1=21.973 n2=6.436 n3=10.934
+22:06:54.878 << OK MOVE
+22:06:54.878 << EVT n1 IDLE -> MOVING pos=21.986
+22:06:54.878 << EVT n1 MOVING -> IDLE pos=21.970
+22:06:54.899 >> look 25.1 10.23 0 150            # pursuit x= +9.26 y= +4.34 đổi  0.42°
+22:06:54.948 << IK az=25.1 tilt=10.23 twist=0.0 -> n1=21.959 n2=6.165 n3=11.226
+22:06:54.973 << OK MOVE
+22:06:54.985 << EVT n1 IDLE -> MOVING pos=21.970
+22:06:54.985 << EVT n1 MOVING -> IDLE pos=21.954
+22:06:55.009 >> look 27.6 10.32 0 150            # pursuit x= +9.15 y= +4.78 đổi  0.45°
+22:06:55.046 << IK az=27.6 tilt=10.32 twist=0.0 -> n1=21.938 n2=5.871 n3=11.548
+22:06:55.082 << OK MOVE
+22:06:55.082 << EVT n1 IDLE -> MOVING pos=21.954
+22:06:55.094 << EVT n1 MOVING -> IDLE pos=21.938
+22:06:55.117 >> look 29.9 10.43 0 150            # pursuit x= +9.04 y= +5.20 đổi  0.44°
+22:06:55.161 << IK az=29.9 tilt=10.43 twist=0.0 -> n1=21.925 n2=5.591 n3=11.848
+22:06:55.198 << EVT n1 IDLE -> MOVING pos=21.938
+22:06:55.198 << EVT n1 MOVING -> IDLE pos=21.921
+22:06:55.198 << OK MOVE
+22:06:55.223 >> look 32.2 10.55 0 150            # pursuit x= +8.93 y= +5.62 đổi  0.43°
+22:06:55.260 << IK az=32.2 tilt=10.55 twist=0.0 -> n1=21.902 n2=5.314 n3=12.156
+22:06:55.295 << OK MOVE
+22:06:55.319 << EVT n1 IDLE -> MOVING pos=21.921
+22:06:55.319 << EVT n1 MOVING -> IDLE pos=21.905
+22:06:55.331 >> look 34.4 10.69 0 150            # pursuit x= +8.82 y= +6.05 đổi  0.44°
+22:06:55.369 << IK az=34.4 tilt=10.69 twist=0.0 -> n1=21.885 n2=5.040 n3=12.457
+22:06:55.404 << EVT n1 IDLE -> MOVING pos=21.905
+22:06:55.404 << OK MOVE
+22:06:55.415 << EVT n1 MOVING -> IDLE pos=21.889
+22:06:55.438 >> look 36.6 10.85 0 150            # pursuit x= +8.71 y= +6.47 đổi  0.44°
+22:06:55.486 << IK az=36.6 tilt=10.85 twist=0.0 -> n1=21.867 n2=4.759 n3=12.766
+22:06:55.519 << OK MOVE
+22:06:55.531 << EVT n1 IDLE -> MOVING pos=21.889
+22:06:55.531 << EVT n1 MOVING -> IDLE pos=21.873
+22:06:55.543 >> look 38.7 11.02 0 150            # pursuit x= +8.60 y= +6.88 đổi  0.43°
+22:06:55.588 << IK az=38.7 tilt=11.02 twist=0.0 -> n1=21.845 n2=4.487 n3=13.070
+22:06:55.633 << OK MOVE
+22:06:55.645 << EVT n1 IDLE -> MOVING pos=21.873
+22:06:55.646 >> look 40.6 11.19 0 150            # pursuit x= +8.50 y= +7.29 đổi  0.42°
+22:06:55.692 << IK az=40.6 tilt=11.19 twist=0.0 -> n1=21.824 n2=4.235 n3=13.353
+22:06:55.693 << EVT n1 MOVING -> IDLE pos=21.841
+22:06:55.728 << OK MOVE
+22:06:55.728 << EVT n1 IDLE -> MOVING pos=21.841
+22:06:55.738 << EVT n1 MOVING -> IDLE pos=21.825
+22:06:55.749 >> look 42.5 11.38 0 150            # pursuit x= +8.39 y= +7.70 đổi  0.42°
+22:06:55.806 << IK az=42.5 tilt=11.38 twist=0.0 -> n1=21.802 n2=3.975 n3=13.645
+22:06:55.841 << EVT n1 IDLE -> MOVING pos=21.825
+22:06:55.841 << OK MOVE
+22:06:55.853 << EVT n1 MOVING -> IDLE pos=21.809
+22:06:55.853 >> look 41.1 11.23 0 150            # pursuit x= +8.47 y= +7.38 đổi  0.33°
+22:06:55.899 << IK az=41.1 tilt=11.23 twist=0.0 -> n1=21.811 n2=4.174 n3=13.428
+22:06:55.931 << OK MOVE
+22:06:55.954 >> look 39.1 11.05 0 150            # pursuit x= +8.57 y= +6.97 đổi  0.41°
+22:06:56.002 << IK az=39.1 tilt=11.05 twist=0.0 -> n1=21.837 n2=4.438 n3=13.128
+22:06:56.027 << OK MOVE
+22:06:56.039 << EVT n1 IDLE -> MOVING pos=21.809
+22:06:56.064 >> look 37.0 10.87 0 150            # pursuit x= +8.68 y= +6.54 đổi  0.45°
+22:06:56.100 << IK az=37.0 tilt=10.87 twist=0.0 -> n1=21.853 n2=4.716 n3=12.823
+22:06:56.112 << EVT n1 MOVING -> IDLE pos=21.841
+22:06:56.137 << EVT n1 IDLE -> MOVING pos=21.841
+22:06:56.149 << EVT n1 MOVING -> IDLE pos=21.857
+22:06:56.149 << OK MOVE
+22:06:56.170 >> look 35.1 10.73 0 150            # fix     x= +8.78 y= +6.16 đổi  0.39°
+22:06:56.216 << IK az=35.1 tilt=10.73 twist=0.0 -> n1=21.871 n2=4.958 n3=12.555
+22:06:56.239 << EVT n1 IDLE -> MOVING pos=21.857
+22:06:56.239 << OK MOVE
+22:06:56.250 << EVT n1 MOVING -> IDLE pos=21.873
+22:06:56.375 << EVT n2 MOVING -> IDLE pos=4.950
+22:06:56.399 << EVT n3 MOVING -> IDLE pos=12.552
+22:06:56.542 >> look 33.2 10.60 0 84             # sacc    x= +8.87 y= +5.81 đổi  0.36°
+22:06:56.585 << IK az=33.2 tilt=10.6 twist=0.0 -> n1=21.884 n2=5.199 n3=12.292
+22:06:56.666 >> look 154.0 0.53 0 657            # cut     x= -0.47 y= +0.23 đổi 10.88°
+22:06:56.714 << IK az=154.0 tilt=0.53 twist=0.0 -> n1=12.478 n2=12.832 n3=13.263
+22:06:56.726 << EVT n2 IDLE -> MOVING pos=4.950
+22:06:56.726 << OK MOVE
+22:06:56.738 << EVT n3 IDLE -> MOVING pos=12.552
+22:06:56.738 << EVT n1 IDLE -> MOVING pos=21.873
+22:06:56.749 << EVT n1 MOVING -> IDLE pos=21.889
+22:06:56.774 << OK MOVE
+22:06:56.787 << EVT n1 IDLE -> MOVING pos=21.889
+22:06:57.425 << EVT n3 MOVING -> IDLE pos=13.259
+22:06:57.436 << EVT n1 MOVING -> IDLE pos=12.471
+22:06:57.449 << EVT n2 MOVING -> IDLE pos=12.825
+22:06:57.557 >> look 118.4 6.97 0 493            # sacc    x= -3.31 y= +6.13 đổi  6.55°
+22:06:57.603 << IK az=118.4 tilt=6.97 twist=0.0 -> n1=10.599 n2=9.389 n3=18.900
+22:06:57.640 << OK MOVE
+22:06:57.640 << EVT n1 IDLE -> MOVING pos=12.471
+22:06:57.652 << EVT n2 IDLE -> MOVING pos=12.825
+22:06:57.652 << EVT n3 IDLE -> MOVING pos=13.259
+22:06:58.113 << EVT n1 MOVING -> IDLE pos=10.591
+22:06:58.125 << EVT n2 MOVING -> IDLE pos=9.386
+22:06:58.125 << EVT n3 MOVING -> IDLE pos=18.900
+22:06:58.360 >> look 105.2 11.40 0 417           # sacc    x= -2.99 y=+11.00 đổi  4.88°
+22:06:58.398 << IK az=105.2 tilt=11.4 twist=0.0 -> n1=11.375 n2=5.927 n3=22.026
+22:06:58.444 << EVT n2 IDLE -> MOVING pos=9.386
+22:06:58.445 << EVT n3 IDLE -> MOVING pos=18.900
+22:06:58.445 << OK MOVE
+22:06:58.457 << EVT n1 IDLE -> MOVING pos=10.591
+22:06:58.839 << EVT n1 MOVING -> IDLE pos=11.379
+22:06:58.862 << EVT n3 MOVING -> IDLE pos=22.034
+22:06:58.862 << EVT n2 MOVING -> IDLE pos=5.930
+22:06:59.038 >> look 107.0 11.40 0 150           # micro   x= -3.33 y=+10.91 đổi  0.36°
+22:06:59.087 << IK az=107.0 tilt=11.4 twist=0.0 -> n1=11.047 n2=6.117 n3=22.183
+22:06:59.112 << EVT n1 IDLE -> MOVING pos=11.379
+22:06:59.112 << EVT n2 IDLE -> MOVING pos=5.930
+22:06:59.112 << OK MOVE
+22:06:59.122 << EVT n3 IDLE -> MOVING pos=22.034
+22:06:59.145 >> look 121.9 11.40 0 311           # sacc    x= -6.03 y= +9.68 đổi  2.97°
+22:06:59.191 << IK az=121.9 tilt=11.4 twist=0.0 -> n1=8.492 n2=7.874 n3=23.136
+22:06:59.225 << OK MOVE
+22:06:59.525 << EVT n3 MOVING -> IDLE pos=23.143
+22:06:59.525 << EVT n2 MOVING -> IDLE pos=7.875
+22:06:59.537 << EVT n1 MOVING -> IDLE pos=8.486
+22:06:59.704 >> look 115.4 7.61 0 367            # sacc    x= -3.26 y= +6.88 đổi  3.94°
+22:06:59.741 << IK az=115.4 tilt=7.61 twist=0.0 -> n1=10.713 n2=8.848 n3=19.381
+22:06:59.774 << EVT n2 IDLE -> MOVING pos=7.875
+22:06:59.774 << OK MOVE
+22:06:59.785 << EVT n3 IDLE -> MOVING pos=23.143
+22:06:59.796 << EVT n1 IDLE -> MOVING pos=8.486
+22:07:00.140 << EVT n2 MOVING -> IDLE pos=8.855
+22:07:00.151 << EVT n3 MOVING -> IDLE pos=19.382
+22:07:00.151 << EVT n1 MOVING -> IDLE pos=10.720
+22:07:00.413 >> look 115.0 8.45 0 142            # sacc    x= -3.57 y= +7.65 đổi  0.84°
+22:07:00.459 << IK az=115.0 tilt=8.45 twist=0.0 -> n1=10.513 n2=8.407 n3=20.111
+22:07:00.496 << OK MOVE
+22:07:00.507 << EVT n1 IDLE -> MOVING pos=10.720
+22:07:00.508 << EVT n2 IDLE -> MOVING pos=8.855
+22:07:00.519 << EVT n3 IDLE -> MOVING pos=19.382
+22:07:00.614 << EVT n1 MOVING -> IDLE pos=10.511
+22:07:00.627 << EVT n2 MOVING -> IDLE pos=8.405
+22:07:00.638 << EVT n3 MOVING -> IDLE pos=20.105
+22:07:00.699 >> look 64.7 8.73 0 525             # sacc    x= +3.73 y= +7.90 đổi  7.30°
+22:07:00.734 << IK az=64.7 tilt=8.73 twist=0.0 -> n1=17.270 n2=5.615 n3=16.075
+22:07:00.778 << EVT n3 IDLE -> MOVING pos=20.105
+22:07:00.791 << OK MOVE
+22:07:00.791 << EVT n1 IDLE -> MOVING pos=10.511
+22:07:00.813 << EVT n2 IDLE -> MOVING pos=8.405
+22:07:01.295 << EVT n2 MOVING -> IDLE pos=5.609
+22:07:01.307 << EVT n3 MOVING -> IDLE pos=16.071
+22:07:01.307 << EVT n1 MOVING -> IDLE pos=17.277
+22:07:01.628 >> look 51.3 11.40 0 345            # sacc    x= +7.12 y= +8.90 đổi  3.54°
+22:07:01.664 << IK az=51.3 tilt=11.4 twist=0.0 -> n1=20.777 n2=3.583 n3=14.968
+22:07:01.709 << OK MOVE
+22:07:01.722 << EVT n2 IDLE -> MOVING pos=5.609
+22:07:01.722 << EVT n3 IDLE -> MOVING pos=16.071
+22:07:01.734 << EVT n1 IDLE -> MOVING pos=17.277
+22:07:02.042 << EVT n3 MOVING -> IDLE pos=14.962
+22:07:02.055 << EVT n2 MOVING -> IDLE pos=3.584
+22:07:02.055 << EVT n1 MOVING -> IDLE pos=20.780
+22:07:02.329 >> look 53.2 11.38 0 150            # pursuit x= +6.82 y= +9.11 đổi  0.36°
+22:07:02.377 << IK az=53.2 tilt=11.38 twist=0.0 -> n1=20.507 n2=3.549 n3=15.250
+22:07:02.401 << EVT n2 IDLE -> MOVING pos=3.584
+22:07:02.412 << EVT n1 IDLE -> MOVING pos=20.780
+22:07:02.412 << OK MOVE
+22:07:02.412 << EVT n3 IDLE -> MOVING pos=14.962
+22:07:02.436 >> look 58.9 11.40 0 174            # pursuit x= +5.88 y= +9.76 đổi  1.15°
+22:07:02.483 << IK az=58.9 tilt=11.4 twist=0.0 -> n1=19.701 n2=3.444 n3=16.105
+22:07:02.495 << EVT n2 MOVING -> IDLE pos=3.552
+22:07:02.529 << OK MOVE
+22:07:02.542 << EVT n2 IDLE -> MOVING pos=3.552
+22:07:02.542 >> look 54.5 11.37 0 150            # pursuit x= +6.61 y= +9.25 đổi  0.89°
+22:07:02.579 << IK az=54.5 tilt=11.37 twist=0.0 -> n1=20.320 n2=3.528 n3=15.442
+22:07:02.604 << OK MOVE
+22:07:02.649 >> look 52.4 11.38 0 150            # pursuit x= +6.94 y= +9.01 đổi  0.41°
+22:07:02.687 << IK az=52.4 tilt=11.38 twist=0.0 -> n1=20.615 n2=3.569 n3=15.130
+22:07:02.732 << OK MOVE
+22:07:02.756 >> look 58.2 11.38 0 173            # pursuit x= +6.00 y= +9.67 đổi  1.15°
+22:07:02.792 << IK az=58.2 tilt=11.38 twist=0.0 -> n1=19.792 n2=3.466 n3=15.996
+22:07:02.839 << OK MOVE
+22:07:02.864 >> look 56.3 11.36 0 150            # pursuit x= +6.31 y= +9.45 đổi  0.38°
+22:07:02.911 << IK az=56.3 tilt=11.36 twist=0.0 -> n1=20.057 n2=3.505 n3=15.709
+22:07:02.947 << OK MOVE
+22:07:02.959 << EVT n3 MOVING -> IDLE pos=15.702
+22:07:02.971 << EVT n2 MOVING -> IDLE pos=3.504
+22:07:02.971 << EVT n1 MOVING -> IDLE pos=20.057
+22:07:02.971 >> look 50.5 11.40 0 174            # pursuit x= +7.26 y= +8.79 đổi  1.15°
+22:07:03.012 << IK az=50.5 tilt=11.4 twist=0.0 -> n1=20.881 n2=3.608 n3=14.848
+22:07:03.037 << EVT n3 IDLE -> MOVING pos=15.702
+22:07:03.049 << EVT n2 IDLE -> MOVING pos=3.504
+22:07:03.049 << OK MOVE
+22:07:03.062 << EVT n1 IDLE -> MOVING pos=20.057
+22:07:03.074 >> look 54.3 11.35 0 150            # pursuit x= +6.62 y= +9.21 đổi  0.76°
+22:07:03.121 << IK az=54.3 tilt=11.35 twist=0.0 -> n1=20.333 n2=3.549 n3=15.409
+22:07:03.144 << OK MOVE
+22:07:03.180 >> look 60.0 11.38 0 172            # pursuit x= +5.69 y= +9.86 đổi  1.14°
+22:07:03.228 << IK az=60.0 tilt=11.38 twist=0.0 -> n1=19.520 n2=3.455 n3=16.263
+22:07:03.239 << EVT n2 MOVING -> IDLE pos=3.552
+22:07:03.264 << OK MOVE
+22:07:03.264 << EVT n2 IDLE -> MOVING pos=3.552
+22:07:03.286 >> look 56.8 11.34 0 150            # pursuit x= +6.22 y= +9.49 đổi  0.64°
+22:07:03.333 << IK az=56.8 tilt=11.34 twist=0.0 -> n1=19.970 n2=3.514 n3=15.778
+22:07:03.369 << OK MOVE
+22:07:03.392 >> look 51.0 11.37 0 173            # pursuit x= +7.15 y= +8.84 đổi  1.14°
+22:07:03.429 << IK az=51.0 tilt=11.37 twist=0.0 -> n1=20.793 n2=3.616 n3=14.919
+22:07:03.441 << EVT n1 MOVING -> IDLE pos=19.977
+22:07:03.466 << OK MOVE
+22:07:03.479 << EVT n1 IDLE -> MOVING pos=19.977
+22:07:03.501 >> look 52.9 11.34 0 150            # pursuit x= +6.83 y= +9.05 đổi  0.38°
+22:07:03.548 << IK az=52.9 tilt=11.34 twist=0.0 -> n1=20.517 n2=3.588 n3=15.198
+22:07:03.594 << OK MOVE
+22:07:03.605 << EVT n1 MOVING -> IDLE pos=20.523
+22:07:03.605 >> look 58.6 11.35 0 170            # pursuit x= +5.92 y= +9.68 đổi  1.11°
+22:07:03.617 << EVT n2 MOVING -> IDLE pos=3.584
+22:07:03.617 << EVT n3 MOVING -> IDLE pos=15.204
+22:07:03.653 << IK az=58.6 tilt=11.35 twist=0.0 -> n1=19.712 n2=3.487 n3=16.048
+22:07:03.687 << EVT n3 IDLE -> MOVING pos=15.204
+22:07:03.687 << OK MOVE
+22:07:03.697 << EVT n1 IDLE -> MOVING pos=20.523
+22:07:03.697 << EVT n2 IDLE -> MOVING pos=3.584
+22:07:03.754 >> look 56.8 11.33 0 150            # pursuit x= +6.21 y= +9.48 đổi  0.36°
+22:07:03.810 << IK az=56.8 tilt=11.33 twist=0.0 -> n1=19.963 n2=3.523 n3=15.776
+22:07:03.823 << EVT n2 MOVING -> IDLE pos=3.488
+22:07:03.834 << OK MOVE
+22:07:03.845 << EVT n2 IDLE -> MOVING pos=3.488
+22:07:03.857 >> look 51.2 11.36 0 169            # pursuit x= +7.11 y= +8.85 đổi  1.10°
+22:07:03.905 << IK az=51.2 tilt=11.36 twist=0.0 -> n1=20.759 n2=3.619 n3=14.947
+22:07:03.905 << EVT n2 MOVING -> IDLE pos=3.520
+22:07:03.930 << EVT n2 IDLE -> MOVING pos=3.520
+22:07:03.942 << OK MOVE
+22:07:03.989 >> look 53.1 11.33 0 150            # pursuit x= +6.80 y= +9.07 đổi  0.38°
+22:07:04.035 << IK az=53.1 tilt=11.33 twist=0.0 -> n1=20.483 n2=3.592 n3=15.226
+22:07:04.059 << OK MOVE
+22:07:04.082 << EVT n2 MOVING -> IDLE pos=3.600
+22:07:04.095 >> look 58.9 11.34 0 172            # pursuit x= +5.87 y= +9.71 đổi  1.13°
+22:07:04.142 << IK az=58.9 tilt=11.34 twist=0.0 -> n1=19.660 n2=3.493 n3=16.090
+22:07:04.142 << EVT n1 MOVING -> IDLE pos=20.475
+22:07:04.154 << EVT n3 MOVING -> IDLE pos=15.220
+22:07:04.180 << EVT n3 IDLE -> MOVING pos=15.220
+22:07:04.180 << OK MOVE
+22:07:04.190 << EVT n2 IDLE -> MOVING pos=3.600
+22:07:04.202 << EVT n1 IDLE -> MOVING pos=20.475
+22:07:04.323 << EVT n2 MOVING -> IDLE pos=3.488
+22:07:04.346 << EVT n1 MOVING -> IDLE pos=19.655
+22:07:04.357 << EVT n3 MOVING -> IDLE pos=16.088
+22:07:04.612 >> look 47.8 9.50 0 295             # sacc    x= +6.38 y= +7.04 đổi  2.72°
+22:07:04.661 << IK az=47.8 tilt=9.5 twist=0.0 -> n1=19.679 n2=5.234 n3=14.208
+22:07:04.695 << EVT n2 IDLE -> MOVING pos=3.488
+22:07:04.706 << EVT n1 IDLE -> MOVING pos=19.655
+22:07:04.706 << OK MOVE
+22:07:04.717 << EVT n1 MOVING -> IDLE pos=19.671
+22:07:04.717 << EVT n3 IDLE -> MOVING pos=16.088
+22:07:04.989 << EVT n3 MOVING -> IDLE pos=14.207
+22:07:04.990 << EVT n2 MOVING -> IDLE pos=5.239
+22:07:04.990 >> look 129.7 2.24 0 607            # cut     x= -1.43 y= +1.73 đổi  9.45°
+22:07:05.036 << IK az=129.7 tilt=2.24 twist=0.0 -> n1=11.816 n2=11.994 n3=14.792
+22:07:05.059 << EVT n3 IDLE -> MOVING pos=14.207
+22:07:05.069 << EVT n2 IDLE -> MOVING pos=5.239
+22:07:05.070 << OK MOVE
+22:07:05.070 << EVT n1 IDLE -> MOVING pos=19.671
+22:07:05.648 << EVT n3 MOVING -> IDLE pos=14.786
+22:07:05.673 << EVT n1 MOVING -> IDLE pos=11.812
+22:07:05.685 << EVT n2 MOVING -> IDLE pos=11.989
+22:07:05.834 >> look 130.5 0.85 0 196            # sacc    x= -0.55 y= +0.65 đổi  1.39°
+22:07:05.882 << IK az=130.5 tilt=0.85 twist=0.0 -> n1=12.457 n2=12.533 n3=13.585
+22:07:05.906 << OK MOVE
+22:07:05.918 << EVT n2 IDLE -> MOVING pos=11.989
+22:07:05.919 << EVT n1 IDLE -> MOVING pos=11.812
+22:07:05.929 << EVT n3 IDLE -> MOVING pos=14.786
+22:07:06.096 << EVT n2 MOVING -> IDLE pos=12.536
+22:07:06.096 << EVT n1 MOVING -> IDLE pos=12.455
+22:07:06.107 << EVT n3 MOVING -> IDLE pos=13.580
+22:07:06.426 >> look 107.1 0.95 0 150            # micro   x= -0.28 y= +0.91 đổi  0.38°
+22:07:06.473 << IK az=107.1 tilt=0.95 twist=0.0 -> n1=12.717 n2=12.240 n3=13.620
+22:07:06.497 << EVT n3 IDLE -> MOVING pos=13.580
+22:07:06.510 << EVT n1 IDLE -> MOVING pos=12.455
+22:07:06.510 << OK MOVE
+22:07:06.510 << EVT n2 IDLE -> MOVING pos=12.536
+22:07:06.569 << EVT n3 MOVING -> IDLE pos=13.612
+22:07:06.604 >> look 172.7 3.31 0 316            # sacc    x= -3.29 y= +0.42 đổi  3.04°
+22:07:06.652 << IK az=172.7 tilt=3.31 twist=0.0 -> n1=10.135 n2=13.589 n3=14.911
+22:07:06.663 << EVT n2 MOVING -> IDLE pos=12.246
+22:07:06.663 << EVT n1 MOVING -> IDLE pos=12.712
+22:07:06.698 << EVT n2 IDLE -> MOVING pos=12.246
+22:07:06.698 << OK MOVE
+22:07:06.711 << EVT n1 IDLE -> MOVING pos=12.712
+22:07:06.711 << EVT n3 IDLE -> MOVING pos=13.612
+22:07:07.006 << EVT n2 MOVING -> IDLE pos=13.596
+22:07:07.006 << EVT n3 MOVING -> IDLE pos=14.914
+22:07:07.017 << EVT n1 MOVING -> IDLE pos=10.141
+22:07:07.499 >> look 163.3 3.50 0 113            # sacc    x= -3.35 y= +1.00 đổi  0.59°
+22:07:07.546 << IK az=163.3 tilt=3.5 twist=0.0 -> n1=10.124 n2=13.162 n3=15.360
+22:07:07.582 << EVT n2 IDLE -> MOVING pos=13.596
+22:07:07.582 << OK MOVE
+22:07:07.594 << EVT n1 IDLE -> MOVING pos=10.141
+22:07:07.594 << EVT n3 IDLE -> MOVING pos=14.914
+22:07:07.605 << EVT n1 MOVING -> IDLE pos=10.125
+22:07:07.677 << EVT n3 MOVING -> IDLE pos=15.364
+22:07:07.688 << EVT n2 MOVING -> IDLE pos=13.162
+22:07:07.735 >> look 318.1 0.63 0 375            # sacc    x= +0.47 y= -0.42 đổi  4.07°
+22:07:07.781 << IK az=318.1 tilt=0.63 twist=0.0 -> n1=13.208 n2=13.035 n3=12.331
+22:07:07.816 << EVT n1 IDLE -> MOVING pos=10.125
+22:07:07.827 << EVT n2 IDLE -> MOVING pos=13.162
+22:07:07.827 << OK MOVE
+22:07:07.839 << EVT n3 IDLE -> MOVING pos=15.364
+22:07:08.139 << EVT n2 MOVING -> IDLE pos=13.034
+22:07:08.188 << EVT n3 MOVING -> IDLE pos=12.327
+22:07:08.188 << EVT n1 MOVING -> IDLE pos=13.211
+22:07:08.388 >> look 212.6 2.98 0 325            # sacc    x= -2.51 y= -1.60 đổi  3.20°
+22:07:08.437 << IK az=212.6 tilt=2.98 twist=0.0 -> n1=10.612 n2=14.940 n3=13.069
+22:07:08.471 << EVT n3 IDLE -> MOVING pos=12.327
+22:07:08.471 << OK MOVE
+22:07:08.483 << EVT n1 IDLE -> MOVING pos=13.211
+22:07:08.483 << EVT n2 IDLE -> MOVING pos=13.034
+22:07:08.778 << EVT n3 MOVING -> IDLE pos=13.066
+22:07:08.789 << EVT n2 MOVING -> IDLE pos=14.946
+22:07:08.802 << EVT n1 MOVING -> IDLE pos=10.607
+22:07:09.055 >> look 143.7 1.46 0 301            # sacc    x= -1.18 y= +0.87 đổi  2.81°
+22:07:09.101 << IK az=143.7 tilt=1.46 twist=0.0 -> n1=11.948 n2=12.570 n3=14.066
+22:07:09.126 << EVT n1 IDLE -> MOVING pos=10.607
+22:07:09.126 << OK MOVE
+22:07:09.138 << EVT n2 IDLE -> MOVING pos=14.946
+22:07:09.138 << EVT n3 IDLE -> MOVING pos=13.066
+22:07:09.423 << EVT n1 MOVING -> IDLE pos=11.941
+22:07:09.434 << EVT n2 MOVING -> IDLE pos=12.568
+22:07:09.434 << EVT n3 MOVING -> IDLE pos=14.062
+22:07:09.548 >> look 340.4 3.34 0 411            # sacc    x= +3.15 y= -1.12 đổi  4.77°
+22:07:09.595 << IK az=340.4 tilt=3.34 twist=0.0 -> n1=15.401 n2=12.694 n3=10.540
+22:07:09.630 << EVT n3 IDLE -> MOVING pos=14.062
+22:07:09.641 << EVT n2 IDLE -> MOVING pos=12.568
+22:07:09.641 << OK MOVE
+22:07:09.653 << EVT n1 IDLE -> MOVING pos=11.941
+22:07:09.978 << EVT n2 MOVING -> IDLE pos=12.696
+22:07:10.048 << EVT n1 MOVING -> IDLE pos=15.396
+22:07:10.048 << EVT n3 MOVING -> IDLE pos=10.543
+22:07:10.219 >> look 345.9 10.61 0 524           # sacc    x=+10.29 y= -2.58 đổi  7.28°
+22:07:10.265 << IK az=345.9 tilt=10.61 twist=0.0 -> n1=21.432 n2=11.367 n3=6.434
+22:07:10.288 << OK MOVE
+22:07:10.288 << EVT n1 IDLE -> MOVING pos=15.396
+22:07:10.298 << EVT n2 IDLE -> MOVING pos=12.696
+22:07:10.309 << EVT n3 IDLE -> MOVING pos=10.543
+22:07:10.802 << EVT n2 MOVING -> IDLE pos=11.362
+22:07:10.825 << EVT n1 MOVING -> IDLE pos=21.439
+22:07:10.837 << EVT n3 MOVING -> IDLE pos=6.429
+22:07:11.128 >> look 348.0 7.77 0 304            # sacc    x= +7.60 y= -1.61 đổi  2.86°
+22:07:11.172 << IK az=348.0 tilt=7.77 twist=0.0 -> n1=19.208 n2=11.535 n3=8.191
+22:07:11.209 << EVT n1 IDLE -> MOVING pos=21.439
+22:07:11.209 << OK MOVE
+22:07:11.219 << EVT n3 IDLE -> MOVING pos=6.429
+22:07:11.230 << EVT n2 IDLE -> MOVING pos=11.362
+22:07:11.469 << EVT n2 MOVING -> IDLE pos=11.539
+22:07:11.494 << EVT n3 MOVING -> IDLE pos=8.196
+22:07:11.505 << EVT n1 MOVING -> IDLE pos=19.205
+22:07:11.622 >> look 327.5 7.76 0 298            # sacc    x= +6.55 y= -4.17 đổi  2.76°
+22:07:11.669 << IK az=327.5 tilt=7.76 twist=0.0 -> n1=17.841 n2=14.069 n3=6.965
+22:07:11.693 << EVT n1 IDLE -> MOVING pos=19.205
+22:07:11.705 << EVT n3 IDLE -> MOVING pos=8.196
+22:07:11.705 << OK MOVE
+22:07:11.705 << EVT n2 IDLE -> MOVING pos=11.539
+22:07:11.979 << EVT n1 MOVING -> IDLE pos=17.839
+22:07:11.990 << EVT n2 MOVING -> IDLE pos=14.062
+22:07:12.001 << EVT n3 MOVING -> IDLE pos=6.959
+22:07:12.096 >> look 260.5 6.72 0 554            # sacc    x= -1.10 y= -6.63 đổi  8.03°
+22:07:12.132 << IK az=260.5 tilt=6.72 twist=0.0 -> n1=11.326 n2=18.743 n3=8.818
+22:07:12.167 << EVT n3 IDLE -> MOVING pos=6.959
+22:07:12.167 << OK MOVE
+22:07:12.180 << EVT n2 IDLE -> MOVING pos=14.062
+22:07:12.180 << EVT n1 IDLE -> MOVING pos=17.839
+22:07:12.715 << EVT n3 MOVING -> IDLE pos=8.823
+22:07:12.727 << EVT n1 MOVING -> IDLE pos=11.330
+22:07:12.740 << EVT n2 MOVING -> IDLE pos=18.739
+22:07:12.928 >> look 308.2 4.19 0 421            # sacc    x= +2.59 y= -3.29 đổi  4.97°
+22:07:12.966 << IK az=308.2 tilt=4.19 twist=0.0 -> n1=14.649 n2=14.676 n3=9.343
+22:07:13.002 << EVT n3 IDLE -> MOVING pos=8.823
+22:07:13.002 << OK MOVE
+22:07:13.015 << EVT n2 IDLE -> MOVING pos=18.739
+22:07:13.015 << EVT n1 IDLE -> MOVING pos=11.330
+22:07:13.398 << EVT n3 MOVING -> IDLE pos=9.338
+22:07:13.423 << EVT n1 MOVING -> IDLE pos=14.641
+22:07:13.423 << EVT n2 MOVING -> IDLE pos=14.673
+22:07:13.624 >> look 285.3 5.09 0 248            # sacc    x= +1.34 y= -4.91 đổi  2.04°
+22:07:13.682 << IK az=285.3 tilt=5.09 twist=0.0 -> n1=13.437 n2=16.464 n3=8.829
+22:07:13.706 << EVT n3 IDLE -> MOVING pos=9.338
+22:07:13.717 << EVT n2 IDLE -> MOVING pos=14.673
+22:07:13.717 << OK MOVE
+22:07:13.729 << EVT n1 IDLE -> MOVING pos=14.641
+22:07:13.940 << EVT n3 MOVING -> IDLE pos=8.823
+22:07:13.950 << EVT n1 MOVING -> IDLE pos=13.436
+22:07:13.951 << EVT n2 MOVING -> IDLE pos=16.457
+22:07:14.045 >> look 282.3 4.77 0 150            # micro   x= +1.02 y= -4.66 đổi  0.41°
+22:07:14.093 << IK az=282.3 tilt=4.77 twist=0.0 -> n1=13.200 n2=16.356 n3=9.158
+22:07:14.117 << EVT n1 IDLE -> MOVING pos=13.436
+22:07:14.117 << OK MOVE
+22:07:14.129 << EVT n2 IDLE -> MOVING pos=16.457
+22:07:14.129 << EVT n3 IDLE -> MOVING pos=8.823
+22:07:14.150 >> look 281.0 3.91 0 145            # sacc    x= +0.74 y= -3.84 đổi  0.86°
+22:07:14.189 << IK az=281.0 tilt=3.91 twist=0.0 -> n1=13.068 n2=15.743 n3=9.856
+22:07:14.231 << OK MOVE
+22:07:14.360 << EVT n1 MOVING -> IDLE pos=13.066
+22:07:14.381 << EVT n3 MOVING -> IDLE pos=9.852
+22:07:14.391 << EVT n2 MOVING -> IDLE pos=15.750
+22:07:14.551 >> look 176.5 2.10 0 417            # sacc    x= -2.10 y= +0.13 đổi  4.88°
+22:07:14.597 << IK az=176.5 tilt=2.1 twist=0.0 -> n1=11.104 n2=13.439 n3=14.054
+22:07:14.645 << EVT n1 IDLE -> MOVING pos=13.066
+22:07:14.645 << OK MOVE
+22:07:14.658 << EVT n3 IDLE -> MOVING pos=9.852
+22:07:14.658 << EVT n2 IDLE -> MOVING pos=15.750
+22:07:14.764 >> look 162.8 1.47 0 134            # cut     x= -1.40 y= +0.43 đổi  0.76°
+22:07:14.801 << IK az=162.8 tilt=1.47 twist=0.0 -> n1=11.714 n2=12.977 n3=13.893
+22:07:14.848 << OK MOVE
+22:07:15.119 >> look 220.4 5.54 0 418            # sacc    x= -4.22 y= -3.59 đổi  4.91°
+22:07:15.131 << EVT n1 MOVING -> IDLE pos=11.716
+22:07:15.163 << IK az=220.4 tilt=5.54 twist=0.0 -> n1=9.086 n2=17.077 n3=12.582
+22:07:15.187 << EVT n3 MOVING -> IDLE pos=13.886
+22:07:15.199 << EVT n2 MOVING -> IDLE pos=12.970
+22:07:15.211 << EVT n1 IDLE -> MOVING pos=11.716
+22:07:15.224 << EVT n3 IDLE -> MOVING pos=13.886
+22:07:15.224 << OK MOVE
+22:07:15.224 << EVT n2 IDLE -> MOVING pos=12.970
+22:07:15.606 << EVT n3 MOVING -> IDLE pos=12.584
+22:07:15.619 << EVT n1 MOVING -> IDLE pos=9.080
+22:07:15.631 << EVT n2 MOVING -> IDLE pos=17.084
+22:07:15.774 >> look 158.1 3.23 0 420            # sacc    x= -3.00 y= +1.21 đổi  4.95°
+22:07:15.820 << IK az=158.1 tilt=3.23 twist=0.0 -> n1=10.440 n2=12.897 n3=15.299
+22:07:15.842 << OK MOVE
+22:07:15.853 << EVT n2 IDLE -> MOVING pos=17.084
+22:07:15.866 << EVT n1 IDLE -> MOVING pos=9.080
+22:07:15.866 << EVT n3 IDLE -> MOVING pos=12.584
+22:07:16.255 << EVT n1 MOVING -> IDLE pos=10.446
+22:07:16.266 << EVT n2 MOVING -> IDLE pos=12.889
+22:07:16.266 << EVT n3 MOVING -> IDLE pos=15.300
+22:07:16.385 >> look 152.4 3.16 0 150            # micro   x= -2.80 y= +1.46 đổi  0.32°
+22:07:16.430 << IK az=152.4 tilt=3.16 twist=0.0 -> n1=10.627 n2=12.637 n3=15.370
+22:07:16.453 << OK MOVE
+22:07:16.463 << EVT n3 IDLE -> MOVING pos=15.300
+22:07:16.474 << EVT n2 IDLE -> MOVING pos=12.889
+22:07:16.474 << EVT n1 IDLE -> MOVING pos=10.446
+22:07:16.566 << EVT n3 MOVING -> IDLE pos=15.364
+22:07:16.589 << EVT n1 MOVING -> IDLE pos=10.623
+22:07:16.601 << EVT n2 MOVING -> IDLE pos=12.632
+22:07:16.797 >> look 156.9 3.47 0 150            # pursuit x= -3.19 y= +1.36 đổi  0.40°
+22:07:16.842 << IK az=156.9 tilt=3.47 twist=0.0 -> n1=10.288 n2=12.840 n3=15.518
+22:07:16.863 << OK MOVE
+22:07:16.875 << EVT n2 IDLE -> MOVING pos=12.632
+22:07:16.875 << EVT n3 IDLE -> MOVING pos=15.364
+22:07:16.885 << EVT n1 IDLE -> MOVING pos=10.623
+22:07:16.907 >> look 166.3 4.47 0 177            # pursuit x= -4.34 y= +1.06 đổi  1.19°
+22:07:16.956 << IK az=166.3 tilt=4.47 twist=0.0 -> n1=9.298 n2=13.433 n3=15.961
+22:07:16.978 << OK MOVE
+22:07:17.015 >> look 172.1 5.52 0 175            # pursuit x= -5.46 y= +0.75 đổi  1.16°
+22:07:17.063 << IK az=172.1 tilt=5.52 twist=0.0 -> n1=8.341 n2=14.007 n3=16.402
+22:07:17.088 << OK MOVE
+22:07:17.123 >> look 176.1 6.61 0 175            # pursuit x= -6.59 y= +0.45 đổi  1.17°
+22:07:17.181 << IK az=176.1 tilt=6.61 twist=0.0 -> n1=7.390 n2=14.580 n3=16.848
+22:07:17.216 << OK MOVE
+22:07:17.229 >> look 178.8 7.70 0 173            # pursuit x= -7.69 y= +0.16 đổi  1.14°
+22:07:17.273 << IK az=178.8 tilt=7.7 twist=0.0 -> n1=6.468 n2=15.122 n3=17.305
+22:07:17.306 << OK MOVE
+22:07:17.329 >> look 180.8 8.74 0 167            # pursuit x= -8.74 y= -0.12 đổi  1.08°
+22:07:17.376 << IK az=180.8 tilt=8.74 twist=0.0 -> n1=5.605 n2=15.633 n3=17.737
+22:07:17.424 << OK MOVE
+22:07:17.436 >> look 182.4 9.87 0 174            # pursuit x= -9.86 y= -0.42 đổi  1.15°
+22:07:17.485 << IK az=182.4 tilt=9.87 twist=0.0 -> n1=4.681 n2=16.165 n3=18.223
+22:07:17.519 << OK MOVE
+22:07:17.542 >> look 183.7 10.99 0 174           # pursuit x=-10.97 y= -0.72 đổi  1.15°
+22:07:17.587 << IK az=183.7 tilt=10.99 twist=0.0 -> n1=3.776 n2=16.687 n3=18.705
+22:07:17.630 << OK MOVE
+22:07:17.643 >> look 184.2 11.40 0 150           # fix     x=-11.37 y= -0.84 đổi  0.42°
+22:07:17.680 << IK az=184.2 tilt=11.4 twist=0.0 -> n1=3.448 n2=16.888 n3=18.869
+22:07:17.725 << OK MOVE
+22:07:17.749 >> look 182.2 9.69 0 226            # sacc    x= -9.68 y= -0.37 đổi  1.75°
+22:07:17.793 << IK az=182.2 tilt=9.69 twist=0.0 -> n1=4.828 n2=16.085 n3=18.141
+22:07:17.839 << OK MOVE
+22:07:18.029 << EVT n2 MOVING -> IDLE pos=16.088
+22:07:18.029 << EVT n3 MOVING -> IDLE pos=18.145
+22:07:18.039 << EVT n1 MOVING -> IDLE pos=4.821
+22:07:18.464 >> look 269.1 1.46 0 616            # sacc    x= -0.02 y= -1.46 đổi  9.71°
+22:07:18.511 << IK az=269.1 tilt=1.46 twist=0.0 -> n1=12.683 n2=14.029 n3=11.872
+22:07:18.547 << EVT n1 IDLE -> MOVING pos=4.821
+22:07:18.547 << OK MOVE
+22:07:18.547 << EVT n3 IDLE -> MOVING pos=18.145
+22:07:18.558 << EVT n2 IDLE -> MOVING pos=16.088
+22:07:19.163 << EVT n3 MOVING -> IDLE pos=11.877
+22:07:19.198 << EVT n2 MOVING -> IDLE pos=14.030
+22:07:19.198 << EVT n1 MOVING -> IDLE pos=12.680
+22:07:19.350 >> look 222.0 9.46 0 573            # sacc    x= -7.04 y= -6.33 đổi  8.54°
+22:07:19.399 << IK az=222.0 tilt=9.46 twist=0.0 -> n1=6.746 n2=20.199 n3=12.128
+22:07:19.432 << EVT n3 IDLE -> MOVING pos=11.877
+22:07:19.432 << OK MOVE
+22:07:19.444 << EVT n1 IDLE -> MOVING pos=12.680
+22:07:19.444 << EVT n2 IDLE -> MOVING pos=14.030
+22:07:19.969 << EVT n3 MOVING -> IDLE pos=12.134
+22:07:20.006 << EVT n1 MOVING -> IDLE pos=6.750
+22:07:20.018 << EVT n2 MOVING -> IDLE pos=20.202
+22:07:20.415 >> look 222.5 9.86 0 150            # pursuit x= -7.27 y= -6.66 đổi  0.41°
+22:07:20.463 << IK az=222.5 tilt=9.86 twist=0.0 -> n1=6.550 n2=20.553 n3=12.016
+22:07:20.488 << EVT n1 IDLE -> MOVING pos=6.750
+22:07:20.488 << OK MOVE
+22:07:20.500 << EVT n3 IDLE -> MOVING pos=12.134
+22:07:20.511 << EVT n2 IDLE -> MOVING pos=20.202
+22:07:20.523 >> look 223.4 10.77 0 152           # pursuit x= -7.82 y= -7.40 đổi  0.93°
+22:07:20.569 << IK az=223.4 tilt=10.77 twist=0.0 -> n1=6.102 n2=21.353 n3=11.775
+22:07:20.617 << OK MOVE
+22:07:20.629 >> look 223.9 11.20 0 150           # pursuit x= -8.07 y= -7.76 đổi  0.43°
+22:07:20.677 << IK az=223.9 tilt=11.2 twist=0.0 -> n1=5.906 n2=21.745 n3=11.638
+22:07:20.690 << OK MOVE
+22:07:20.737 >> look 223.0 10.28 0 152           # pursuit x= -7.52 y= -7.01 đổi  0.93°
+22:07:20.786 << IK az=223.0 tilt=10.28 twist=0.0 -> n1=6.348 n2=20.927 n3=11.894
+22:07:20.833 << OK MOVE
+22:07:20.845 >> look 222.0 9.37 0 151            # pursuit x= -6.97 y= -6.27 đổi  0.92°
+22:07:20.890 << IK az=222.0 tilt=9.37 twist=0.0 -> n1=6.800 n2=20.129 n3=12.136
+22:07:20.913 << OK MOVE
+22:07:20.950 >> look 220.7 8.48 0 150            # pursuit x= -6.43 y= -5.54 đổi  0.91°
+22:07:20.997 << IK az=220.7 tilt=8.48 twist=0.0 -> n1=7.243 n2=19.344 n3=12.385
+22:07:21.032 << OK MOVE
+22:07:21.055 >> look 219.3 7.61 0 150            # pursuit x= -5.89 y= -4.81 đổi  0.90°
+22:07:21.102 << IK az=219.3 tilt=7.61 twist=0.0 -> n1=7.696 n2=18.589 n3=12.606
+22:07:21.114 << OK MOVE
+22:07:21.161 >> look 217.4 6.73 0 150            # pursuit x= -5.35 y= -4.08 đổi  0.91°
+22:07:21.209 << IK az=217.4 tilt=6.73 twist=0.0 -> n1=8.161 n2=17.820 n3=12.839
+22:07:21.268 << OK MOVE
+22:07:21.268 >> look 214.9 5.85 0 151            # pursuit x= -4.80 y= -3.34 đổi  0.92°
+22:07:21.316 << IK az=214.9 tilt=5.85 twist=0.0 -> n1=8.638 n2=17.048 n3=13.073
+22:07:21.352 << OK MOVE
+22:07:21.377 >> look 211.4 4.97 0 153            # pursuit x= -4.24 y= -2.59 đổi  0.94°
+22:07:21.423 << IK az=211.4 tilt=4.97 twist=0.0 -> n1=9.131 n2=16.264 n3=13.311
+22:07:21.460 << OK MOVE
+22:07:21.485 >> look 206.6 4.13 0 151            # pursuit x= -3.69 y= -1.85 đổi  0.92°
+22:07:21.532 << IK az=206.6 tilt=4.13 twist=0.0 -> n1=9.627 n2=15.501 n3=13.537
+22:07:21.554 << OK MOVE
+22:07:21.587 >> look 199.8 3.37 0 150            # pursuit x= -3.17 y= -1.14 đổi  0.88°
+22:07:21.633 << IK az=199.8 tilt=3.37 twist=0.0 -> n1=10.106 n2=14.776 n3=13.752
+22:07:21.658 << OK MOVE
+22:07:21.695 >> look 194.4 2.96 0 150            # fix     x= -2.86 y= -0.74 đổi  0.50°
+22:07:21.743 << IK az=194.4 tilt=2.96 twist=0.0 -> n1=10.389 n2=14.360 n3=13.871
+22:07:21.765 << OK MOVE
+22:07:22.014 << EVT n3 MOVING -> IDLE pos=13.870
+22:07:22.014 >> look 14.9 8.85 0 688             # sacc    x= +8.55 y= +2.28 đổi 11.81°
+22:07:22.026 << EVT n1 MOVING -> IDLE pos=10.382
+22:07:22.026 << EVT n2 MOVING -> IDLE pos=14.368
+22:07:22.059 << IK az=14.9 tilt=8.85 twist=0.0 -> n1=20.839 n2=8.042 n3=10.261
+22:07:22.107 << EVT n1 IDLE -> MOVING pos=10.382
+22:07:22.108 << EVT n2 IDLE -> MOVING pos=14.368
+22:07:22.108 << OK MOVE
+22:07:22.120 << EVT n3 IDLE -> MOVING pos=13.870
+22:07:22.425 >> look 189.2 3.00 0 689            # cut     x= -2.96 y= -0.48 đổi 11.83°
+22:07:22.470 << IK az=189.2 tilt=3.0 twist=0.0 -> n1=10.331 n2=14.188 n3=14.102
+22:07:22.507 << OK MOVE
+22:07:23.176 << EVT n3 MOVING -> IDLE pos=14.095
+22:07:23.188 << EVT n2 MOVING -> IDLE pos=14.191
+22:07:23.198 << EVT n1 MOVING -> IDLE pos=10.334
+22:07:23.864 >> look 184.2 2.79 0 150            # pursuit x= -2.79 y= -0.20 đổi  0.33°
+22:07:23.913 << IK az=184.2 tilt=2.79 twist=0.0 -> n1=10.502 n2=13.917 n3=14.197
+22:07:23.946 << EVT n3 IDLE -> MOVING pos=14.095
+22:07:23.958 << EVT n1 IDLE -> MOVING pos=10.334
+22:07:23.958 << OK MOVE
+22:07:23.970 << EVT n2 IDLE -> MOVING pos=14.191
+22:07:23.970 >> look 166.1 2.32 0 152            # pursuit x= -2.26 y= +0.56 đổi  0.93°
+22:07:24.017 << IK az=166.1 tilt=2.32 twist=0.0 -> n1=11.011 n2=13.156 n3=14.437
+22:07:24.039 << OK MOVE
+22:07:24.075 >> look 143.0 2.17 0 150            # pursuit x= -1.73 y= +1.31 đổi  0.91°
+22:07:24.123 << IK az=143.0 tilt=2.17 twist=0.0 -> n1=11.518 n2=12.412 n3=14.670
+22:07:24.155 << OK MOVE
+22:07:24.178 >> look 120.6 2.39 0 150            # pursuit x= -1.22 y= +2.05 đổi  0.91°
+22:07:24.224 << IK az=120.6 tilt=2.39 twist=0.0 -> n1=12.033 n2=11.670 n3=14.903
+22:07:24.261 << OK MOVE
+22:07:24.285 >> look 103.6 2.90 0 152            # pursuit x= -0.68 y= +2.82 đổi  0.93°
+22:07:24.332 << IK az=103.6 tilt=2.9 twist=0.0 -> n1=12.575 n2=10.916 n3=15.129
+22:07:24.354 << OK MOVE
+22:07:24.391 >> look 92.4 3.59 0 152             # pursuit x= -0.15 y= +3.58 đổi  0.93°
+22:07:24.437 << IK az=92.4 tilt=3.59 twist=0.0 -> n1=13.125 n2=10.161 n3=15.357
+22:07:24.460 << OK MOVE
+22:07:24.496 >> look 85.0 4.35 0 151             # pursuit x= +0.38 y= +4.33 đổi  0.92°
+22:07:24.545 << IK az=85.0 tilt=4.35 twist=0.0 -> n1=13.681 n2=9.424 n3=15.568
+22:07:24.578 << OK MOVE
+22:07:24.602 >> look 79.9 5.18 0 152             # pursuit x= +0.91 y= +5.10 đổi  0.93°
+22:07:24.638 << IK az=79.9 tilt=5.18 twist=0.0 -> n1=14.251 n2=8.674 n3=15.787
+22:07:24.698 << OK MOVE
+22:07:24.709 >> look 76.2 6.05 0 153             # pursuit x= +1.45 y= +5.87 đổi  0.94°
+22:07:24.745 << IK az=76.2 tilt=6.05 twist=0.0 -> n1=14.837 n2=7.917 n3=16.006
+22:07:24.814 >> look 73.4 6.91 0 150             # pursuit x= +1.97 y= +6.62 đổi  0.91°
+22:07:24.826 << OK MOVE
+22:07:24.862 << IK az=73.4 tilt=6.91 twist=0.0 -> n1=15.428 n2=7.183 n3=16.203
+22:07:24.898 << OK MOVE
+22:07:24.923 >> look 71.2 7.82 0 155             # pursuit x= +2.52 y= +7.41 đổi  0.96°
+22:07:24.970 << IK az=71.2 tilt=7.82 twist=0.0 -> n1=16.049 n2=6.419 n3=16.409
+22:07:25.007 << OK MOVE
+22:07:25.030 >> look 69.5 8.73 0 153             # pursuit x= +3.05 y= +8.18 đổi  0.94°
+22:07:25.077 << IK az=69.5 tilt=8.73 twist=0.0 -> n1=16.673 n2=5.663 n3=16.611
+22:07:25.113 << OK MOVE
+22:07:25.256 >> look 94.3 3.26 0 466             # sacc    x= -0.25 y= +3.25 đổi  5.93°
+22:07:25.291 << IK az=94.3 tilt=3.26 twist=0.0 -> n1=13.004 n2=10.444 n3=15.183
+22:07:25.336 << OK MOVE
+22:07:25.788 << EVT n3 MOVING -> IDLE pos=15.188
+22:07:25.800 << EVT n2 MOVING -> IDLE pos=10.446
+22:07:25.813 << EVT n1 MOVING -> IDLE pos=13.002
+22:07:25.956 >> look 61.9 0.47 0 305             # sacc    x= +0.22 y= +0.42 đổi  2.87°
+22:07:26.000 << IK az=61.9 tilt=0.47 twist=0.0 -> n1=13.090 n2=12.458 n3=13.024
+22:07:26.022 << EVT n3 IDLE -> MOVING pos=15.188
+22:07:26.022 << OK MOVE
+22:07:26.034 << EVT n1 IDLE -> MOVING pos=13.002
+22:07:26.047 << EVT n2 IDLE -> MOVING pos=10.446
+22:07:26.261 << EVT n1 MOVING -> IDLE pos=13.082
+22:07:26.332 << EVT n2 MOVING -> IDLE pos=12.455
+22:07:26.342 << EVT n3 MOVING -> IDLE pos=13.018
+22:07:26.470 >> look 149.7 3.90 0 366            # cut     x= -3.37 y= +1.97 đổi  3.91°
+22:07:26.515 << IK az=149.7 tilt=3.9 twist=0.0 -> n1=10.190 n2=12.438 n3=16.041
+22:07:26.552 << OK MOVE
+22:07:26.564 << EVT n2 IDLE -> MOVING pos=12.455
+22:07:26.564 << EVT n1 IDLE -> MOVING pos=13.082
+22:07:26.577 << EVT n2 MOVING -> IDLE pos=12.439
+22:07:26.577 << EVT n3 IDLE -> MOVING pos=13.018
+22:07:26.912 << EVT n1 MOVING -> IDLE pos=10.189
+22:07:26.924 << EVT n3 MOVING -> IDLE pos=16.039
+22:07:27.028 >> look 64.5 1.24 0 371             # sacc    x= +0.54 y= +1.12 đổi  4.00°
+22:07:27.075 << IK az=64.5 tilt=1.24 twist=0.0 -> n1=13.438 n2=11.804 n3=13.338
+22:07:27.097 << EVT n3 IDLE -> MOVING pos=16.039
+22:07:27.110 << EVT n1 IDLE -> MOVING pos=10.189
+22:07:27.110 << OK MOVE
+22:07:27.121 << EVT n2 IDLE -> MOVING pos=12.439
+22:07:27.452 << EVT n2 MOVING -> IDLE pos=11.796
+22:07:27.476 << EVT n1 MOVING -> IDLE pos=13.436
+22:07:27.476 << EVT n3 MOVING -> IDLE pos=13.339
+22:07:27.562 >> look 354.4 4.12 0 364            # sacc    x= +4.10 y= -0.40 đổi  3.88°
+22:07:27.600 << IK az=354.4 tilt=4.12 twist=0.0 -> n1=16.327 n2=11.784 n3=10.564
+22:07:27.636 << EVT n1 IDLE -> MOVING pos=13.436
+22:07:27.646 << OK MOVE
+22:07:27.659 << EVT n2 IDLE -> MOVING pos=11.796
+22:07:27.659 << EVT n3 IDLE -> MOVING pos=13.339
+22:07:27.671 << EVT n2 MOVING -> IDLE pos=11.780
+22:07:28.002 << EVT n3 MOVING -> IDLE pos=10.559
+22:07:28.014 << EVT n1 MOVING -> IDLE pos=16.329
+22:07:28.178 >> look 354.1 5.05 0 152            # sacc    x= +5.02 y= -0.52 đổi  0.93°
+22:07:28.223 << IK az=354.1 tilt=5.05 twist=0.0 -> n1=17.117 n2=11.555 n3=10.057
+22:07:28.246 << OK MOVE
+22:07:28.257 << EVT n3 IDLE -> MOVING pos=10.559
+22:07:28.257 << EVT n1 IDLE -> MOVING pos=16.329
+22:07:28.268 << EVT n2 IDLE -> MOVING pos=11.780
+22:07:28.379 << EVT n2 MOVING -> IDLE pos=11.555
+22:07:28.390 << EVT n1 MOVING -> IDLE pos=17.116
+22:07:28.402 << EVT n3 MOVING -> IDLE pos=10.061
+22:07:28.580 >> look 359.1 5.30 0 104            # sacc    x= +5.30 y= -0.08 đổi  0.52°
+22:07:28.625 << IK az=359.1 tilt=5.3 twist=0.0 -> n1=17.430 n2=11.106 n3=10.215
+22:07:28.647 << OK MOVE
+22:07:28.659 << EVT n1 IDLE -> MOVING pos=17.116
+22:07:28.659 << EVT n2 IDLE -> MOVING pos=11.555
+22:07:28.671 << EVT n3 IDLE -> MOVING pos=10.061
+22:07:28.762 << EVT n1 MOVING -> IDLE pos=17.438
+22:07:28.762 << EVT n3 MOVING -> IDLE pos=10.221
+22:07:28.773 << EVT n2 MOVING -> IDLE pos=11.105
+22:07:28.888 >> look 10.5 7.07 0 256             # sacc    x= +6.95 y= +1.28 đổi  2.14°
+22:07:28.923 << IK az=10.5 tilt=7.07 twist=0.0 -> n1=19.155 n2=9.415 n3=10.348
+22:07:28.969 << EVT n3 IDLE -> MOVING pos=10.221
+22:07:28.981 << EVT n1 IDLE -> MOVING pos=17.438
+22:07:28.981 << OK MOVE
+22:07:28.981 << EVT n2 IDLE -> MOVING pos=11.105
+22:07:29.182 << EVT n3 MOVING -> IDLE pos=10.350
+22:07:29.214 << EVT n2 MOVING -> IDLE pos=9.418
+22:07:29.214 << EVT n1 MOVING -> IDLE pos=19.157
+22:07:29.324 >> look 336.2 5.32 0 372            # sacc    x= +4.86 y= -2.15 đổi  4.02°
+22:07:29.370 << IK az=336.2 tilt=5.32 twist=0.0 -> n1=16.730 n2=12.943 n3=9.055
+22:07:29.405 << EVT n2 IDLE -> MOVING pos=9.418
+22:07:29.418 << EVT n3 IDLE -> MOVING pos=10.350
+22:07:29.418 << OK MOVE
+22:07:29.428 << EVT n1 IDLE -> MOVING pos=19.157
+22:07:29.783 << EVT n3 MOVING -> IDLE pos=9.048
+22:07:29.783 << EVT n1 MOVING -> IDLE pos=16.730
+22:07:29.783 << EVT n2 MOVING -> IDLE pos=12.938
+22:07:30.122 >> look 337.9 5.66 0 150            # pursuit x= +5.25 y= -2.13 đổi  0.38°
+22:07:30.169 << IK az=337.9 tilt=5.66 twist=0.0 -> n1=17.057 n2=12.798 n3=8.896
+22:07:30.215 << EVT n2 IDLE -> MOVING pos=12.938
+22:07:30.215 << OK MOVE
+22:07:30.226 << EVT n1 IDLE -> MOVING pos=16.730
+22:07:30.227 << EVT n3 IDLE -> MOVING pos=9.048
+22:07:30.227 >> look 342.3 6.76 0 178            # pursuit x= +6.44 y= -2.06 đổi  1.20°
+22:07:30.272 << IK az=342.3 tilt=6.76 twist=0.0 -> n1=18.107 n2=12.315 n3=8.410
+22:07:30.294 << OK MOVE
+22:07:30.329 >> look 345.4 7.86 0 176            # pursuit x= +7.61 y= -1.98 đổi  1.17°
+22:07:30.377 << IK az=345.4 tilt=7.86 twist=0.0 -> n1=19.146 n2=11.837 n3=7.950
+22:07:30.438 >> look 347.9 9.06 0 183            # pursuit x= +8.86 y= -1.91 đổi  1.25°
+22:07:30.486 << IK az=347.9 tilt=9.06 twist=0.0 -> n1=20.280 n2=11.315 n3=7.470
+22:07:30.547 >> look 349.8 10.26 0 183           # pursuit x=+10.10 y= -1.83 đổi  1.25°
+22:07:30.594 << IK az=349.8 tilt=10.26 twist=0.0 -> n1=21.422 n2=10.791 n3=7.008
+22:07:30.655 >> look 351.2 11.40 0 176           # pursuit x=+11.27 y= -1.74 đổi  1.17°
+22:07:30.702 << IK az=351.2 tilt=11.4 twist=0.0 -> n1=22.518 n2=10.295 n3=6.581
+22:07:30.760 >> look 349.8 10.23 0 178           # pursuit x=+10.07 y= -1.81 đổi  1.20°
+22:07:30.802 << IK az=349.8 tilt=10.23 twist=0.0 -> n1=21.396 n2=10.798 n3=7.024
+22:07:30.862 >> look 348.0 9.10 0 176            # pursuit x= +8.90 y= -1.89 đổi  1.17°
+22:07:30.908 << IK az=348.0 tilt=9.1 twist=0.0 -> n1=20.320 n2=11.294 n3=7.456
+22:07:30.967 >> look 345.7 7.95 0 178            # pursuit x= +7.71 y= -1.96 đổi  1.20°
+22:07:31.015 << IK az=345.7 tilt=7.95 twist=0.0 -> n1=19.235 n2=11.788 n3=7.919
+22:07:31.074 >> look 342.5 6.79 0 181            # pursuit x= +6.48 y= -2.04 đổi  1.23°
+22:07:31.122 << IK az=342.5 tilt=6.79 twist=0.0 -> n1=18.140 n2=12.292 n3=8.403
+22:07:31.184 >> look 337.9 5.63 0 184            # pursuit x= +5.22 y= -2.12 đổi  1.26°
+22:07:31.222 << IK az=337.9 tilt=5.63 twist=0.0 -> n1=17.034 n2=12.798 n3=8.916
+22:07:31.281 << ERR n1 OFFLINE
+===== SỰ CỐ #3 lúc 22:07:31.281: ERR n1 OFFLINE =====
+  18 lệnh gửi trong 5 s trước đó (mới nhất ở dưới):
+    22:07:30.655 >> look 351.2 11.40 0 176           # pursuit x=+11.27 y= -1.74 đổi  1.17°
+    22:07:30.760 >> look 349.8 10.23 0 178           # pursuit x=+10.07 y= -1.81 đổi  1.20°
+    22:07:30.862 >> look 348.0 9.10 0 176            # pursuit x= +8.90 y= -1.89 đổi  1.17°
+    22:07:30.967 >> look 345.7 7.95 0 178            # pursuit x= +7.71 y= -1.96 đổi  1.20°
+    22:07:31.074 >> look 342.5 6.79 0 181            # pursuit x= +6.48 y= -2.04 đổi  1.23°
+    22:07:31.184 >> look 337.9 5.63 0 184            # pursuit x= +5.22 y= -2.12 đổi  1.26°
+  Master báo gần nhất:
+    22:07:30.594 << IK az=349.8 tilt=10.26 twist=0.0 -> n1=21.422 n2=10.791 n3=7.008
+    22:07:30.702 << IK az=351.2 tilt=11.4 twist=0.0 -> n1=22.518 n2=10.295 n3=6.581
+    22:07:30.802 << IK az=349.8 tilt=10.23 twist=0.0 -> n1=21.396 n2=10.798 n3=7.024
+    22:07:30.908 << IK az=348.0 tilt=9.1 twist=0.0 -> n1=20.320 n2=11.294 n3=7.456
+    22:07:31.015 << IK az=345.7 tilt=7.95 twist=0.0 -> n1=19.235 n2=11.788 n3=7.919
+    22:07:31.122 << IK az=342.5 tilt=6.79 twist=0.0 -> n1=18.140 n2=12.292 n3=8.403
+    22:07:31.222 << IK az=337.9 tilt=5.63 twist=0.0 -> n1=17.034 n2=12.798 n3=8.916
+    22:07:31.281 << ERR n1 OFFLINE
+22:07:31.284 ## !! ERR n1 OFFLINE
+22:07:31.291 << FAULT n1 mất liên lạc
+22:07:31.292 ## !! FAULT n1 mất liên lạc
+22:07:31.292 << WARN STOP tất cả (n1 mất liên lạc)
+22:07:31.292 ## !! WARN STOP tất cả (n1 mất liên lạc)
+22:07:31.292 ## .. Tạm dừng gửi lệnh vì FAULT: n1 mất liên lạc
+22:07:31.314 << OK STOP
+22:07:31.314 << EVT n2 MOVING -> IDLE pos=12.086
+22:07:31.327 << EVT n3 MOVING -> IDLE pos=8.180
+22:07:31.812 << EVT n1 ONLINE F8:5B:1B:4C:81:C0
+22:07:31.824 << EVT n1 BOOT fw=1 reset=HARD_RESET
+22:07:31.824 << FAULT n1 khởi động lại (HARD_RESET)
+22:07:31.824 ## !! FAULT n1 khởi động lại (HARD_RESET)
+22:07:31.824 << WARN STOP tất cả (n1 khởi động lại (HARD_RESET))
+22:07:31.824 ## !! WARN STOP tất cả (n1 khởi động lại (HARD_RESET))
+22:07:31.834 << WARN n1 khởi động lại -> sẽ dừng hết và HOME LẠI TẤT CẢ
+22:07:31.835 ## !! WARN n1 khởi động lại -> sẽ dừng hết và HOME LẠI TẤT CẢ
+22:07:31.845 << OK STOP
+22:07:31.857 << EVT n1 - -> IDLE pos=0.000
+22:07:32.842 << EVT HOME LẠI TẤT CẢ (lần 1)
+22:07:32.877 << OK ENABLE
+22:07:32.911 << OK CLEAR
+22:07:32.946 << OK HOME
+22:07:32.959 << EVT n2 IDLE -> HOMING pos=12.086
+22:07:32.959 << EVT n1 IDLE -> HOMING pos=0.000
+22:07:32.959 << EVT n3 IDLE -> HOMING pos=8.180
+22:07:33.298 >> clear
+22:07:33.298 ## .. Đã gửi clear
+22:07:33.311 ## .. Robot chưa sẵn sàng -> tạm dừng gửi lệnh, kiểm tra trạng thái
+22:07:33.311 >> status
+22:07:33.337 << STAT fault=False queue=0 inflight=CLEAR
+22:07:33.337 << STAT n1 ON  HOMING   err=NONE           homed=0 sw=0 pos=  -2.877 target=   0.000
+22:07:33.358 << STAT n2 ON  HOMING   err=NONE           homed=0 sw=0 pos=   9.241 target=  12.086
+22:07:33.358 << STAT n3 ON  HOMING   err=NONE           homed=0 sw=0 pos=   5.320 target=   8.180
+22:07:33.369 << OK CLEAR
+22:07:36.286 << EVT n2 HOMING -> IDLE pos=0.498
+22:07:36.311 >> status
+22:07:36.336 << STAT fault=False queue=0 inflight=-
+22:07:36.336 << STAT n1 ON  HOMING   err=NONE           homed=0 sw=0 pos= -13.612 target=   0.000
+22:07:36.336 << STAT n2 ON  IDLE     err=NONE           homed=1 sw=1 pos=   0.498 target=   0.498
+22:07:36.361 << STAT n3 ON  HOMING   err=NONE           homed=0 sw=0 pos=   2.604 target=   8.180
+22:07:37.363 << EVT n3 HOMING -> IDLE pos=0.498
+22:07:37.968 << EVT n1 HOMING -> IDLE pos=0.498
+22:07:39.320 >> status
+22:07:39.341 << STAT fault=False queue=0 inflight=-
+22:07:39.342 << STAT n1 ON  IDLE     err=NONE           homed=1 sw=1 pos=   0.498 target=   0.498
+22:07:39.365 << STAT n2 ON  IDLE     err=NONE           homed=1 sw=1 pos=   0.498 target=   0.498
+22:07:39.366 << STAT n3 ON  IDLE     err=NONE           homed=1 sw=1 pos=   0.498 target=   0.498
+22:07:39.366 ## .. Robot sẵn sàng -> chạy tiếp
+22:07:39.366 >> look 89.2 1.66 0 20              # cut     x= +0.02 y= +1.66 đổi  0.00°
+22:07:39.412 << IK az=89.2 tilt=1.66 twist=0.0 -> n1=13.059 n2=11.559 n3=13.969
+22:07:39.412 << WARN 20 ms quá nhanh với tốc độ hiện tại -> dùng 712 ms để 3 trục tới đích cùng lúc
+22:07:39.413 ## !! WARN 20 ms quá nhanh với tốc độ hiện tại -> dùng 712 ms để 3 trục tới đích cùng lúc
+22:07:39.462 << EVT n2 IDLE -> MOVING pos=0.498
+22:07:39.462 << OK MOVE
+22:07:39.462 << EVT n3 IDLE -> MOVING pos=0.498
+22:07:39.474 << EVT n1 IDLE -> MOVING pos=0.498
+22:07:40.178 << EVT n2 MOVING -> IDLE pos=11.555
+22:07:40.178 << EVT n1 MOVING -> IDLE pos=13.066
+22:07:40.189 << EVT n3 MOVING -> IDLE pos=13.966
+22:07:40.233 >> look 73.8 1.81 0 150             # micro   x= +0.51 y= +1.74 đổi  0.49°
+22:07:40.280 << IK az=73.8 tilt=1.81 twist=0.0 -> n1=13.484 n2=11.336 n3=13.769
+22:07:40.305 << EVT n2 IDLE -> MOVING pos=11.555
+22:07:40.305 << OK MOVE
+22:07:40.315 << EVT n3 IDLE -> MOVING pos=13.966
+22:07:40.316 << EVT n1 IDLE -> MOVING pos=13.066
+22:07:40.353 >> look 62.1 1.73 0 150             # pursuit x= +0.81 y= +1.53 đổi  0.37°
+22:07:40.391 << IK az=62.1 tilt=1.73 twist=0.0 -> n1=13.724 n2=11.394 n3=13.471
+22:07:40.427 << OK MOVE
+22:07:40.460 >> look 40.6 1.78 0 150             # pursuit x= +1.36 y= +1.16 đổi  0.66°
+22:07:40.508 << IK az=40.6 tilt=1.78 twist=0.0 -> n1=14.149 n2=11.497 n3=12.945
+22:07:40.520 << EVT n2 MOVING -> IDLE pos=11.395
+22:07:40.542 << OK MOVE
+22:07:40.554 << EVT n2 IDLE -> MOVING pos=11.395
+22:07:40.564 >> look 23.1 2.05 0 150             # pursuit x= +1.88 y= +0.80 đổi  0.64°
+22:07:40.607 << IK az=23.1 tilt=2.05 twist=0.0 -> n1=14.568 n2=11.591 n3=12.439
+22:07:40.632 << OK MOVE
+22:07:40.666 >> look 10.8 2.44 0 150             # pursuit x= +2.40 y= +0.46 đổi  0.62°
+22:07:40.702 << IK az=10.8 tilt=2.44 twist=0.0 -> n1=14.966 n2=11.689 n3=11.954
+22:07:40.736 << OK MOVE
+22:07:40.770 >> look 1.9 2.93 0 150              # pursuit x= +2.93 y= +0.10 đổi  0.64°
+22:07:40.805 << IK az=1.9 tilt=2.93 twist=0.0 -> n1=15.379 n2=11.791 n3=11.455
+22:07:40.852 << OK MOVE
+22:07:40.876 >> look 355.6 3.48 0 150            # pursuit x= +3.47 y= -0.27 đổi  0.65°
+22:07:40.924 << IK az=355.6 tilt=3.48 twist=0.0 -> n1=15.798 n2=11.895 n3=10.953
+22:07:40.946 << OK MOVE
+22:07:40.981 >> look 351.1 4.05 0 150            # pursuit x= +4.00 y= -0.63 đổi  0.64°
+22:07:41.027 << IK az=351.1 tilt=4.05 twist=0.0 -> n1=16.208 n2=12.000 n3=10.463
+22:07:41.082 >> look 347.8 4.62 0 150            # pursuit x= +4.51 y= -0.98 đổi  0.62°
+22:07:41.127 << IK az=347.8 tilt=4.62 twist=0.0 -> n1=16.603 n2=12.104 n3=9.991
+22:07:41.139 << EVT n2 MOVING -> IDLE pos=11.893
+22:07:41.139 << EVT n3 MOVING -> IDLE pos=10.961
+22:07:41.151 << EVT n1 MOVING -> IDLE pos=15.798
+22:07:41.173 << EVT n3 IDLE -> MOVING pos=10.961
+22:07:41.183 << EVT n1 IDLE -> MOVING pos=15.798
+22:07:41.184 >> look 345.2 5.20 0 150            # pursuit x= +5.03 y= -1.32 đổi  0.62°
+22:07:41.196 << EVT n2 IDLE -> MOVING pos=11.893
+22:07:41.207 << OK MOVE
+22:07:41.243 << IK az=345.2 tilt=5.2 twist=0.0 -> n1=16.994 n2=12.213 n3=9.523
+22:07:41.291 >> look 343.1 5.83 0 150            # pursuit x= +5.58 y= -1.70 đổi  0.66°
+22:07:41.303 << OK MOVE
+22:07:41.340 << IK az=343.1 tilt=5.83 twist=0.0 -> n1=17.415 n2=12.321 n3=9.032
+22:07:41.375 << OK MOVE
+22:07:41.400 >> look 341.3 6.47 0 150            # pursuit x= +6.13 y= -2.07 đổi  0.67°
+22:07:41.438 << IK az=341.3 tilt=6.47 twist=0.0 -> n1=17.832 n2=12.442 n3=8.536
+22:07:41.485 << OK MOVE
+22:07:41.507 >> look 339.9 7.10 0 150            # pursuit x= +6.67 y= -2.44 đổi  0.66°
+22:07:41.557 << IK az=339.9 tilt=7.1 twist=0.0 -> n1=18.239 n2=12.556 n3=8.057
+22:07:41.581 << OK MOVE
+22:07:41.613 >> look 339.0 7.60 0 150            # fix     x= +7.10 y= -2.73 đổi  0.51°
+22:07:41.650 << IK az=339.0 tilt=7.6 twist=0.0 -> n1=18.563 n2=12.643 n3=7.684
+22:07:41.754 << EVT n2 MOVING -> IDLE pos=12.552
+22:07:41.764 << EVT n1 MOVING -> IDLE pos=18.241
+22:07:41.788 << OK MOVE
+22:07:41.788 << EVT n2 IDLE -> MOVING pos=12.552
+22:07:41.800 << EVT n1 IDLE -> MOVING pos=18.241
+22:07:41.871 >> look 349.1 2.44 0 433            # sacc    x= +2.40 y= -0.46 đổi  5.22°
+22:07:41.929 << IK az=349.1 tilt=2.44 twist=0.0 -> n1=14.845 n2=12.419 n3=11.342
+22:07:41.929 << EVT n2 MOVING -> IDLE pos=12.648
+22:07:41.941 << EVT n3 MOVING -> IDLE pos=7.682
+22:07:41.953 << EVT n1 MOVING -> IDLE pos=18.562
+22:07:41.964 << EVT n2 IDLE -> MOVING pos=12.648
+22:07:41.976 << EVT n3 IDLE -> MOVING pos=7.682
+22:07:41.976 << OK MOVE
+22:07:41.988 << EVT n1 IDLE -> MOVING pos=18.562
+22:07:42.360 << EVT n2 MOVING -> IDLE pos=12.423
+22:07:42.397 << EVT n3 MOVING -> IDLE pos=11.346
+22:07:42.410 << EVT n1 MOVING -> IDLE pos=14.850
+22:07:42.508 >> look 123.3 4.71 0 497            # sacc    x= -2.59 y= +3.93 đổi  6.65°
+22:07:42.554 << IK az=123.3 tilt=4.71 twist=0.0 -> n1=11.033 n2=10.724 n3=16.958
+22:07:42.577 << EVT n1 IDLE -> MOVING pos=14.850
+22:07:42.577 << OK MOVE
+22:07:42.590 << EVT n2 IDLE -> MOVING pos=12.423
+22:07:42.590 << EVT n3 IDLE -> MOVING pos=11.346
+22:07:43.065 << EVT n2 MOVING -> IDLE pos=10.720
+22:07:43.089 << EVT n1 MOVING -> IDLE pos=11.025
+22:07:43.100 << EVT n3 MOVING -> IDLE pos=16.955
+22:07:43.302 >> look 90.7 3.63 0 284             # sacc    x= -0.04 y= +3.63 đổi  2.56°
+22:07:43.347 << IK az=90.7 tilt=3.63 twist=0.0 -> n1=13.223 n2=10.093 n3=15.329
+22:07:43.370 << EVT n3 IDLE -> MOVING pos=16.955
+22:07:43.370 << OK MOVE
+22:07:43.382 << EVT n1 IDLE -> MOVING pos=11.025
+22:07:43.382 << EVT n2 IDLE -> MOVING pos=10.720
+22:07:43.650 << EVT n3 MOVING -> IDLE pos=15.332
+22:07:43.662 << EVT n2 MOVING -> IDLE pos=10.093
+22:07:43.674 << EVT n1 MOVING -> IDLE pos=13.227
+22:07:43.894 >> look 83.8 3.46 0 150             # micro   x= +0.37 y= +3.44 đổi  0.46°
+22:07:43.931 << IK az=83.8 tilt=3.46 twist=0.0 -> n1=13.570 n2=10.091 n3=14.977
+22:07:43.967 << EVT n3 IDLE -> MOVING pos=15.332
+22:07:43.967 << OK MOVE
+22:07:43.979 << EVT n1 IDLE -> MOVING pos=13.227
+22:07:44.026 >> look 46.8 9.56 0 517             # sacc    x= +6.54 y= +6.97 đổi  7.11°
+22:07:44.069 << IK az=46.8 tilt=9.56 twist=0.0 -> n1=19.826 n2=5.223 n3=14.087
+22:07:44.105 << EVT n2 IDLE -> MOVING pos=10.093
+22:07:44.105 << OK MOVE
+22:07:44.606 << EVT n3 MOVING -> IDLE pos=14.095
+22:07:44.618 << EVT n2 MOVING -> IDLE pos=5.223
+22:07:44.618 << EVT n1 MOVING -> IDLE pos=19.832
+22:07:44.861 >> look 45.4 9.34 0 150             # pursuit x= +6.56 y= +6.65 đổi  0.32°
+22:07:44.897 << IK az=45.4 tilt=9.34 twist=0.0 -> n1=19.779 n2=5.453 n3=13.885
+22:07:44.941 << EVT n2 IDLE -> MOVING pos=5.223
+22:07:44.942 << OK MOVE
+22:07:44.952 << EVT n1 IDLE -> MOVING pos=19.832
+22:07:44.963 << EVT n3 IDLE -> MOVING pos=14.095
+22:07:44.963 >> look 43.2 9.04 0 150             # pursuit x= +6.58 y= +6.19 đổi  0.46°
+22:07:45.000 << IK az=43.2 tilt=9.04 twist=0.0 -> n1=19.723 n2=5.785 n3=13.586
+22:07:45.035 << OK MOVE
+22:07:45.070 >> look 40.8 8.73 0 150             # pursuit x= +6.61 y= +5.70 đổi  0.49°
+22:07:45.105 << IK az=40.8 tilt=8.73 twist=0.0 -> n1=19.650 n2=6.139 n3=13.279
+22:07:45.180 << OK MOVE
+22:07:45.180 >> look 38.1 8.43 0 150             # pursuit x= +6.63 y= +5.20 đổi  0.50°
+22:07:45.229 << IK az=38.1 tilt=8.43 twist=0.0 -> n1=19.581 n2=6.508 n3=12.956
+22:07:45.276 << OK MOVE
+22:07:45.287 >> look 35.3 8.15 0 150             # pursuit x= +6.66 y= +4.71 đổi  0.49°
+22:07:45.334 << IK az=35.3 tilt=8.15 twist=0.0 -> n1=19.506 n2=6.873 n3=12.642
+22:07:45.380 << OK MOVE
+22:07:45.392 >> look 32.4 7.91 0 150             # pursuit x= +6.68 y= +4.23 đổi  0.48°
+22:07:45.426 << IK az=32.4 tilt=7.91 twist=0.0 -> n1=19.444 n2=7.222 n3=12.336
+22:07:45.460 << OK MOVE
+22:07:45.494 >> look 29.3 7.69 0 150             # pursuit x= +6.70 y= +3.76 đổi  0.47°
+22:07:45.540 << IK az=29.3 tilt=7.69 twist=0.0 -> n1=19.382 n2=7.575 n3=12.026
+22:07:45.585 << OK MOVE
+22:07:45.596 >> look 26.1 7.49 0 150             # pursuit x= +6.73 y= +3.30 đổi  0.47°
+22:07:45.632 << IK az=26.1 tilt=7.49 twist=0.0 -> n1=19.315 n2=7.928 n3=11.722
+22:07:45.667 << OK MOVE
+22:07:45.702 >> look 22.6 7.31 0 150             # pursuit x= +6.75 y= +2.82 đổi  0.48°
+22:07:45.747 << IK az=22.6 tilt=7.31 twist=0.0 -> n1=19.246 n2=8.296 n3=11.406
+22:07:45.781 << OK MOVE
+22:07:45.804 >> look 19.1 7.17 0 150             # pursuit x= +6.77 y= +2.35 đổi  0.47°
+22:07:45.841 << IK az=19.1 tilt=7.17 twist=0.0 -> n1=19.186 n2=8.647 n3=11.100
+22:07:45.885 << OK MOVE
+22:07:45.909 >> look 15.4 7.05 0 150             # pursuit x= +6.79 y= +1.87 đổi  0.48°
+22:07:45.954 << IK az=15.4 tilt=7.05 twist=0.0 -> n1=19.120 n2=9.010 n3=10.790
+22:07:45.991 << EVT n1 MOVING -> IDLE pos=19.189
+22:07:46.013 << OK MOVE
+22:07:46.013 >> look 11.5 6.96 0 150             # pursuit x= +6.82 y= +1.39 đổi  0.47°
+22:07:46.047 << IK az=11.5 tilt=6.96 twist=0.0 -> n1=19.053 n2=9.384 n3=10.470
+22:07:46.117 >> look 7.7 6.90 0 150              # pursuit x= +6.84 y= +0.92 đổi  0.47°
+22:07:46.154 << IK az=7.7 tilt=6.9 twist=0.0 -> n1=18.985 n2=9.746 n3=10.166
+22:07:46.227 >> look 3.5 6.88 0 150              # pursuit x= +6.87 y= +0.42 đổi  0.50°
+22:07:46.270 << IK az=3.5 tilt=6.88 twist=0.0 -> n1=18.921 n2=10.139 n3=9.829
+22:07:46.327 >> look 0.0 6.88 0 150              # fix     x= +6.88 y= +0.00 đổi  0.41°
+22:07:46.374 << IK az=0.0 tilt=6.88 twist=0.0 -> n1=18.857 n2=10.473 n3=9.553
+22:07:46.557 << EVT n3 MOVING -> IDLE pos=9.546
+22:07:46.570 << EVT n2 MOVING -> IDLE pos=10.479
+22:07:46.674 >> look 345.1 4.22 0 313            # sacc    x= +4.08 y= -1.09 đổi  3.01°
+22:07:46.711 << IK az=345.1 tilt=4.22 twist=0.0 -> n1=16.208 n2=12.345 n3=10.123
+22:07:46.749 << EVT n2 IDLE -> MOVING pos=10.479
+22:07:46.772 << EVT n3 IDLE -> MOVING pos=9.546
+22:07:46.784 >> look 336.2 1.26 0 312            # sacc    x= +1.15 y= -0.51 đổi  2.99°
+22:07:46.834 << IK az=336.2 tilt=1.26 twist=0.0 -> n1=13.778 n2=12.877 n3=11.926
+22:07:47.005 << ERR n1 OFFLINE
+===== SỰ CỐ #4 lúc 22:07:47.005: ERR n1 OFFLINE =====
+  21 lệnh gửi trong 5 s trước đó (mới nhất ở dưới):
+    22:07:46.013 >> look 11.5 6.96 0 150             # pursuit x= +6.82 y= +1.39 đổi  0.47°
+    22:07:46.117 >> look 7.7 6.90 0 150              # pursuit x= +6.84 y= +0.92 đổi  0.47°
+    22:07:46.227 >> look 3.5 6.88 0 150              # pursuit x= +6.87 y= +0.42 đổi  0.50°
+    22:07:46.327 >> look 0.0 6.88 0 150              # fix     x= +6.88 y= +0.00 đổi  0.41°
+    22:07:46.674 >> look 345.1 4.22 0 313            # sacc    x= +4.08 y= -1.09 đổi  3.01°
+    22:07:46.784 >> look 336.2 1.26 0 312            # sacc    x= +1.15 y= -0.51 đổi  2.99°
+  Master báo gần nhất:
+    22:07:46.374 << IK az=0.0 tilt=6.88 twist=0.0 -> n1=18.857 n2=10.473 n3=9.553
+    22:07:46.557 << EVT n3 MOVING -> IDLE pos=9.546
+    22:07:46.570 << EVT n2 MOVING -> IDLE pos=10.479
+    22:07:46.711 << IK az=345.1 tilt=4.22 twist=0.0 -> n1=16.208 n2=12.345 n3=10.123
+    22:07:46.749 << EVT n2 IDLE -> MOVING pos=10.479
+    22:07:46.772 << EVT n3 IDLE -> MOVING pos=9.546
+    22:07:46.834 << IK az=336.2 tilt=1.26 twist=0.0 -> n1=13.778 n2=12.877 n3=11.926
+    22:07:47.005 << ERR n1 OFFLINE
+22:07:47.006 ## !! ERR n1 OFFLINE
+22:07:47.006 << FAULT n1 mất liên lạc
+22:07:47.006 ## !! FAULT n1 mất liên lạc
+22:07:47.006 ## .. Tạm dừng gửi lệnh vì FAULT: n1 mất liên lạc
+22:07:47.018 << WARN STOP tất cả (n1 mất liên lạc)
+22:07:47.018 ## !! WARN STOP tất cả (n1 mất liên lạc)
+22:07:47.030 << EVT n2 MOVING -> IDLE pos=11.732
+22:07:47.043 << OK STOP
+22:07:47.056 << EVT n3 MOVING -> IDLE pos=10.286
+22:07:47.515 << EVT n1 ONLINE F8:5B:1B:4C:81:C0
+22:07:47.526 << EVT n1 BOOT fw=1 reset=HARD_RESET
+22:07:47.526 << FAULT n1 khởi động lại (HARD_RESET)
+22:07:47.526 ## !! FAULT n1 khởi động lại (HARD_RESET)
+22:07:47.526 << WARN STOP tất cả (n1 khởi động lại (HARD_RESET))
+22:07:47.526 ## !! WARN STOP tất cả (n1 khởi động lại (HARD_RESET))
+22:07:47.537 << WARN n1 khởi động lại -> sẽ dừng hết và HOME LẠI TẤT CẢ
+22:07:47.537 ## !! WARN n1 khởi động lại -> sẽ dừng hết và HOME LẠI TẤT CẢ
+22:07:47.549 << OK STOP
+22:07:47.562 << EVT n1 - -> IDLE pos=0.000
+22:07:48.532 << EVT HOME LẠI TẤT CẢ (lần 1)
+22:07:48.569 << OK ENABLE
+22:07:48.607 << OK CLEAR
+22:07:48.643 << EVT n2 IDLE -> HOMING pos=11.732
+22:07:48.643 << OK HOME
+22:07:48.656 << EVT n3 IDLE -> HOMING pos=10.286
+22:07:48.656 << EVT n1 IDLE -> HOMING pos=0.000
+22:07:49.008 >> clear
+22:07:49.008 ## .. Đã gửi clear
+22:07:49.020 ## .. Robot chưa sẵn sàng -> tạm dừng gửi lệnh, kiểm tra trạng thái
+22:07:49.020 >> status
+22:07:49.045 << STAT fault=False queue=0 inflight=CLEAR
+22:07:49.045 << STAT n1 ON  HOMING   err=NONE           homed=0 sw=0 pos=  -4.677 target=   0.000
+22:07:49.070 << STAT n2 ON  HOMING   err=NONE           homed=0 sw=0 pos=   7.071 target=  11.732
+22:07:49.070 << STAT n3 ON  HOMING   err=NONE           homed=0 sw=0 pos=   5.577 target=  10.286
+22:07:49.082 << OK CLEAR
+22:07:50.434 << ERR n1 OFFLINE
+===== SỰ CỐ #5 lúc 22:07:50.434: ERR n1 OFFLINE =====
+  13 lệnh gửi trong 5 s trước đó (mới nhất ở dưới):
+    22:07:46.227 >> look 3.5 6.88 0 150              # pursuit x= +6.87 y= +0.42 đổi  0.50°
+    22:07:46.327 >> look 0.0 6.88 0 150              # fix     x= +6.88 y= +0.00 đổi  0.41°
+    22:07:46.674 >> look 345.1 4.22 0 313            # sacc    x= +4.08 y= -1.09 đổi  3.01°
+    22:07:46.784 >> look 336.2 1.26 0 312            # sacc    x= +1.15 y= -0.51 đổi  2.99°
+    22:07:49.008 >> clear
+    22:07:49.020 >> status
+  Master báo gần nhất:
+    22:07:48.656 << EVT n3 IDLE -> HOMING pos=10.286
+    22:07:48.656 << EVT n1 IDLE -> HOMING pos=0.000
+    22:07:49.045 << STAT fault=False queue=0 inflight=CLEAR
+    22:07:49.045 << STAT n1 ON  HOMING   err=NONE           homed=0 sw=0 pos=  -4.677 target=   0.000
+    22:07:49.070 << STAT n2 ON  HOMING   err=NONE           homed=0 sw=0 pos=   7.071 target=  11.732
+    22:07:49.070 << STAT n3 ON  HOMING   err=NONE           homed=0 sw=0 pos=   5.577 target=  10.286
+    22:07:49.082 << OK CLEAR
+    22:07:50.434 << ERR n1 OFFLINE
+22:07:50.435 ## !! ERR n1 OFFLINE
+22:07:50.435 << FAULT n1 mất liên lạc
+22:07:50.435 ## !! FAULT n1 mất liên lạc
+22:07:50.435 ## .. Tạm dừng gửi lệnh vì FAULT: n1 mất liên lạc
+22:07:50.446 << WARN STOP tất cả (n1 mất liên lạc)
+22:07:50.446 ## !! WARN STOP tất cả (n1 mất liên lạc)
+22:07:50.459 << OK STOP
+22:07:50.459 << EVT n2 HOMING -> IDLE pos=3.552
+22:07:50.470 << EVT n3 HOMING -> IDLE pos=2.218
+22:07:50.955 << EVT n1 ONLINE F8:5B:1B:4C:81:C0
+22:07:50.956 << EVT n1 BOOT fw=1 reset=HARD_RESET
+22:07:50.956 << FAULT n1 khởi động lại (HARD_RESET)
+22:07:50.956 ## !! FAULT n1 khởi động lại (HARD_RESET)
+22:07:50.969 << WARN STOP tất cả (n1 khởi động lại (HARD_RESET))
+22:07:50.969 ## !! WARN STOP tất cả (n1 khởi động lại (HARD_RESET))
+22:07:50.969 << WARN n1 khởi động lại -> sẽ dừng hết và HOME LẠI TẤT CẢ
+22:07:50.969 ## !! WARN n1 khởi động lại -> sẽ dừng hết và HOME LẠI TẤT CẢ
+22:07:50.980 << OK STOP
+22:07:51.002 << EVT n1 - -> IDLE pos=0.000
+22:07:51.971 << EVT HOME LẠI TẤT CẢ (lần 1)
+22:07:51.993 << OK ENABLE
+22:07:52.030 << OK CLEAR
+22:07:52.067 << OK HOME
+22:07:52.079 << EVT n2 IDLE -> HOMING pos=3.552
+22:07:52.080 << EVT n1 IDLE -> HOMING pos=0.000
+22:07:52.091 << EVT n3 IDLE -> HOMING pos=2.218
+22:07:52.439 >> clear
+22:07:52.439 ## .. Đã gửi clear
+22:07:52.452 >> status
+22:07:52.477 << STAT fault=False queue=0 inflight=CLEAR
+22:07:52.477 << STAT n1 ON  HOMING   err=NONE           homed=0 sw=0 pos=  -4.629 target=   0.000
+22:07:52.500 << STAT n2 ON  HOMING   err=NONE           homed=0 sw=1 pos=   0.338 target=   3.552
+22:07:52.501 << STAT n3 ON  HOMING   err=NONE           homed=0 sw=0 pos=   4.436 target=   2.218
+22:07:52.512 << OK CLEAR
+22:07:54.716 << EVT n2 HOMING -> IDLE pos=0.498
+22:07:55.457 >> status
+22:07:55.478 << STAT fault=False queue=0 inflight=-
+22:07:55.503 << STAT n1 ON  HOMING   err=NONE           homed=0 sw=0 pos=  -7.730 target=   0.000
+22:07:55.503 << STAT n2 ON  IDLE     err=NONE           homed=1 sw=1 pos=   0.498 target=   0.498
+22:07:55.503 << STAT n3 ON  HOMING   err=NONE           homed=0 sw=0 pos=   2.170 target=   2.218
+22:07:56.103 << EVT n1 HOMING -> IDLE pos=0.498
+22:07:56.430 << EVT n3 HOMING -> IDLE pos=0.498
+22:07:58.464 >> status
+22:07:58.489 << STAT fault=False queue=0 inflight=-
+22:07:58.489 << STAT n1 ON  IDLE     err=NONE           homed=1 sw=1 pos=   0.498 target=   0.498
+22:07:58.512 << STAT n2 ON  IDLE     err=NONE           homed=1 sw=1 pos=   0.498 target=   0.498
+22:07:58.512 << STAT n3 ON  IDLE     err=NONE           homed=1 sw=1 pos=   0.498 target=   0.498
+22:07:58.512 ## .. Robot sẵn sàng -> chạy tiếp
+22:07:58.513 >> look 291.2 1.25 0 20             # cut     x= +0.45 y= -1.16 đổi  0.00°
+22:07:58.559 << IK az=291.2 tilt=1.25 twist=0.0 -> n1=13.112 n2=13.636 n3=11.833
+22:07:58.572 << WARN 20 ms quá nhanh với tốc độ hiện tại -> dùng 702 ms để 3 trục tới đích cùng lúc
+22:07:58.573 ## !! WARN 20 ms quá nhanh với tốc độ hiện tại -> dùng 702 ms để 3 trục tới đích cùng lúc
+22:07:58.607 << EVT n2 IDLE -> MOVING pos=0.498
+22:07:58.608 << EVT n1 IDLE -> MOVING pos=0.498
+22:07:58.620 << OK MOVE
+22:07:58.620 << EVT n3 IDLE -> MOVING pos=0.498
+22:07:58.983 >> look 336.2 0.67 0 150            # sacc    x= +0.61 y= -0.27 đổi  0.91°
+22:07:59.030 << IK az=336.2 tilt=0.67 twist=0.0 -> n1=13.347 n2=12.867 n3=12.359
+22:07:59.054 << OK MOVE
+22:07:59.591 << EVT n2 MOVING -> IDLE pos=12.873
+22:07:59.602 << EVT n1 MOVING -> IDLE pos=13.339
+22:07:59.602 << EVT n3 MOVING -> IDLE pos=12.359
+22:07:59.638 >> look 340.9 3.86 0 325            # sacc    x= +3.65 y= -1.26 đổi  3.20°
+22:07:59.684 << IK az=340.9 tilt=3.86 twist=0.0 -> n1=15.811 n2=12.638 n3=10.208
+22:07:59.720 << EVT n3 IDLE -> MOVING pos=12.359
+22:07:59.732 << EVT n2 IDLE -> MOVING pos=12.873
+22:07:59.732 << OK MOVE
+22:07:59.743 << EVT n1 IDLE -> MOVING pos=13.339
+22:08:00.023 << EVT n2 MOVING -> IDLE pos=12.632
+22:08:00.035 << EVT n1 MOVING -> IDLE pos=15.814
+22:08:00.048 << EVT n3 MOVING -> IDLE pos=10.205
+22:08:00.341 >> look 330.5 1.61 0 266            # sacc    x= +1.40 y= -0.80 đổi  2.30°
+22:08:00.386 << IK az=330.5 tilt=1.61 twist=0.0 -> n1=13.955 n2=13.021 n3=11.610
+22:08:00.411 << EVT n3 IDLE -> MOVING pos=10.205
+22:08:00.411 << OK MOVE
+22:08:00.423 << EVT n2 IDLE -> MOVING pos=12.632
+22:08:00.433 << EVT n1 IDLE -> MOVING pos=15.814
+22:08:00.658 << EVT n2 MOVING -> IDLE pos=13.018
+22:08:00.670 << EVT n1 MOVING -> IDLE pos=13.950
+22:08:00.682 << EVT n3 MOVING -> IDLE pos=11.604
+22:08:01.013 >> look 341.7 1.36 0 150            # pursuit x= +1.29 y= -0.43 đổi  0.39°
+22:08:01.060 << IK az=341.7 tilt=1.36 twist=0.0 -> n1=13.905 n2=12.765 n3=11.911
+22:08:01.084 << EVT n2 IDLE -> MOVING pos=13.018
+22:08:01.084 << OK MOVE
+22:08:01.095 << EVT n3 IDLE -> MOVING pos=11.604
+22:08:01.095 << EVT n1 IDLE -> MOVING pos=13.950
+22:08:01.118 >> look 30.8 1.11 0 164             # pursuit x= +0.96 y= +0.57 đổi  1.05°
+22:08:01.162 << IK az=30.8 tilt=1.11 twist=0.0 -> n1=13.734 n2=12.092 n3=12.752
+22:08:01.185 << OK MOVE
+22:08:01.228 >> look 69.7 1.74 0 171             # pursuit x= +0.60 y= +1.63 đổi  1.12°
+22:08:01.264 << IK az=69.7 tilt=1.74 twist=0.0 -> n1=13.558 n2=11.384 n3=13.646
+22:08:01.299 << OK MOVE
+22:08:01.334 >> look 84.3 2.65 0 165             # pursuit x= +0.26 y= +2.64 đổi  1.06°
+22:08:01.379 << IK az=84.3 tilt=2.65 twist=0.0 -> n1=13.378 n2=10.733 n3=14.499
+22:08:01.413 << OK MOVE
+22:08:01.436 >> look 91.0 3.62 0 162             # pursuit x= -0.06 y= +3.62 đổi  1.03°
+22:08:01.481 << IK az=91.0 tilt=3.62 twist=0.0 -> n1=13.206 n2=10.107 n3=15.332
+22:08:01.540 >> look 94.9 4.62 0 164             # pursuit x= -0.39 y= +4.61 đổi  1.04°
+22:08:01.551 << OK MOVE
+22:08:01.588 << IK az=94.9 tilt=4.62 twist=0.0 -> n1=13.025 n2=9.493 n3=16.171
+22:08:01.613 << OK MOVE
+22:08:01.650 >> look 97.5 5.72 0 171             # pursuit x= -0.75 y= +5.67 đổi  1.12°
+22:08:01.687 << IK az=97.5 tilt=5.72 twist=0.0 -> n1=12.833 n2=8.838 n3=17.082
+22:08:01.731 << OK MOVE
+22:08:01.756 >> look 99.2 6.77 0 166             # pursuit x= -1.09 y= +6.68 đổi  1.07°
+22:08:01.802 << IK az=99.2 tilt=6.77 twist=0.0 -> n1=12.646 n2=8.230 n3=17.951
+22:08:01.837 << OK MOVE
+22:08:01.860 >> look 100.5 7.80 0 164            # pursuit x= -1.42 y= +7.67 đổi  1.05°
+22:08:01.903 << IK az=100.5 tilt=7.8 twist=0.0 -> n1=12.450 n2=7.652 n3=18.809
+22:08:01.928 << OK MOVE
+22:08:01.964 >> look 101.4 8.85 0 164            # pursuit x= -1.75 y= +8.67 đổi  1.05°
+22:08:02.001 << IK az=101.4 tilt=8.85 twist=0.0 -> n1=12.263 n2=7.067 n3=19.679
+22:08:02.034 << OK MOVE
+22:08:02.067 >> look 102.2 9.87 0 162            # pursuit x= -2.08 y= +9.65 đổi  1.03°
+22:08:02.113 << IK az=102.2 tilt=9.87 twist=0.0 -> n1=12.062 n2=6.518 n3=20.537
+22:08:02.171 << OK MOVE
+22:08:02.171 >> look 102.8 10.91 0 164           # pursuit x= -2.41 y=+10.64 đổi  1.05°
+22:08:02.216 << IK az=102.8 tilt=10.91 twist=0.0 -> n1=11.865 n2=5.964 n3=21.412
+22:08:02.241 << OK MOVE
+22:08:02.310 >> look 102.6 10.58 0 150           # pursuit x= -2.31 y=+10.32 đổi  0.34°
+22:08:02.347 << IK az=102.6 tilt=10.58 twist=0.0 -> n1=11.932 n2=6.137 n3=21.132
+22:08:02.383 << OK MOVE
+22:08:02.420 >> look 102.0 9.48 0 169            # pursuit x= -1.97 y= +9.28 đổi  1.10°
+22:08:02.468 << IK az=102.0 tilt=9.48 twist=0.0 -> n1=12.126 n2=6.734 n3=20.215
+22:08:02.491 << OK MOVE
+22:08:02.528 >> look 101.1 8.40 0 168            # pursuit x= -1.62 y= +8.24 đổi  1.09°
+22:08:02.576 << IK az=101.1 tilt=8.4 twist=0.0 -> n1=12.336 n2=7.320 n3=19.310
+22:08:02.638 << OK MOVE
+22:08:02.638 >> look 100.0 7.30 0 170            # pursuit x= -1.27 y= +7.19 đổi  1.11°
+22:08:02.675 << IK az=100.0 tilt=7.3 twist=0.0 -> n1=12.536 n2=7.936 n3=18.397
+22:08:02.711 << OK MOVE
+22:08:02.866 >> look 114.2 11.40 0 407           # sacc    x= -4.68 y=+10.40 đổi  4.69°
+22:08:02.912 << IK az=114.2 tilt=11.4 twist=0.0 -> n1=9.772 n2=6.928 n3=22.727
+22:08:02.913 << EVT n1 MOVING -> IDLE pos=12.536
+22:08:02.925 << EVT n2 MOVING -> IDLE pos=7.939
+22:08:02.948 << EVT n1 IDLE -> MOVING pos=12.536
+22:08:02.948 << OK MOVE
+22:08:02.960 << EVT n2 IDLE -> MOVING pos=7.939
+22:08:03.336 << EVT n2 MOVING -> IDLE pos=6.927
+22:08:03.349 << EVT n1 MOVING -> IDLE pos=9.771
+22:08:03.349 << EVT n3 MOVING -> IDLE pos=22.725
+22:08:03.473 >> look 140.9 11.40 0 435           # sacc    x= -8.85 y= +7.18 đổi  5.27°
+22:08:03.522 << IK az=140.9 tilt=11.4 twist=0.0 -> n1=5.841 n2=10.460 n3=23.271
+22:08:03.546 << EVT n3 IDLE -> MOVING pos=22.725
+22:08:03.556 << EVT n2 IDLE -> MOVING pos=6.927
+22:08:03.556 << OK MOVE
+22:08:03.556 << EVT n1 IDLE -> MOVING pos=9.771
+22:08:03.956 << EVT n3 MOVING -> IDLE pos=23.271
+22:08:03.978 << EVT n1 MOVING -> IDLE pos=5.834
+22:08:03.990 << EVT n2 MOVING -> IDLE pos=10.462
+22:08:04.153 >> look 216.9 5.20 0 672            # sacc    x= -4.15 y= -3.12 đổi 11.33°
+22:08:04.190 << IK az=216.9 tilt=5.2 twist=0.0 -> n1=9.164 n2=16.673 n3=12.884
+22:08:04.239 << EVT n2 IDLE -> MOVING pos=10.462
+22:08:04.251 << EVT n1 IDLE -> MOVING pos=5.834
+22:08:04.251 << OK MOVE
+22:08:04.251 << EVT n3 IDLE -> MOVING pos=23.271
+22:08:04.900 << EVT n1 MOVING -> IDLE pos=9.161
+22:08:04.913 << EVT n2 MOVING -> IDLE pos=16.666
+22:08:04.913 << EVT n3 MOVING -> IDLE pos=12.889
+22:08:05.276 >> look 203.1 4.21 0 205            # sacc    x= -3.87 y= -1.65 đổi  1.50°
+22:08:05.317 << IK az=203.1 tilt=4.21 twist=0.0 -> n1=9.494 n2=15.397 n3=13.776
+22:08:05.341 << OK MOVE
+22:08:05.353 << EVT n2 IDLE -> MOVING pos=16.666
+22:08:05.354 << EVT n3 IDLE -> MOVING pos=12.889
+22:08:05.364 << EVT n1 IDLE -> MOVING pos=9.161
+22:08:05.386 >> look 156.6 1.70 0 330            # sacc    x= -1.56 y= +0.67 đổi  3.28°
+22:08:05.436 << IK az=156.6 tilt=1.7 twist=0.0 -> n1=11.605 n2=12.841 n3=14.143
+22:08:05.495 << OK MOVE
+22:08:05.816 << EVT n3 MOVING -> IDLE pos=14.143
+22:08:05.826 << EVT n2 MOVING -> IDLE pos=12.841
+22:08:05.838 << EVT n1 MOVING -> IDLE pos=11.604
+22:08:05.959 >> look 101.3 6.58 0 459            # sacc    x= -1.29 y= +6.45 đổi  5.78°
+22:08:05.996 << IK az=101.3 tilt=6.58 twist=0.0 -> n1=12.434 n2=8.466 n3=17.917
+22:08:06.056 << OK MOVE
+22:08:06.056 << EVT n1 IDLE -> MOVING pos=11.604
+22:08:06.066 << EVT n2 IDLE -> MOVING pos=12.841
+22:08:06.066 << EVT n3 IDLE -> MOVING pos=14.143
+22:08:06.489 << EVT n1 MOVING -> IDLE pos=12.439
+22:08:06.501 << EVT n3 MOVING -> IDLE pos=17.920
+22:08:06.513 << EVT n2 MOVING -> IDLE pos=8.470
+22:08:06.654 >> look 101.8 6.89 0 150            # micro   x= -1.41 y= +6.75 đổi  0.32°
+22:08:06.702 << IK az=101.8 tilt=6.89 twist=0.0 -> n1=12.359 n2=8.300 n3=18.182
+22:08:06.723 << EVT n2 IDLE -> MOVING pos=8.470
+22:08:06.724 << OK MOVE
+22:08:06.735 << EVT n1 IDLE -> MOVING pos=12.439
+22:08:06.760 >> look 61.3 5.39 0 396             # sacc    x= +2.59 y= +4.72 đổi  4.48°
+22:08:06.795 << IK az=61.3 tilt=5.39 twist=0.0 -> n1=15.724 n2=8.351 n3=14.657
+22:08:06.948 << EVT n2 MOVING -> IDLE pos=8.357
+22:08:07.218 << ERR MOVE: không nhận được ACK từ n3
+===== SỰ CỐ #6 lúc 22:08:07.218: ERR MOVE: không nhận được ACK từ n3 =====
+  12 lệnh gửi trong 5 s trước đó (mới nhất ở dưới):
+    22:08:04.153 >> look 216.9 5.20 0 672            # sacc    x= -4.15 y= -3.12 đổi 11.33°
+    22:08:05.276 >> look 203.1 4.21 0 205            # sacc    x= -3.87 y= -1.65 đổi  1.50°
+    22:08:05.386 >> look 156.6 1.70 0 330            # sacc    x= -1.56 y= +0.67 đổi  3.28°
+    22:08:05.959 >> look 101.3 6.58 0 459            # sacc    x= -1.29 y= +6.45 đổi  5.78°
+    22:08:06.654 >> look 101.8 6.89 0 150            # micro   x= -1.41 y= +6.75 đổi  0.32°
+    22:08:06.760 >> look 61.3 5.39 0 396             # sacc    x= +2.59 y= +4.72 đổi  4.48°
+  Master báo gần nhất:
+    22:08:06.513 << EVT n2 MOVING -> IDLE pos=8.470
+    22:08:06.702 << IK az=101.8 tilt=6.89 twist=0.0 -> n1=12.359 n2=8.300 n3=18.182
+    22:08:06.723 << EVT n2 IDLE -> MOVING pos=8.470
+    22:08:06.724 << OK MOVE
+    22:08:06.735 << EVT n1 IDLE -> MOVING pos=12.439
+    22:08:06.795 << IK az=61.3 tilt=5.39 twist=0.0 -> n1=15.724 n2=8.351 n3=14.657
+    22:08:06.948 << EVT n2 MOVING -> IDLE pos=8.357
+    22:08:07.218 << ERR MOVE: không nhận được ACK từ n3
+22:08:07.219 ## !! ERR MOVE: không nhận được ACK từ n3
+22:08:07.219 << FAULT thiếu ACK lệnh MOVE
+22:08:07.219 ## !! FAULT thiếu ACK lệnh MOVE
+22:08:07.219 << WARN STOP tất cả (thiếu ACK lệnh MOVE)
+22:08:07.219 ## !! WARN STOP tất cả (thiếu ACK lệnh MOVE)
+22:08:07.219 ## .. Tạm dừng gửi lệnh vì FAULT: thiếu ACK lệnh MOVE
+22:08:07.244 << EVT n1 MOVING -> IDLE pos=15.589
+22:08:07.628 << ERR STOP: không nhận được ACK từ n3
+22:08:07.628 ## !! ERR STOP: không nhận được ACK từ n3
+22:08:07.628 << FAULT thiếu ACK lệnh STOP
+22:08:07.628 ## !! FAULT thiếu ACK lệnh STOP
+22:08:07.628 << WARN STOP tất cả (thiếu ACK lệnh STOP)
+22:08:07.628 ## !! WARN STOP tất cả (thiếu ACK lệnh STOP)
+22:08:07.734 << ERR n3 OFFLINE
+22:08:07.734 ## !! ERR n3 OFFLINE
+22:08:09.230 >> clear
+22:08:09.230 ## .. Đã gửi clear
+22:08:09.241 ## .. Robot chưa sẵn sàng -> tạm dừng gửi lệnh, kiểm tra trạng thái
+22:08:09.241 >> status
+22:08:09.262 << STAT fault=False queue=0 inflight=CLEAR
+22:08:09.286 << STAT n1 ON  IDLE     err=NONE           homed=1 sw=0 pos=  15.589 target=  15.589
+22:08:09.287 << STAT n2 ON  IDLE     err=NONE           homed=1 sw=0 pos=   8.357 target=   8.357
+22:08:09.287 << STAT n3 OFF -        err=NONE           homed=1 sw=0 pos=  17.920 target=  17.920
+22:08:09.301 << OK CLEAR
+22:08:09.573 << EVT n3 ONLINE F8:5B:1B:49:DA:70
+22:08:09.583 << EVT n3 BOOT fw=1 reset=WATCHDOG
+22:08:09.583 << WARN n3 vừa bị watchdog reset!
+22:08:09.583 ## !! WARN n3 vừa bị watchdog reset!
+22:08:09.595 << OK GETCFG
+22:08:09.607 << EVT n3 - -> IDLE pos=0.000
+22:08:09.607 << WARN n3 mất home -> sẽ dừng hết và HOME LẠI TẤT CẢ
+22:08:09.607 ## !! WARN n3 mất home -> sẽ dừng hết và HOME LẠI TẤT CẢ
+22:08:10.611 << EVT HOME LẠI TẤT CẢ (lần 1)
+22:08:10.635 << OK ENABLE
+22:08:10.684 << OK CLEAR
+22:08:10.721 << OK HOME
+22:08:10.721 << EVT n3 IDLE -> HOMING pos=0.000
+22:08:10.734 << EVT n1 IDLE -> HOMING pos=15.589
+22:08:10.734 << EVT n2 IDLE -> HOMING pos=8.357
+22:08:12.246 >> status
+22:08:12.272 << STAT fault=False queue=0 inflight=-
+22:08:12.272 << STAT n1 ON  HOMING   err=NONE           homed=0 sw=1 pos=   0.418 target=  15.589
+22:08:12.272 << STAT n2 ON  HOMING   err=NONE           homed=0 sw=0 pos=   3.568 target=   8.357
+22:08:12.297 << STAT n3 ON  HOMING   err=NONE           homed=0 sw=1 pos= -17.888 target=   0.000
+22:08:13.768 << EVT n2 HOMING -> IDLE pos=0.498
+22:08:15.253 >> status
+22:08:15.276 << EVT n1 HOMING -> IDLE pos=0.498
+22:08:15.276 << STAT fault=False queue=0 inflight=-
+22:08:15.276 << STAT n1 ON  IDLE     err=NONE           homed=1 sw=1 pos=   0.498 target=   0.498
+22:08:15.298 << STAT n2 ON  IDLE     err=NONE           homed=1 sw=1 pos=   0.498 target=   0.498
+22:08:15.298 << STAT n3 ON  HOMING   err=NONE           homed=0 sw=0 pos= -17.293 target=   0.000
+22:08:15.545 << EVT n3 HOMING -> IDLE pos=0.498
+22:08:15.546 << OK đã home lại xong tất cả
+22:08:15.546 ## .. OK đã home lại xong tất cả
+22:08:18.256 >> status
+22:08:18.281 << STAT fault=False queue=0 inflight=-
+22:08:18.281 << STAT n1 ON  IDLE     err=NONE           homed=1 sw=1 pos=   0.498 target=   0.498
+22:08:18.301 << STAT n2 ON  IDLE     err=NONE           homed=1 sw=1 pos=   0.498 target=   0.498
+22:08:18.301 << STAT n3 ON  IDLE     err=NONE           homed=1 sw=1 pos=   0.498 target=   0.498
+22:08:18.301 ## .. Robot sẵn sàng -> chạy tiếp
+22:08:18.301 >> look 172.4 0.96 0 20             # cut     x= -0.95 y= +0.13 đổi  0.00°
+22:08:18.348 << IK az=172.4 tilt=0.96 twist=0.0 -> n1=12.066 n2=13.070 n3=13.441
+22:08:18.348 << WARN 20 ms quá nhanh với tốc độ hiện tại -> dùng 695 ms để 3 trục tới đích cùng lúc
+22:08:18.348 ## !! WARN 20 ms quá nhanh với tốc độ hiện tại -> dùng 695 ms để 3 trục tới đích cùng lúc
+22:08:18.383 << EVT n2 IDLE -> MOVING pos=0.498
+22:08:18.383 << EVT n1 IDLE -> MOVING pos=0.498
+22:08:18.383 << OK MOVE
+22:08:18.394 << EVT n3 IDLE -> MOVING pos=0.498
+22:08:19.050 >> look 61.9 4.34 0 411             # sacc    x= +2.04 y= +3.83 đổi  4.76°
+22:08:19.095 << IK az=61.9 tilt=4.34 twist=0.0 -> n1=15.106 n2=9.217 n3=14.354
+22:08:19.106 << EVT n3 MOVING -> IDLE pos=13.436
+22:08:19.106 << EVT n1 MOVING -> IDLE pos=12.070
+22:08:19.118 << EVT n2 MOVING -> IDLE pos=13.066
+22:08:19.140 << EVT n3 IDLE -> MOVING pos=13.436
+22:08:19.151 << EVT n1 IDLE -> MOVING pos=12.070
+22:08:19.151 << OK MOVE
+22:08:19.206 << EVT n2 IDLE -> MOVING pos=13.066
+22:08:19.538 << EVT n3 MOVING -> IDLE pos=14.352
+22:08:19.548 << EVT n2 MOVING -> IDLE pos=9.225
+22:08:19.560 << EVT n1 MOVING -> IDLE pos=15.107
+22:08:19.857 >> look 57.2 4.39 0 150             # micro   x= +2.37 y= +3.69 đổi  0.36°
+22:08:19.901 << IK az=57.2 tilt=4.39 twist=0.0 -> n1=15.387 n2=9.203 n3=14.091
+22:08:19.925 << OK MOVE
+22:08:19.925 << EVT n2 IDLE -> MOVING pos=9.225
+22:08:19.937 << EVT n3 IDLE -> MOVING pos=14.352
+22:08:19.937 << EVT n2 MOVING -> IDLE pos=9.209
+22:08:19.949 << EVT n1 IDLE -> MOVING pos=15.107
+22:08:20.042 >> look 20.0 4.31 0 299             # sacc    x= +4.05 y= +1.48 đổi  2.78°
+22:08:20.066 << EVT n1 MOVING -> IDLE pos=15.380
+22:08:20.077 << EVT n3 MOVING -> IDLE pos=14.095
+22:08:20.109 << IK az=20.0 tilt=4.31 twist=0.0 -> n1=16.563 n2=10.313 n3=11.818
+22:08:20.133 << OK MOVE
+22:08:20.133 << EVT n2 IDLE -> MOVING pos=9.209
+22:08:20.144 << EVT n3 IDLE -> MOVING pos=14.095
+22:08:20.144 << EVT n1 IDLE -> MOVING pos=15.380
+22:08:20.426 << EVT n2 MOVING -> IDLE pos=10.318
+22:08:20.426 << EVT n1 MOVING -> IDLE pos=16.570
+22:08:20.437 << EVT n3 MOVING -> IDLE pos=11.812
+22:08:20.586 >> look 328.8 2.19 0 337            # sacc    x= +1.87 y= -1.13 đổi  3.40°
+22:08:20.632 << IK az=328.8 tilt=2.19 twist=0.0 -> n1=14.314 n2=13.138 n3=11.147
+22:08:20.655 << OK MOVE
+22:08:20.667 << EVT n3 IDLE -> MOVING pos=11.812
+22:08:20.668 << EVT n2 IDLE -> MOVING pos=10.318
+22:08:20.679 << EVT n1 IDLE -> MOVING pos=16.570
+22:08:20.983 << EVT n3 MOVING -> IDLE pos=11.154
+22:08:20.983 << EVT n2 MOVING -> IDLE pos=13.130
+22:08:20.994 << EVT n1 MOVING -> IDLE pos=14.320
+22:08:21.282 >> look 339.1 11.40 0 600           # sacc    x=+10.65 y= -4.06 đổi  9.25°
+22:08:21.327 << IK az=339.1 tilt=11.4 twist=0.0 -> n1=21.433 n2=12.507 n3=5.323
+22:08:21.352 << EVT n2 IDLE -> MOVING pos=13.130
+22:08:21.365 << EVT n1 IDLE -> MOVING pos=14.320
+22:08:21.365 << OK MOVE
+22:08:21.365 << EVT n3 IDLE -> MOVING pos=11.154
+22:08:21.932 << EVT n2 MOVING -> IDLE pos=12.504
+22:08:21.955 << EVT n1 MOVING -> IDLE pos=21.439
+22:08:21.967 << EVT n3 MOVING -> IDLE pos=5.320
+22:08:22.051 >> look 345.6 9.07 0 287            # sacc    x= +8.79 y= -2.25 đổi  2.60°
+22:08:22.101 << IK az=345.6 tilt=9.07 twist=0.0 -> n1=20.143 n2=11.641 n3=7.269
+22:08:22.133 << EVT n3 IDLE -> MOVING pos=5.320
+22:08:22.145 << EVT n2 IDLE -> MOVING pos=12.504
+22:08:22.145 << OK MOVE
+22:08:22.158 << EVT n1 IDLE -> MOVING pos=21.439
+22:08:22.406 << EVT n2 MOVING -> IDLE pos=11.636
+22:08:22.417 << EVT n1 MOVING -> IDLE pos=20.138
+22:08:22.429 << EVT n3 MOVING -> IDLE pos=7.264
+22:08:22.734 >> look 347.4 9.21 0 150            # pursuit x= +8.99 y= -2.01 đổi  0.32°
+22:08:22.781 << IK az=347.4 tilt=9.21 twist=0.0 -> n1=20.375 n2=11.360 n3=7.344
+22:08:22.819 << EVT n2 IDLE -> MOVING pos=11.636
+22:08:22.829 << EVT n3 IDLE -> MOVING pos=7.264
+22:08:22.829 << OK MOVE
+22:08:22.842 << EVT n1 IDLE -> MOVING pos=20.138
+22:08:22.842 >> look 351.5 9.57 0 150            # pursuit x= +9.46 y= -1.42 đổi  0.76°
+22:08:22.890 << IK az=351.5 tilt=9.57 twist=0.0 -> n1=20.929 n2=10.689 n3=7.529
+22:08:22.935 << OK MOVE
+22:08:22.946 >> look 355.2 9.96 0 150            # pursuit x= +9.92 y= -0.84 đổi  0.74°
+22:08:22.983 << IK az=355.2 tilt=9.96 twist=0.0 -> n1=21.475 n2=10.037 n3=7.710
+22:08:23.027 << OK MOVE
+22:08:23.052 >> look 358.6 10.39 0 150           # pursuit x=+10.39 y= -0.26 đổi  0.74°
+22:08:23.101 << IK az=358.6 tilt=10.39 twist=0.0 -> n1=22.033 n2=9.388 n3=7.888
+22:08:23.125 << OK MOVE
+22:08:23.160 >> look 1.8 10.87 0 150             # pursuit x=+10.86 y= +0.34 đổi  0.76°
+22:08:23.197 << IK az=1.8 tilt=10.87 twist=0.0 -> n1=22.620 n2=8.722 n3=8.067
+22:08:23.244 << OK MOVE
+22:08:23.269 >> look 4.7 11.38 0 150             # pursuit x=+11.34 y= +0.94 đổi  0.77°
+22:08:23.314 << IK az=4.7 tilt=11.38 twist=0.0 -> n1=23.217 n2=8.061 n3=8.242
+22:08:23.350 << OK MOVE
+22:08:23.373 >> look 2.6 10.96 0 150             # pursuit x=+10.95 y= +0.50 đổi  0.59°
+22:08:23.423 << IK az=2.6 tilt=10.96 twist=0.0 -> n1=22.736 n2=8.563 n3=8.130
+22:08:23.448 << OK MOVE
+22:08:23.471 << EVT n1 MOVING -> IDLE pos=22.741
+22:08:23.482 >> look 359.5 10.48 0 150           # pursuit x=+10.48 y= -0.10 đổi  0.76°
+22:08:23.494 << EVT n2 MOVING -> IDLE pos=8.566
+22:08:23.530 << IK az=359.5 tilt=10.48 twist=0.0 -> n1=22.157 n2=9.220 n3=7.952
+22:08:23.554 << EVT n2 IDLE -> MOVING pos=8.566
+22:08:23.554 << OK MOVE
+22:08:23.565 << EVT n1 IDLE -> MOVING pos=22.741
+22:08:23.586 >> look 356.1 10.04 0 150           # pursuit x=+10.02 y= -0.67 đổi  0.74°
+22:08:23.634 << IK az=356.1 tilt=10.04 twist=0.0 -> n1=21.593 n2=9.879 n3=7.768
+22:08:23.681 << OK MOVE
+22:08:23.693 >> look 352.5 9.63 0 150            # pursuit x= +9.54 y= -1.26 đổi  0.75°
+22:08:23.741 << IK az=352.5 tilt=9.63 twist=0.0 -> n1=21.037 n2=10.528 n3=7.595
+22:08:23.778 << OK MOVE
+22:08:23.803 >> look 348.4 9.25 0 150            # pursuit x= +9.06 y= -1.87 đổi  0.77°
+22:08:23.840 << IK az=348.4 tilt=9.25 twist=0.0 -> n1=20.470 n2=11.209 n3=7.410
+22:08:23.889 << OK MOVE
+22:08:23.912 >> look 344.0 8.93 0 150            # pursuit x= +8.59 y= -2.47 đổi  0.77°
+22:08:23.960 << IK az=344.0 tilt=8.93 twist=0.0 -> n1=19.923 n2=11.887 n3=7.220
+22:08:23.996 << OK MOVE
+22:08:24.017 >> look 339.4 8.67 0 150            # pursuit x= +8.12 y= -3.05 đổi  0.74°
+22:08:24.055 << IK az=339.4 tilt=8.67 twist=0.0 -> n1=19.396 n2=12.554 n3=7.033
+22:08:24.090 << OK MOVE
+22:08:24.122 >> look 334.7 8.48 0 150            # pursuit x= +7.66 y= -3.63 đổi  0.74°
+22:08:24.159 << IK az=334.7 tilt=8.48 twist=0.0 -> n1=18.898 n2=13.204 n3=6.845
+22:08:24.193 << OK MOVE
+22:08:24.229 >> look 329.6 8.34 0 150            # pursuit x= +7.19 y= -4.22 đổi  0.76°
+22:08:24.273 << IK az=329.6 tilt=8.34 twist=0.0 -> n1=18.385 n2=13.885 n3=6.652
+22:08:24.319 << OK MOVE
+22:08:24.330 >> look 324.7 8.26 0 150            # pursuit x= +6.75 y= -4.77 đổi  0.71°
+22:08:24.377 << IK az=324.7 tilt=8.26 twist=0.0 -> n1=17.906 n2=14.524 n3=6.477
+22:08:24.400 << OK MOVE
+22:08:24.436 >> look 319.5 8.26 0 150            # pursuit x= +6.28 y= -5.36 đổi  0.75°
+22:08:24.482 << IK az=319.5 tilt=8.26 twist=0.0 -> n1=17.423 n2=15.202 n3=6.278
+22:08:24.519 << OK MOVE
+22:08:24.540 >> look 314.5 8.31 0 150            # pursuit x= +5.82 y= -5.93 đổi  0.73°
+22:08:24.588 << IK az=314.5 tilt=8.31 twist=0.0 -> n1=16.956 n2=15.857 n3=6.095
+22:08:24.611 << OK MOVE
+22:08:24.646 >> look 309.4 8.44 0 150            # pursuit x= +5.36 y= -6.52 đổi  0.75°
+22:08:24.693 << IK az=309.4 tilt=8.44 twist=0.0 -> n1=16.483 n2=16.548 n3=5.894
+22:08:24.727 << OK MOVE
+22:08:24.748 >> look 304.7 8.61 0 150            # pursuit x= +4.91 y= -7.08 đổi  0.72°
+22:08:24.787 << IK az=304.7 tilt=8.61 twist=0.0 -> n1=16.034 n2=17.204 n3=5.713
+22:08:24.821 << OK MOVE
+22:08:24.856 >> look 300.0 8.86 0 150            # pursuit x= +4.43 y= -7.67 đổi  0.76°
+22:08:24.901 << IK az=300.0 tilt=8.86 twist=0.0 -> n1=15.575 n2=17.904 n3=5.511
+22:08:24.948 << OK MOVE
+22:08:24.960 >> look 295.7 9.16 0 150            # pursuit x= +3.98 y= -8.25 đổi  0.73°
+22:08:25.006 << IK az=295.7 tilt=9.16 twist=0.0 -> n1=15.137 n2=18.591 n3=5.311
+22:08:25.031 << OK MOVE
+22:08:25.068 >> look 293.0 9.38 0 150            # fix     x= +3.66 y= -8.64 đổi  0.50°
+22:08:25.115 << IK az=293.0 tilt=9.38 twist=0.0 -> n1=14.848 n2=19.046 n3=5.182
+22:08:25.153 << OK MOVE
+22:08:25.390 << EVT n3 MOVING -> IDLE pos=5.175
+22:08:25.390 << EVT n2 MOVING -> IDLE pos=19.045
+22:08:25.401 << EVT n1 MOVING -> IDLE pos=14.850
+22:08:25.424 >> look 303.0 3.78 0 456            # sacc    x= +2.06 y= -3.16 đổi  5.70°
+22:08:25.473 << IK az=303.0 tilt=3.78 twist=0.0 -> n1=14.222 n2=14.751 n3=9.679
+22:08:25.496 << OK MOVE
+22:08:25.508 << EVT n3 IDLE -> MOVING pos=5.175
+22:08:25.520 << EVT n2 IDLE -> MOVING pos=19.045
+22:08:25.520 << EVT n1 IDLE -> MOVING pos=14.850
+22:08:25.949 << EVT n1 MOVING -> IDLE pos=14.223
+22:08:25.961 << EVT n2 MOVING -> IDLE pos=14.754
+22:08:25.961 << EVT n3 MOVING -> IDLE pos=9.675
+22:08:26.068 >> look 300.8 4.07 0 150            # micro   x= +2.09 y= -3.49 đổi  0.33°
+22:08:26.105 << IK az=300.8 tilt=4.07 twist=0.0 -> n1=14.204 n2=15.016 n3=9.445
+22:08:26.142 << EVT n2 IDLE -> MOVING pos=14.754
+22:08:26.152 << EVT n1 IDLE -> MOVING pos=14.223
+22:08:26.152 << OK MOVE
+22:08:26.152 << EVT n3 IDLE -> MOVING pos=9.675
+22:08:26.175 << EVT n1 MOVING -> IDLE pos=14.207
+22:08:26.175 >> look 330.2 1.36 0 311            # sacc    x= +1.18 y= -0.67 đổi  2.96°
+22:08:26.221 << IK az=330.2 tilt=1.36 twist=0.0 -> n1=13.782 n2=13.001 n3=11.799
+22:08:26.244 << OK MOVE
+22:08:26.267 << EVT n1 IDLE -> MOVING pos=14.207
+22:08:26.542 << EVT n1 MOVING -> IDLE pos=13.789
+22:08:26.553 << EVT n3 MOVING -> IDLE pos=11.796
+22:08:26.566 << EVT n2 MOVING -> IDLE pos=13.002
+22:08:26.625 >> look 329.1 1.74 0 150            # pursuit x= +1.50 y= -0.89 đổi  0.39°
+22:08:26.672 << IK az=329.1 tilt=1.74 twist=0.0 -> n1=14.021 n2=13.071 n3=11.496
+22:08:26.696 << EVT n1 IDLE -> MOVING pos=13.789
+22:08:26.696 << OK MOVE
+22:08:26.708 << EVT n2 IDLE -> MOVING pos=13.002
+22:08:26.708 << EVT n3 IDLE -> MOVING pos=11.796
+22:08:26.733 >> look 327.3 2.87 0 172            # pursuit x= +2.41 y= -1.55 đổi  1.13°
+22:08:26.770 << IK az=327.3 tilt=2.87 twist=0.0 -> n1=14.721 n2=13.293 n3=10.603
+22:08:26.794 << OK MOVE
+22:08:26.841 >> look 326.5 4.00 0 172            # pursuit x= +3.33 y= -2.21 đổi  1.13°
+22:08:26.887 << IK az=326.5 tilt=4.0 twist=0.0 -> n1=15.414 n2=13.521 n3=9.724
+22:08:26.911 << OK MOVE
+22:08:26.946 >> look 326.0 5.09 0 168            # pursuit x= +4.22 y= -2.84 đổi  1.09°
+22:08:26.992 << IK az=326.0 tilt=5.09 twist=0.0 -> n1=16.074 n2=13.750 n3=8.885
+22:08:27.017 << OK MOVE
+22:08:27.055 >> look 325.7 6.22 0 173            # pursuit x= +5.14 y= -3.51 đổi  1.14°
+22:08:27.103 << IK az=325.7 tilt=6.22 twist=0.0 -> n1=16.754 n2=13.990 n3=8.028
+22:08:27.127 << OK MOVE
+22:08:27.164 >> look 325.5 7.36 0 173            # pursuit x= +6.07 y= -4.17 đổi  1.14°
+22:08:27.200 << IK az=325.5 tilt=7.36 twist=0.0 -> n1=17.435 n2=14.236 n3=7.174
+22:08:27.237 << OK MOVE
+22:08:27.274 >> look 272.6 3.97 0 464            # sacc    x= +0.18 y= -3.97 đổi  5.89°
+22:08:27.318 << IK az=272.6 tilt=3.97 twist=0.0 -> n1=12.594 n2=16.033 n3=10.045
+22:08:27.323 ## Dừng (Ctrl+C).
+22:08:27.324 >> look 0 0 0 800
+22:08:27.525 << IK az=0.0 tilt=0.0 twist=0.0 -> n1=12.857 n2=12.857 n3=12.857
+22:08:27.525 << OK MOVE
+22:08:27.525 << OK MOVE
+22:08:27.529 ## Tổng kết: 6 sự cố.
+22:08:27.529 ##    n1 OFFLINE                     4 lần
+22:08:27.529 ##    n1 INTERNAL                    1 lần
+22:08:27.529 ##    n3 không nhận được ACK         1 lần

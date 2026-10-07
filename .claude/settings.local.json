@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p /private/tmp/claude-502/-Users-nguyensean-Library-CloudStorage-OneDrive-Personal-MakerLab-vn-Delta-EYE/3dc9c590-a1e0-4bd7-b234-2125531b5d91/scratchpad)",
+      "Bash(python3 - /private/tmp/claude-502/-Users-nguyensean-Library-Application-Support-Claude-scratch-workspaces-c3771619-b1cd-4482-a8a6-2b8ecbdfd199-fb2b2dc2-578f-45be-bf53-8436d76b94c7-scratch-2026-10-06-85b78f/3dc9c590-a1e0-4bd7-b234-2125531b5d91/scratchpad/sim.py /private/tmp/claude-502/-Users-nguyensean-Library-CloudStorage-OneDrive-Personal-MakerLab-vn-Delta-EYE/3dc9c590-a1e0-4bd7-b234-2125531b5d91/scratchpad/sim2.py)",
+      "Bash(cd /private/tmp/claude-502/-Users-nguyensean-Library-CloudStorage-OneDrive-Personal-MakerLab-vn-Delta-EYE/3dc9c590-a1e0-4bd7-b234-2125531b5d91/scratchpad)",
+      "Bash(python3 -B sim2.py)",
+      "Bash(grep -vE \"^Lệnh|^  |^Homing|Home OK|Đã kết nối|-> \\(MOVING|HOMING\\)|MOVING -> IDLE|OK \\(MOVE|HOME|CLEAR|ENABLE|STOP\\)$\")",
+      "Bash(python3 -B -m py_compile delta_proto.py)",
+      "Bash(python3 - /private/tmp/claude-502/-Users-nguyensean-Library-CloudStorage-OneDrive-Personal-MakerLab-vn-Delta-EYE/3dc9c590-a1e0-4bd7-b234-2125531b5d91/scratchpad/sim2.py /private/tmp/claude-502/-Users-nguyensean-Library-CloudStorage-OneDrive-Personal-MakerLab-vn-Delta-EYE/3dc9c590-a1e0-4bd7-b234-2125531b5d91/scratchpad/sim3.py)",
+      "Bash(python3 -B sim3.py)",
+      "Bash(grep -vE \"^Lệnh|^  |Đã kết nối|ONLINE|BOOT|-> \\(MOVING\\)|MOVING -> IDLE|OK \\(MOVE|CLEAR|ENABLE\\)$|^Node|ids from|unknown board|chưa có trong|Thêm dòng\")",
+      "Bash(grep -vE \"^Lệnh|^  |-> \\(MOVING\\)|MOVING -> IDLE|OK \\(MOVE|CLEAR|ENABLE\\)$\")",
+      "Bash(python3 -B -)",
+      "Bash(rm -f neutral.txt)",
+      "Bash(python3 - sim2.py sim4.py)",
+      "Bash(python3 -B sim4.py)",
+      "Bash(grep -vE \"^Lệnh|^  [a-z]|-> \\(MOVING\\)|MOVING -> IDLE|OK \\(MOVE\\)$\")",
+      "Read(//Users/nguyensean/Downloads/**)",
+      "Bash(cat)",
+      "Bash(python3 stepparse.py /Users/nguyensean/Downloads/delta.step)",
+      "Bash(python3 -)",
+      "Bash(python3 asm.py /Users/nguyensean/Downloads/delta.step)",
+      "Bash(PYTHONPATH=/Users/nguyensean/Library/CloudStorage/OneDrive-Personal/MakerLab.vn/Delta_EYE/firmware python3 -B -)"
+    ]
+  }
+}
