@@ -1,0 +1,60 @@
+03:04:48.263 ## Bắt đầu: /Users/nguyensean/Library/CloudStorage/OneDrive-Personal/MakerLab.vn/Delta_EYE/pc/eye_movie.py
+03:04:48.771 << ets Jul 29 2019 12:21:46
+03:04:48.772 << rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+03:04:48.772 << configsip: 0, SPIWP:0xee
+03:04:48.772 << clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+03:04:48.772 << mode:DIO, clock div:2
+03:04:48.772 << load:0x3fff0030,len:4200
+03:04:48.772 << load:0x40078000,len:15236
+03:04:48.772 << load:0x40080400,len:3344
+03:04:48.772 << entry 0x400805a8
+03:04:48.772 >> status
+03:04:49.985 << OK master3 MAC F8:B3:B7:50:DD:D0
+03:04:50.035 << OK neutral mắt 1 = 15.250 15.250 15.250
+03:04:50.035 << WARN mắt 2 chưa calib: chỉnh nhìn thẳng bằng 'goto', rồi 'calib 2'
+03:04:50.035 ## !! WARN mắt 2 chưa calib: chỉnh nhìn thẳng bằng 'goto', rồi 'calib 2'
+03:04:50.035 << OK mắt đang bật: 1
+03:04:50.035 << Lệnh (thế hệ 3 - hai mắt):
+03:04:50.035 << eyes 1 | eyes 2 | eyes 12 : chọn mắt hoạt động (lưu lại). Mắt tắt không cần cắm điện.
+03:04:50.059 << look az tilt [twist] [ms] : các mắt đang bật cùng nhìn theo tọa độ cực (độ)
+03:04:50.059 << verg <độ>           : góc quy tụ 2 mắt (tổng, mỗi mắt quay vào trong một nửa). 0 = song song
+03:04:50.059 << dist <mm>           : nhìn vật cách <mm> (tự tính góc quy tụ theo IPD). 0 = vô cực
+03:04:50.081 << ik az tilt [twist]  : chỉ tính góc 6 động cơ
+03:04:50.081 << calib [1|2]         : lưu vị trí hiện tại làm vị trí nhìn thẳng của mắt (mặc định: mắt đang bật)
+03:04:50.105 << range [twist]       : góc nghiêng tối đa theo hướng (mỗi mắt đang bật)
+03:04:50.106 << move d1 d2 d3 [ms]  : 3 trục của MỖI mắt đang bật tới góc d1,d2,d3 (độ)
+03:04:50.106 << goto n deg [ms]     : chỉ node n (1..6) tới góc deg
+03:04:50.106 << home [n|e1|e2]      : home (mặc định: các mắt đang bật)
+03:04:50.131 << stop                : dừng khẩn cấp tất cả
+03:04:50.131 << release [n|e1|e2] / enable [n|e1|e2]
+03:04:50.131 << clear [n|e1|e2]     : xóa lỗi
+03:04:50.131 << speed hz [accel]    : tốc độ tối đa / gia tốc (mắt đang bật)
+03:04:50.131 << status              : hỏi trạng thái node của các mắt đang bật
+03:04:50.155 << blink [n|e1|e2]     : đèn node nháy trắng 4 giây
+03:04:50.155 << cfg                 : đọc cấu hình các node
+03:04:50.155 << set <n|e1|e2|all> <tên> <giá trị> : min max homedir maxhz accel homefast homeslow led enc encdir
+03:04:50.155 << EVT n1 ONLINE F8:5B:1B:4C:81:C0 (mắt 1)
+03:04:50.155 << EVT n1 - -> IDLE pos=15.252
+03:04:50.179 << EVT n3 ONLINE F8:5B:1B:49:DA:70 (mắt 1)
+03:04:50.180 << EVT n3 - -> IDLE pos=15.252
+03:04:50.180 << EVT n2 ONLINE F8:5B:1B:4B:83:6C (mắt 1)
+03:04:50.180 << EVT n2 - -> IDLE pos=15.252
+03:04:50.200 << CFG n1 min=0.5 max=30 homedir=0 maxhz=2000 accel=6000 homefast=800 homeslow=150 led=1 enc=1 encdir=-1
+03:04:50.222 << CFG n3 min=0.5 max=30 homedir=0 maxhz=2000 accel=6000 homefast=800 homeslow=150 led=1 enc=1 encdir=-1
+03:04:50.248 << CFG n2 min=0.5 max=30 homedir=0 maxhz=2000 accel=6000 homefast=800 homeslow=150 led=1 enc=1 encdir=-1
+03:04:50.777 >> status
+03:04:50.826 << STAT fault=False eyes=1 verg=0.00
+03:04:50.826 << STAT n1 ON  IDLE     err=NONE           homed=1 sw=0 pos=  15.252 target=   0.000
+03:04:50.851 << STAT n2 ON  IDLE     err=NONE           homed=1 sw=0 pos=  15.252 target=   0.000
+03:04:50.851 << STAT n3 ON  IDLE     err=NONE           homed=1 sw=0 pos=  15.252 target=   0.000
+03:04:50.851 << ENC n1 encoder=OK lệch=-1 vi bước  đã bù=15 lần  khôi phục sau reset=0
+03:04:50.851 ## Robot sẵn sàng. Bắt đầu "xem phim"... (Ctrl+C để dừng)
+03:04:50.852 >> look 0.0 0.00 0 150              # fix     x= +0.00 y= +0.00 đổi  0.00°
+03:04:50.864 << ENC n2 encoder=OK lệch=3 vi bước  đã bù=0 lần  khôi phục sau reset=0
+03:04:50.864 << ENC n3 encoder=OK lệch=3 vi bước  đã bù=0 lần  khôi phục sau reset=0
+03:04:50.874 << PWR n1 VBUS=13.00 V  thấp nhất=12.41 V  thấp nhất từ đầu=12.41 V
+03:04:50.874 << PWR n2 VBUS=13.44 V  thấp nhất=12.58 V  thấp nhất từ đầu=12.58 V
+03:04:50.886 << PWR n3 VBUS=12.85 V  thấp nhất=12.64 V  thấp nhất từ đầu=12.64 V
+03:04:50.909 << IK az=0.0 tilt=0.0 twist=0.0 -> n1=15.250 n2=15.250 n3=15.250
+03:04:51.246 >> look 225.4 6.23 0 480            # sacc    x= -4.38 y= -4.44 đổi  6.23°
+03:04:51.293 << IK az=225.4 tilt=6.23 twist=0.0 -> n1=11.304 n2=20.222 n3=14.452

@@ -33,10 +33,9 @@ NODE_MACS = {
     'F8:5B:1B:4C:81:C0': 1,    # mắt 1 - motor 1
     'F8:5B:1B:4B:83:6C': 2,    # mắt 1 - motor 2
     'F8:5B:1B:49:DA:70': 3,    # mắt 1 - motor 3
-    # TODO: điền MAC thật của 3 board mắt 2
-    '00:00:00:00:00:04': 4,    # mắt 2 - motor 1
-    '00:00:00:00:00:05': 5,    # mắt 2 - motor 2
-    '00:00:00:00:00:06': 6,    # mắt 2 - motor 3
+    'F8:5B:1B:4C:A1:A8': 4,    # mắt 2 - motor 1
+    'F8:5B:1B:4B:D2:D0': 5,    # mắt 2 - motor 2
+    'F8:5B:1B:4A:E2:8C': 6,    # mắt 2 - motor 3
 }
 
 
@@ -137,7 +136,7 @@ def mac_str(mac):
 
 
 def mac_bytes(s):
-    return bytes(int(x, 16) for x in s.split(':'))
+    return bytes([int(x, 16) for x in s.split(':')])
 
 
 def node_id_of(mac):

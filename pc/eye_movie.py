@@ -346,11 +346,22 @@ class TrafficLog:
 
     def _write(self, text):
         if self.f:
-            self.f.write(text + '\n')
-            self.f.flush()
-            self._bytes = getattr(self, '_bytes', 0) + len(text) + 1
-            if self._bytes > self.MAX_LOG_BYTES:
-                self._rotate()
+            try:
+                self.f.write(text + '\n')
+                self.f.flush()
+                self._bytes = getattr(self, '_bytes', 0) + len(text) + 1
+                if self._bytes > self.MAX_LOG_BYTES:
+                    self._rotate()
+            except OSError as ex:
+                # Ổ đĩa / OneDrive treo khi ghi (vd [Errno 60] Operation timed out):
+                # KHÔNG được làm dừng robot -> bỏ ghi file, chạy tiếp
+                f, self.f = self.f, None
+                try:
+                    f.close()
+                except OSError:
+                    pass
+                self.console('!! Không ghi được file log ({}) -> tắt ghi log, robot vẫn chạy. '
+                             'Dùng --log-dir <thư mục ngoài OneDrive>'.format(ex))
 
     def _rotate(self):
         """Đóng file log hiện tại, mở file mới cùng tên + _2, _3 ..."""
@@ -897,9 +908,10 @@ class RobotNotReady(Exception):
 
 def run_forever(open_port, source, sender, duration=0, forever=False, auto_clear=False,
                 no_home=False, traffic=None, log=print, clock=time.monotonic, sleep=time.sleep,
-                view=None, video=None, echo=False, max_restarts=None):
+                view=None, video=None, echo=False, max_restarts=None, eyes=None):
     """
-    Kết nối -> kiểm tra / home robot -> chạy. forever=True: lỗi gì cũng không thoát mà tự
+    Kết nối -> [chọn mắt] -> kiểm tra / home robot -> chạy.
+    eyes: '1' / '2' / '12' -> gửi 'eyes ...' cho master3 (2 mắt) mỗi lần kết nối, None = giữ nguyên. forever=True: lỗi gì cũng không thoát mà tự
     kết nối lại cổng USB, clear + home rồi chạy tiếp; chờ giữa các lần thử 5, 10, 20, 40, 60 s.
     Trả về (mã thoát, link cuối cùng). Mã: 0 xong, 1 robot không sẵn sàng, 2 bỏ cuộc, 3 lỗi cổng USB.
     """
@@ -915,6 +927,10 @@ def run_forever(open_port, source, sender, duration=0, forever=False, auto_clear
             sender.last = None
             sleep(0.5)
             link.poll()
+            if eyes:
+                link.send('eyes ' + eyes)             # master3 lưu lại + hỏi trạng thái mắt đó
+                sleep(1.0)
+                link.poll()
             if not no_home and not link.ensure_ready(clock=clock, sleep=sleep):
                 raise RobotNotReady('Robot chưa sẵn sàng (thiếu node online hoặc home không xong)')
             link.fault = link.not_ready = False      # bỏ các thông báo cũ trước lúc bắt đầu
@@ -1018,8 +1034,11 @@ def main(argv=None):
     ap.add_argument('--auto-clear', action='store_true', help='tự gửi clear khi FAULT (cẩn thận!)')
     ap.add_argument('--echo', action='store_true', help='in mọi lệnh gửi đi')
     ap.add_argument('--verbose', action='store_true', help='in mọi dòng gửi / nhận ra màn hình')
-    ap.add_argument('--log-dir', help='thư mục lưu log (mặc định: pc/logs)')
+    ap.add_argument('--log-dir', help='thư mục lưu log (mặc định: ~/Library/Logs/Delta_EYE, '
+                                      'NGOÀI OneDrive để ghi không bị treo)')
     ap.add_argument('--no-log', action='store_true', help='không ghi file log')
+    ap.add_argument('--eyes', choices=('1', '2', '12'),
+                    help='firmware 2 mắt (master3): chỉ chạy mắt 1, mắt 2, hoặc cả hai (12)')
     ap.add_argument('--forever', action='store_true',
                     help='chạy không ngừng: tự kết nối lại USB, tự clear + home khi lỗi, phim tự lặp')
     args = ap.parse_args(argv)
@@ -1039,7 +1058,8 @@ def main(argv=None):
     log_path = None
     if not args.no_log:
         import os
-        log_dir = args.log_dir or os.path.join(os.path.dirname(os.path.abspath(__file__)), 'logs')
+        # Mặc định ghi NGOÀI OneDrive: thư mục đồng bộ có lúc treo khi ghi -> TimeoutError
+        log_dir = args.log_dir or os.path.join(os.path.expanduser('~'), 'Library', 'Logs', 'Delta_EYE')
         log_path = os.path.join(log_dir, time.strftime('eye_%Y%m%d_%H%M%S.log'))
     traffic = TrafficLog(log_path, verbose=args.verbose)
     log = traffic.event
@@ -1084,7 +1104,7 @@ def main(argv=None):
     try:
         code, link = run_forever(open_port, source, sender, duration=args.duration,
                                  forever=args.forever, auto_clear=args.auto_clear,
-                                 no_home=args.no_home, traffic=traffic, log=log,
+                                 no_home=args.no_home, traffic=traffic, log=log, eyes=args.eyes,
                                  view=view, video=video, echo=args.echo)
         if code == 3 and link is None:
             print('-> Board master bị rút / khởi động lại / Thonny đang chiếm cổng.')

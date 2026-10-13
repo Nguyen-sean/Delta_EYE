@@ -381,6 +381,23 @@ class TestTrafficLog(unittest.TestCase):
         return E.TrafficLog(path, clock=self.fc, wall=lambda: 1700000000.0 + self.fc.t,
                             console=self.out.append)
 
+    def test_log_disk_timeout_does_not_stop_program(self):
+        class HangingFile:
+            def write(self, t):
+                pass
+
+            def flush(self):
+                raise TimeoutError(60, 'Operation timed out')   # OneDrive treo khi ghi
+
+            def close(self):
+                raise TimeoutError(60, 'Operation timed out')
+        tl = self.make()
+        tl.f = HangingFile()
+        tl.record('>>', 'look 1.0 1.00 0 100')          # không được ném lỗi
+        tl.event('vẫn chạy')
+        self.assertIsNone(tl.f)
+        self.assertTrue(any('Không ghi được file log' in l for l in self.out))
+
     def test_incident_shows_recent_commands_only(self):
         tl = self.make()
         tl.record('>>', 'look 1.0 1.00 0 100', 'cũ')

@@ -106,4 +106,4 @@ def unpack(msg):
 
 def mac_bytes(s):
     """'F8:B3:B7:50:DD:D0' -> b'\\xf8\\xb3...'"""
-    return bytes(int(x, 16) for x in s.split(':'))
+    return bytes([int(x, 16) for x in s.split(':')])

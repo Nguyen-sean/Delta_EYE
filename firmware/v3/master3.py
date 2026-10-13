@@ -15,7 +15,7 @@ import sys
 import select
 import struct
 import os
-from math import sqrt, atan2, degrees, radians, sin, cos, atan, hypot
+from math import sqrt, atan2, degrees, radians, sin, cos, atan   # MicroPython không có hypot
 from machine import WDT
 from time import ticks_ms, ticks_diff, ticks_add, sleep_ms
 import proto3 as P
@@ -615,7 +615,7 @@ class Master:
             a = radians(az - RIGHT_AZ)
             x, y = tilt * cos(a), tilt * sin(a)
             x += (self.verg / 2) * (1 if EYE_CFG[eye]['side'] == 'L' else -1)
-            tilt = hypot(x, y)
+            tilt = sqrt(x * x + y * y)
             az = RIGHT_AZ + (degrees(atan2(y, x)) if tilt > 1e-9 else 0.0)
         return az + EYE_CFG[eye]['az_offset'], tilt
 

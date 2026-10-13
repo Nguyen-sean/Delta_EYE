@@ -459,6 +459,26 @@ def scenario_reset_eye2():
                                             [round(s.true_deg(i), 2) for i in (1, 2, 3)]))
 
 
+def scenario_center():
+    s = booted('12')
+    s.cmd('set all max 30')
+    s.run(0.5)
+    s.cmd('center')
+    s.run(3)
+    ok_all = all(abs(s.true_deg(i) - 15.25) < 0.05 for i in range(1, 7))
+    s.cmd('center 2 1500')
+    s.cmd('center e1')
+    check("'center' đưa cả 6 node về giữa (0.5+30)/2 = 15.25", ok_all,
+          str([round(s.true_deg(i), 2) for i in range(1, 7)]))
+    s.cmd('set 4 max 20')
+    s.run(0.5)
+    s.cmd('center e2 1000')
+    s.run(2)
+    check("'center e2' theo hành trình riêng từng node (n4: (0.5+20)/2)",
+          abs(s.true_deg(4) - 10.25) < 0.05 and abs(s.true_deg(5) - 15.25) < 0.05,
+          str([round(s.true_deg(i), 2) for i in (4, 5, 6)]))
+
+
 if __name__ == '__main__':
     import time as _t
     t0 = _t.time()
@@ -469,5 +489,6 @@ if __name__ == '__main__':
     scenario_one_eye(2)
     scenario_switch_eyes()
     scenario_reset_eye2()
+    scenario_center()
     print('\n{} / {} PASS  ({:.0f} s)'.format(sum(RESULTS), len(RESULTS), _t.time() - t0))
     sys.exit(0 if all(RESULTS) else 1)
