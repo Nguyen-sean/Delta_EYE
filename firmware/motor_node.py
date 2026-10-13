@@ -8,7 +8,7 @@
 # theo lịch thời gian, xen giữa là xử lý ESP-NOW -> lệnh STOP luôn có tác dụng
 # ngay cả khi động cơ đang chạy, và watchdog luôn được "cho ăn".
 
-from machine import Pin, WDT, reset_cause
+from machine import Pin, ADC, RTC, WDT, reset_cause
 from time import sleep_ms, sleep_us, ticks_ms, ticks_us, ticks_diff, ticks_add
 from math import sqrt
 import struct
@@ -21,14 +21,23 @@ import delta_proto as P
 FW_VERSION = 1
 CRASH_FILE = 'crash.txt'   # lỗi chương trình (nếu có) được ghi vào đây
 
-PIN_EN    = 2
+PIN_EN    = 2     # A4988 EN active LOW
 PIN_HOME  = 3     # cảm biến home: 1 chân GND, 1 chân IO3 (pull-up nội)
-PIN_MS3   = 4
-PIN_RESET = 5
-PIN_SLEEP = 6
+# A4988: MS1 = MS2 = 3.3 V (JP1, JP3 trên PCB), MS3 = IO4 LOW -> 1/8 bước
+PIN_MS3   = 4     # TX_DRIVER trên sơ đồ
+PIN_RESET = 5     # RX_DRIVER trên sơ đồ
+PIN_SLEEP = 6     # CLK_DRIVER trên sơ đồ
 PIN_STEP  = 7
 PIN_DIR   = 8
-PIN_LED   = 1     # đèn NeoPixel (WS2812) báo trạng thái
+# Theo sơ đồ Stepper_motor_control_V3
+PIN_LED   = 1     # đèn NeoPixel WS2812B (LED1, qua R7 100R) báo trạng thái
+PIN_VBUS  = 0     # đo VBUS qua cầu phân áp R9 100K / R8 5K (ADC1_CH0)
+
+# ==== ĐO NGUỒN: VBUS = V_Motor (12 V từ cầu đấu J5; chỉ cắm USB thì ~4.3 V qua D3) ====
+VBUS_DIV        = (100 + 5) / 5     # hệ số cầu phân áp R9 / R8
+VBUS_LOW_MV     = 10500             # dưới mức này coi là sụt áp (nguồn 12 V)
+VBUS_SAMPLE_MS  = 10                # đo VBUS mỗi 10 ms
+POWER_PERIOD_MS = 2000              # gửi báo cáo điện áp cho master mỗi 2 s
 
 # ==== ĐÈN TRẠNG THÁI ====
 LED_COUNT     = 1
@@ -51,12 +60,13 @@ C_PURPLE = (0.6, 0.0, 1.0)
 C_WHITE  = (1.0, 1.0, 1.0)
 
 # ==== CƠ KHÍ ====
-# MS1 = MS2 = 1 cố định phần cứng, MS3 = 0 -> 1/8 bước
+# Driver A4988: MS1 = MS2 = 1 (cầu hàn trên PCB), MS3 = 0 -> 1/8 bước
 MOTOR_FULL_STEPS    = 200
 MICROSTEP           = 8
 GEAR_RATIO          = 14
 STEPS_PER_MOTOR_REV = MOTOR_FULL_STEPS * MICROSTEP            # 1600
 STEPS_PER_DEG       = STEPS_PER_MOTOR_REV * GEAR_RATIO / 360.0  # ~62.22 bước / độ trục ra
+USTEP_SCALE         = MICROSTEP / 8       # các hằng số bước bên dưới được chỉnh ở 1/8 bước
 
 # ==== THÔNG SỐ CHỈNH ĐƯỢC TỪ MASTER (lệnh 'set'), lưu trong config.json trên board ====
 # Hành trình tính bằng độ ở trục ra hộp số: 0 = điểm chạm công tắc home, dương = đi xa công tắc.
@@ -65,7 +75,7 @@ CFG_DEFAULT = {
     'min': 0.5,          # giới hạn dưới (độ) - không về sát công tắc
     'max': 25.71,        # giới hạn trên (độ) - 25.71 = 1 vòng motor
     'homedir': 0,        # giá trị chân DIR khi quay VỀ PHÍA công tắc (0/1)
-    'maxhz': 2000,       # tốc độ tối đa (bước/s)
+    'maxhz': 2000,       # tốc độ tối đa (bước/s)  (~32 độ/s trục ra ở 1/8 bước)
     'accel': 6000,       # gia tốc (bước/s^2)
     'homefast': 800,     # tốc độ dò home nhanh (bước/s)
     'homeslow': 150,     # tốc độ dò home chậm (bước/s)
@@ -75,25 +85,27 @@ CFG_LIMITS = {           # khoảng hợp lệ - master gửi giá trị ngoài 
     'min': (0.2, 20.0),
     'max': (2.0, 90.0),
     'homedir': (0, 1),
-    'maxhz': (300, 4000),
-    'accel': (500, 50000),
-    'homefast': (100, 3000),
-    'homeslow': (20, 1000),
+    'maxhz': (300, 8000),
+    'accel': (500, 100000),
+    'homefast': (100, 6000),
+    'homeslow': (20, 2000),
     'led': (0, 1),
 }
+# Các thông số tính theo bước/s -> phải nhân lại khi đổi vi bước (config.json cũ lưu ở 1/8)
+CFG_HZ_KEYS = ('maxhz', 'accel', 'homefast', 'homeslow')
 
 # Khi đi về phía home, nếu cảm biến bị chạm ở vị trí > min + HOME_TOL thì coi là mất bước.
 # (khoảng dung sai này để bỏ qua độ trễ nhả/đóng cơ khí của công tắc)
-HOME_TOL_STEPS = 48
+HOME_TOL_STEPS = int(48 * USTEP_SCALE)                # ~0.77 độ trục ra
 
 # ==== HOMING ====
 HOME_ACTIVE_LEVEL  = 0     # công tắc nối GND -> chạm = 0
-HOME_BACKOFF_STEPS = 160   # lùi thêm sau khi công tắc đã NHẢ, rồi mới dò lại chậm
-HOME_RELEASE_MAX   = 800   # lùi tối đa ngần này bước (~12.9 độ trục ra) mà công tắc chưa nhả -> HOME_STUCK
+HOME_BACKOFF_STEPS = int(160 * USTEP_SCALE)  # ~2.6 độ: lùi thêm sau khi công tắc đã NHẢ, rồi dò lại chậm
+HOME_RELEASE_MAX   = int(800 * USTEP_SCALE)  # ~12.9 độ: lùi ngần này mà công tắc chưa nhả -> HOME_STUCK
 SW_DEBOUNCE_US     = 500   # công tắc phải giữ nguyên mức liên tục 0.5 ms mới tính -> lọc nhiễu
 
 # ==== CHUYỂN ĐỘNG ====
-START_HZ     = 300         # tốc độ bắt đầu/kết thúc của đường tăng-giảm tốc
+START_HZ     = int(300 * USTEP_SCALE)   # 600 ở 1/16 bước; tốc độ bắt đầu/kết thúc của đường tăng-giảm tốc
 MIN_HZ       = 10          # tốc độ thấp nhất (bước rất ngắn mà thời gian dài -> chạy đều, chậm)
 PULSE_US     = 3
 
@@ -120,14 +132,89 @@ def load_cfg():
         for k in CFG_DEFAULT:
             if k in saved:
                 cfg[k] = saved[k]
+        old = saved.get('ustep', 8)            # file cũ (chưa có 'ustep') được lưu ở 1/8 bước
+        if old != MICROSTEP:
+            for k in CFG_HZ_KEYS:
+                if k in saved:
+                    lo, hi = CFG_LIMITS[k]
+                    cfg[k] = min(hi, max(lo, saved[k] * MICROSTEP / old))
+            save_cfg(cfg)
+            print("config.json: đổi vi bước 1/{} -> 1/{}, đã nhân lại tốc độ".format(old, MICROSTEP))
     except (OSError, ValueError):
         pass                                   # chưa có file -> dùng mặc định
     return cfg
 
 
 def save_cfg(cfg):
+    c = dict(cfg)
+    c['ustep'] = MICROSTEP
     with open(CFG_FILE, 'w') as f:
-        json.dump(cfg, f)
+        json.dump(c, f)
+
+
+class PowerMon:
+    """
+    Đo VBUS (nguồn motor + nguồn vào bộ hạ áp 3.3 V) qua IO0.
+    Mức thấp nhất từ lúc khởi động được ghi vào RTC memory (còn giữ qua HARD_RESET / WATCHDOG,
+    mất khi rút điện) -> lần khởi động sau biết được VBUS có sụt ngay trước khi board reset không.
+    """
+    MAGIC = b'VB'
+
+    def __init__(self):
+        self.adc = ADC(Pin(PIN_VBUS), atten=ADC.ATTN_11DB)
+        self.rtc = RTC()
+        self.prev_min, self.prev_last = self._load()
+        self.vbus = self.read_mv()
+        self.vmin = self.vbus            # thấp nhất trong kỳ báo cáo hiện tại
+        self.boot_min = self.vbus        # thấp nhất từ lúc khởi động
+        self.low = self.vbus < VBUS_LOW_MV
+        self._save()
+        print("VBUS = {:.2f} V | trước lần reset này: thấp nhất {}, lần đo cuối {}".format(
+            self.vbus / 1000, self._v(self.prev_min), self._v(self.prev_last)))
+
+    @staticmethod
+    def _v(mv):
+        return '{:.2f} V'.format(mv / 1000) if mv else '?'
+
+    def _load(self):
+        try:
+            m = self.rtc.memory()
+            if len(m) >= 6 and m[:2] == self.MAGIC:
+                return struct.unpack('<HH', m[2:6])
+        except Exception:
+            pass
+        return 0, 0
+
+    def _save(self):
+        try:
+            self.rtc.memory(self.MAGIC + struct.pack('<HH', min(self.boot_min, 65535),
+                                                     min(self.vbus, 65535)))
+        except Exception:
+            pass
+
+    def read_mv(self):
+        return int(self.adc.read_uv() * VBUS_DIV / 1000)
+
+    def sample(self):
+        """Đo 1 lần. Trả về True nếu VBUS vừa tụt xuống dưới VBUS_LOW_MV."""
+        v = self.read_mv()
+        self.vbus = v
+        if v < self.vmin:
+            self.vmin = v
+        if v < self.boot_min:
+            self.boot_min = v
+            self._save()
+        was = self.low
+        self.low = v < VBUS_LOW_MV
+        return self.low and not was
+
+    def report(self):
+        """Payload POWER_FMT, rồi bắt đầu kỳ đo mới."""
+        self._save()                     # lưu lần đo cuối (để biết nếu board reset ngay sau đó)
+        p = struct.pack(P.POWER_FMT, min(self.vbus, 65535), min(self.vmin, 65535),
+                        self.prev_min, self.prev_last)
+        self.vmin = self.vbus
+        return p
 
 
 class Axis:
@@ -417,6 +504,7 @@ class Node:
         self.bit = 1 << (node_id - 1)
         self.cfg = load_cfg()
         self.ax = Axis(self.cfg)
+        self.pwr = PowerMon()
         self.apply_cfg()
         self.ax.enable()
         print("Cấu hình:", self.cfg)
@@ -445,6 +533,8 @@ class Node:
         self.boot_id = struct.unpack('<H', os.urandom(2))[0]   # để master biết node đã reset
         print("Node {} MAC {} | reset: {}".format(
             node_id, P.mac_str(mac), P.name(P.RESET_NAMES, self.reset_cause)))
+        self.last_vbus = ticks_ms()
+        self.last_pwr = ticks_ms()
 
     # ---------------- cấu hình ----------------
     def apply_cfg(self):
@@ -819,6 +909,16 @@ class Node:
         if self.state in (P.ST_MOVING, P.ST_HOMING) and ticks_diff(now, self.deadline) > 0:
             self.fail(P.E_MOTION_TIMEOUT)
 
+        # Đo VBUS; báo master định kỳ, hoặc ngay khi vừa sụt áp
+        if ticks_diff(now, self.last_vbus) >= VBUS_SAMPLE_MS:
+            self.last_vbus = now
+            dropped = self.pwr.sample()
+            if dropped:
+                print("VBUS sụt: {:.2f} V".format(self.pwr.vbus / 1000))
+            if self.link_ok and (dropped or ticks_diff(now, self.last_pwr) >= POWER_PERIOD_MS):
+                self.last_pwr = now
+                self._tx(P.MSG_POWER, self.pwr.report())
+
         # Watchdog liên lạc
         if self.link_ok and ticks_diff(now, self.last_rx) > LINK_TIMEOUT_MS:
             self.link_ok = False
@@ -868,13 +968,14 @@ def main():
     if node_id is None:
         led.show(C_RED, 0.5)               # đỏ đứng yên: MAC chưa có trong NODE_MACS
         return
-    if ENABLE_WDT:
+    use_wdt = ENABLE_WDT and P.wdt_allowed()
+    if use_wdt:
         print("Node {} khởi động sau {} s (Ctrl+C để dừng trước khi bật watchdog)".format(
             node_id, BOOT_DELAY_MS // 1000))
         sleep_ms(BOOT_DELAY_MS)
 
     node = Node(node_id, led)
-    wdt = WDT(timeout=WDT_TIMEOUT_MS) if ENABLE_WDT else None
+    wdt = WDT(timeout=WDT_TIMEOUT_MS) if use_wdt else None
     ax = node.ax
     last_gc = ticks_ms()
 

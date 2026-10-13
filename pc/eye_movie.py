@@ -26,12 +26,12 @@ import time
 
 # ==== CẤU HÌNH MẶC ĐỊNH ====
 SEND_FPS = 10            # tối đa 15 lệnh/giây (master cũng giới hạn 15)
-DEADBAND_DEG = 0.8      # hướng nhìn đổi ít hơn ngần này thì không gửi lại
+DEADBAND_DEG = 1      # hướng nhìn đổi ít hơn ngần này thì không gửi lại
 MAX_TILT = 12.0          # độ nghiêng tối đa (robot chịu được >= 13.6 độ mọi hướng khi calib giữa)
 LOOP_HZ = 100            # tần số cập nhật mô hình
 
 # Thông số robot - để tự tính thời gian giật mắt mà motor theo kịp
-STEPS_PER_DEG = 200 * 8 * 14 / 360.0
+STEPS_PER_DEG = 200 * 8 * 14 / 360.0      # A4988 1/8 bước
 MOTOR_PER_GAZE = 1.0     # 1 độ hướng nhìn cần tối đa ~1 độ motor (IK: nghiêng 10 độ -> motor 9.1 độ)
 ROBOT_START_HZ = 300
 ROBOT_MAX_HZ = 2000
@@ -312,7 +312,8 @@ class TrafficLog:
       và các dòng master báo ngay trước đó.
     """
     TRIGGERS = ('FAULT', 'OFFLINE', ' BOOT ', 'INTERNAL', 'không nhận được ACK', 'watchdog',
-                'LOST_STEP', 'HOME_NOT_FOUND', 'HOME_STUCK', 'MOTION_TIMEOUT', 'LINK_LOST')
+                'LOST_STEP', 'HOME_NOT_FOUND', 'HOME_STUCK', 'MOTION_TIMEOUT', 'LINK_LOST',
+                'VBUS sụt', 'VBUS đang thấp', 'DRIVER')
     WINDOW_S = 5.0
     MERGE_S = 3.0             # các dòng lỗi trong vòng 3 s tính chung 1 sự cố
 
@@ -341,10 +342,26 @@ class TrafficLog:
         return '{:02d}:{:02d}:{:02d}.{:03d}'.format(lt.tm_hour, lt.tm_min, lt.tm_sec,
                                                      int((w % 1) * 1000))
 
+    MAX_LOG_BYTES = 20 * 1024 * 1024          # chạy không ngừng: quá 20 MB thì sang file mới
+
     def _write(self, text):
         if self.f:
             self.f.write(text + '\n')
             self.f.flush()
+            self._bytes = getattr(self, '_bytes', 0) + len(text) + 1
+            if self._bytes > self.MAX_LOG_BYTES:
+                self._rotate()
+
+    def _rotate(self):
+        """Đóng file log hiện tại, mở file mới cùng tên + _2, _3 ..."""
+        self._part = getattr(self, '_part', 1) + 1
+        base = self.path[:-4] if self.path.endswith('.log') else self.path
+        base = base.rsplit('_part', 1)[0]
+        self.f.close()
+        self.path = '{}_part{}.log'.format(base, self._part)
+        self.f = open(self.path, 'a', encoding='utf-8')
+        self._bytes = 0
+        self.console('.. Log tiếp theo: ' + self.path)
 
     def record(self, direction, text, note=None):
         t, w = self.clock(), self.wall()
@@ -372,8 +389,11 @@ class TrafficLog:
         recent = [r for r in self.ring if t - r[0] <= self.WINDOW_S]
         sent = [r for r in recent if r[2] == '>>']
         recv = [r for r in recent if r[2] == '<<']
-        n = len(self.incidents) + 1
+        self.total_incidents = getattr(self, 'total_incidents', 0) + 1
+        n = self.total_incidents
         self.incidents.append((w, trigger, len(sent)))
+        if len(self.incidents) > 5000:               # chạy nhiều ngày: giữ 5000 sự cố gần nhất
+            del self.incidents[:1000]
         head = '===== SỰ CỐ #{} lúc {}: {} ====='.format(n, self._stamp(w), trigger)
         block = [head,
                  '  {} lệnh gửi trong {:.0f} s trước đó (mới nhất ở dưới):'.format(len(sent), self.WINDOW_S)]
@@ -737,7 +757,7 @@ def import_serial():
         raise SystemExit(PYSERIAL_HELP.format(exe=sys.executable, script=sys.argv[0]))
 
 
-def find_master_port():
+def find_master_port(quiet=False):
     """Tìm cổng USB của board ESP32. Trả về tên cổng, hoặc None nếu không chắc chắn."""
     _, list_ports = import_serial()
     keys = ('usbmodem', 'usbserial', 'wchusbserial', 'SLAB_USBtoUART', 'ttyUSB', 'ttyACM')
@@ -749,6 +769,8 @@ def find_master_port():
             found.append(p)
     if len(found) == 1:
         return found[0].device
+    if quiet:
+        return None
     if found:
         print('Có nhiều cổng USB, hãy chọn bằng --port:')
         for p in found:
@@ -869,12 +891,79 @@ def run(link, source, sender, duration, clock=time.monotonic, sleep=time.sleep,
     return 0
 
 
+class RobotNotReady(Exception):
+    pass
+
+
+def run_forever(open_port, source, sender, duration=0, forever=False, auto_clear=False,
+                no_home=False, traffic=None, log=print, clock=time.monotonic, sleep=time.sleep,
+                view=None, video=None, echo=False, max_restarts=None):
+    """
+    Kết nối -> kiểm tra / home robot -> chạy. forever=True: lỗi gì cũng không thoát mà tự
+    kết nối lại cổng USB, clear + home rồi chạy tiếp; chờ giữa các lần thử 5, 10, 20, 40, 60 s.
+    Trả về (mã thoát, link cuối cùng). Mã: 0 xong, 1 robot không sẵn sàng, 2 bỏ cuộc, 3 lỗi cổng USB.
+    """
+    t0 = clock()
+    restarts = 0
+    link = None
+    while True:
+        port = None
+        try:
+            port = open_port()
+            link = MasterLink(port, log=log, echo=echo, traffic=traffic)
+            sender.link = link
+            sender.last = None
+            sleep(0.5)
+            link.poll()
+            if not no_home and not link.ensure_ready(clock=clock, sleep=sleep):
+                raise RobotNotReady('Robot chưa sẵn sàng (thiếu node online hoặc home không xong)')
+            link.fault = link.not_ready = False      # bỏ các thông báo cũ trước lúc bắt đầu
+            link.err_look = 0
+            log('Robot sẵn sàng. Bắt đầu "xem phim"... (Ctrl+C để dừng)')
+            left = 0
+            if duration:
+                left = duration - (clock() - t0)
+                if left <= 0:
+                    return 0, link
+            t_run = clock()
+            code = run(link, source, sender, left, clock=clock, sleep=sleep, view=view,
+                       auto_clear=auto_clear or forever, log=log, video=video)
+            if code == 0 or not forever:
+                return code, link
+            if clock() - t_run > 300:
+                restarts = 0                          # đã chạy tốt một lúc -> bắt đầu lại từ 5 s
+            log('!! Robot không tự hồi phục -> kết nối lại, clear và home lại')
+        except (OSError, RobotNotReady) as ex:
+            usb = isinstance(ex, OSError)
+            msg = ('Mất kết nối USB với master: {}'.format(ex) if usb else str(ex))
+            log('!! ' + msg)
+            if traffic:
+                traffic.incident(msg)
+            if link is not None:
+                link.fault = True                     # không gửi gì thêm qua cổng này
+            if not forever:
+                return (3 if usb else 1), link
+        # Tới đây = sẽ thử lại
+        try:
+            if port is not None:
+                port.close()
+        except Exception:
+            pass
+        restarts += 1
+        if max_restarts is not None and restarts > max_restarts:
+            return 2, link
+        wait = min(60, 5 * 2 ** min(restarts - 1, 4))
+        log('.. Thử lại sau {} s (lần {}). Ctrl+C để dừng.'.format(wait, restarts))
+        sleep(wait)
+
+
 class VideoReader:
     """Đọc file phim bằng OpenCV, trả về khung xám thu nhỏ; có thể hiện phim kèm điểm nhìn."""
 
-    def __init__(self, path, show=False, max_tilt=MAX_TILT, width=160):
+    def __init__(self, path, show=False, max_tilt=MAX_TILT, width=160, loop=False):
         import cv2
         self.cv2 = cv2
+        self.loop = loop                     # True: hết phim thì phát lại từ đầu
         self.cap = cv2.VideoCapture(path)
         if not self.cap.isOpened():
             raise SystemExit('Không mở được file phim: ' + path)
@@ -887,6 +976,9 @@ class VideoReader:
 
     def next_frame(self):
         ok, frame = self.cap.read()
+        if not ok and self.loop:
+            self.cap.set(self.cv2.CAP_PROP_POS_FRAMES, 0)
+            ok, frame = self.cap.read()
         if not ok:
             return None
         self.last = frame
@@ -928,6 +1020,8 @@ def main(argv=None):
     ap.add_argument('--verbose', action='store_true', help='in mọi dòng gửi / nhận ra màn hình')
     ap.add_argument('--log-dir', help='thư mục lưu log (mặc định: pc/logs)')
     ap.add_argument('--no-log', action='store_true', help='không ghi file log')
+    ap.add_argument('--forever', action='store_true',
+                    help='chạy không ngừng: tự kết nối lại USB, tự clear + home khi lỗi, phim tự lặp')
     args = ap.parse_args(argv)
 
     if args.list_ports:
@@ -936,21 +1030,12 @@ def main(argv=None):
             print(p.device, '-', p.description)
         return 0
     if not args.port and not args.sim:
-        args.port = find_master_port()           # không ghi --port -> tự tìm cổng USB
-        if not args.port:
+        args.port = find_master_port(quiet=args.forever)   # không ghi --port -> tự tìm cổng USB
+        if not args.port and not args.forever:
             print('Hoặc chạy thử không cần robot:  {} {} --sim'.format(sys.executable, sys.argv[0]))
             return 1
-        print('Dùng cổng', args.port)
+        print('Dùng cổng', args.port or '(chưa thấy board - sẽ chờ)')
 
-    try:
-        port = FakeMaster() if args.sim else open_serial(args.port)
-    except OSError as ex:                     # serial.SerialException là một OSError
-        print('Không mở được cổng {}: {}'.format(args.port, ex))
-        print('-> Board master bị rút / khởi động lại / Thonny đang chiếm cổng. Các cổng hiện có:')
-        p = find_master_port()
-        if p:
-            print('   ', p, '  <- thử lại với --port', p)
-        return 3
     log_path = None
     if not args.no_log:
         import os
@@ -961,54 +1046,73 @@ def main(argv=None):
     if log_path:
         print('Ghi log vào:', log_path)
     traffic.record('##', 'Bắt đầu: ' + ' '.join(sys.argv))
-    link = MasterLink(port, log=log, echo=args.echo, traffic=traffic)
+    if args.forever:
+        log('Chế độ CHẠY KHÔNG NGỪNG: lỗi gì cũng tự kết nối lại + home lại. Ctrl+C để dừng.')
+
+    def open_port():
+        if args.sim:
+            return FakeMaster()
+        if not args.port:
+            args.port = find_master_port(quiet=True)
+            if not args.port:
+                raise OSError('chưa thấy board master cắm USB')
+        try:
+            return open_serial(args.port)
+        except OSError:
+            if not args.forever:
+                raise
+            other = find_master_port(quiet=True)  # tên cổng có thể đổi sau khi cắm lại
+            if other and other != args.port:
+                log('.. Cổng {} không còn, thử cổng {}'.format(args.port, other))
+                args.port = other
+                return open_serial(other)
+            raise
+
     fps = min(args.fps, SEND_FPS)
+    sender = CommandSender(None, fps=fps, az_offset=args.az_offset, flip_x=args.flip_x,
+                           max_tilt=args.max_tilt)
+    view = GazeView(args.max_tilt) if args.view else None
+    video = None
+    if args.video:
+        video = VideoReader(args.video, show=args.show, max_tilt=args.max_tilt, loop=args.forever)
+        source = VideoGaze(max_tilt=args.max_tilt)
+    else:
+        source = SyntheticGaze(max_tilt=args.max_tilt, seed=args.seed)
+
+    link = None
+    code = 0
     try:
-        if not args.sim:
-            time.sleep(0.5)
-            link.poll()
-        if not args.no_home and not link.ensure_ready():
-            log('Robot chưa sẵn sàng -> thoát')
-            return 1
-        link.fault = link.not_ready = False      # bỏ các thông báo cũ trước lúc bắt đầu
-        link.err_look = 0
-        traffic.incidents.clear()                # chỉ tính sự cố trong lúc chạy
-        log('Robot sẵn sàng. Bắt đầu "xem phim"... (Ctrl+C để dừng)')
-        sender = CommandSender(link, fps=fps, az_offset=args.az_offset, flip_x=args.flip_x,
-                               max_tilt=args.max_tilt)
-        view = GazeView(args.max_tilt) if args.view else None
-        video = None
-        if args.video:
-            video = VideoReader(args.video, show=args.show, max_tilt=args.max_tilt)
-            source = VideoGaze(max_tilt=args.max_tilt)
-        else:
-            source = SyntheticGaze(max_tilt=args.max_tilt, seed=args.seed)
-        code = run(link, source, sender, args.duration, view=view,
-                   auto_clear=args.auto_clear, video=video, log=log)
+        code, link = run_forever(open_port, source, sender, duration=args.duration,
+                                 forever=args.forever, auto_clear=args.auto_clear,
+                                 no_home=args.no_home, traffic=traffic, log=log,
+                                 view=view, video=video, echo=args.echo)
+        if code == 3 and link is None:
+            print('-> Board master bị rút / khởi động lại / Thonny đang chiếm cổng.')
+            p = find_master_port()
+            if p:
+                print('   ', p, '  <- thử lại với --port', p)
         log('Đã gửi {} lệnh look.'.format(sender.sent))
         return code
     except KeyboardInterrupt:
         log('Dừng (Ctrl+C).')
         return 0
-    except OSError as ex:
-        log('!! Mất kết nối USB với master: {}'.format(ex))
-        log('   Board master có thể vừa khởi động lại hoặc sụt nguồn (cổng USB biến mất).')
-        traffic.incident('mất kết nối USB với master')
-        link.fault = True                      # không gửi gì thêm
-        return 3
     finally:
         try:
-            if not link.fault:
+            if link is not None and not link.fault:
                 link.send('look 0 0 0 800')  # về nhìn thẳng (không gửi khi đang FAULT)
                 time.sleep(0.2)
                 link.poll()
         except Exception:
             pass
         traffic.summary()
-        if log_path:
-            print('Log đầy đủ:', log_path)
+        if traffic.path:
+            print('Log đầy đủ:', traffic.path)
         traffic.close()
-        port.close()
+        try:
+            if link is not None:
+                link.port.close()
+        except Exception:
+            pass
 
 
 if __name__ == '__main__':

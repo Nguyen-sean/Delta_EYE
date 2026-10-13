@@ -13,6 +13,7 @@
 # Master gửi lại nếu chưa đủ ACK; node nhớ các seq gần nhất để không thực hiện
 # một lệnh 2 lần khi nhận bản gửi lại.
 
+import os
 import struct
 import machine
 
@@ -59,6 +60,7 @@ MSG_ACK    = 0x81    # payload ACK_FMT
 MSG_STATUS = 0x82    # payload STATUS_FMT
 MSG_HELLO  = 0x83    # payload HELLO_FMT, gửi broadcast khi chưa có liên kết
 MSG_CFG    = 0x84    # payload CFG_FMT: toàn bộ thông số hiện tại của node
+MSG_POWER  = 0x85    # payload POWER_FMT: điện áp nguồn VBUS (12 V motor) của node
 
 # Thời gian chạy (ms, 0 = chạy tốc độ tối đa) + góc đích của từng node (mili-độ ở trục ra).
 # Node chỉ đọc ô của chính mình.
@@ -67,6 +69,9 @@ SPEED_FMT  = '<HH'          # max_hz, accel (bước/s, bước/s^2)
 ACK_FMT    = '<HBB'         # seq của lệnh, type của lệnh, mã kết quả
 STATUS_FMT = '<BBBii'       # state, err, flags, pos_mdeg, target_mdeg
 HELLO_FMT  = '<BBH'         # reset_cause, fw_version, boot_id (ngẫu nhiên mỗi lần khởi động)
+# vbus_mv (lúc gửi), vmin_mv (thấp nhất từ lần gửi trước), prev_min_mv / prev_last_mv (thấp nhất /
+# lần đo cuối TRƯỚC lần reset vừa rồi, 0 = không biết, vd sau POWER_ON)
+POWER_FMT  = '<HHHH'
 
 # ---- Thông số node chỉnh được từ master (lưu trong config.json trên node) ----
 #   min      : giới hạn dưới hành trình (độ ở trục ra, tính từ công tắc home)
@@ -102,8 +107,9 @@ E_LOST_STEP      = 3   # chạm cảm biến khi không mong đợi -> mất bư
 E_LINK_LOST      = 4   # mất liên lạc master khi đang chạy
 E_MOTION_TIMEOUT = 5   # chuyển động lâu bất thường
 E_INTERNAL       = 6   # lỗi chương trình trên node (chi tiết trong crash.txt của node)
+E_DRIVER         = 7   # (dành cho driver cấu hình qua UART, hiện không dùng)
 ERR_NAMES = ('NONE', 'HOME_NOT_FOUND', 'HOME_STUCK', 'LOST_STEP',
-             'LINK_LOST', 'MOTION_TIMEOUT', 'INTERNAL')
+             'LINK_LOST', 'MOTION_TIMEOUT', 'INTERNAL', 'DRIVER')
 
 # ---- Mã kết quả trong ACK ----
 R_OK        = 0
@@ -219,3 +225,44 @@ def my_mac():
         role = "(chưa có trong NODE_MACS)"
     print("MAC:", mac_str(mac), "->", role)
     return mac_str(mac)
+
+
+# ==== TẮT / BẬT WATCHDOG LÚC KHỞI ĐỘNG ====
+# machine.WDT một khi đã bật thì KHÔNG tắt được -> chỉ có thể quyết định lúc boot có bật hay không.
+# WDT bị bỏ qua (dù ENABLE_WDT = True) nếu:
+#   - trên board có file 'nowdt'      (tạo bằng: import delta_proto as P; P.set_wdt(False))
+#   - hoặc đang GIỮ nút BOOT lúc cắm điện / nhấn RST (ESP32-C3: IO9, ESP32: IO0)
+NOWDT_FILE = 'nowdt'
+
+
+def _boot_button_pin():
+    return 9 if 'C3' in os.uname().machine else 0
+
+
+def wdt_allowed():
+    """True nếu được phép bật watchdog ở lần khởi động này."""
+    try:
+        os.stat(NOWDT_FILE)
+        print("WDT: TẮT (có file '{}'). Bật lại: import delta_proto as P; P.set_wdt(True)".format(
+            NOWDT_FILE))
+        return False
+    except OSError:
+        pass
+    if machine.Pin(_boot_button_pin(), machine.Pin.IN, machine.Pin.PULL_UP).value() == 0:
+        print("WDT: TẮT cho lần chạy này (đang giữ nút BOOT)")
+        return False
+    return True
+
+
+def set_wdt(on):
+    """Bật/tắt watchdog cho các lần khởi động sau (lưu trên flash). Có hiệu lực sau khi reset."""
+    if on:
+        try:
+            os.remove(NOWDT_FILE)
+        except OSError:
+            pass
+    else:
+        with open(NOWDT_FILE, 'w') as f:
+            f.write('1')
+    print("WDT sẽ {} từ lần khởi động sau (nhấn RST hoặc machine.reset())".format(
+        "BẬT" if on else "TẮT"))

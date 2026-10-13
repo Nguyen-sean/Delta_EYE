@@ -67,7 +67,7 @@ class TestHelpers(unittest.TestCase):
     def test_robot_min_ms(self):
         self.assertGreater(E.robot_min_ms(10), E.robot_min_ms(2))
         self.assertGreater(E.robot_min_ms(0.1), 0)
-        # 10 độ ~ 622 bước, tăng/giảm tốc 6000 -> ~0.55 s (+10% +20 ms)
+        # 10 độ ~ 622 bước (1/8), tăng/giảm tốc 6000 -> ~0.55 s (+10% +20 ms)
         self.assertTrue(500 < E.robot_min_ms(10) < 700, E.robot_min_ms(10))
 
 
@@ -460,6 +460,136 @@ class TestTrafficLog(unittest.TestCase):
         text = '\n'.join(self.out)
         self.assertIn('SỰ CỐ #1', text)
         self.assertRegex(text, r'>> look [\d.]+ [\d.]+ 0 \d+\s+# ')   # lệnh look ngay trước lỗi
+
+
+# ----------------------------------------------------------------------
+@unittest.skipUnless(has_ik(), 'không tìm thấy firmware/spm_ik.py')
+class TestForever(unittest.TestCase):
+    """Chế độ chạy không ngừng (--forever): không bao giờ tự thoát, tự kết nối lại."""
+
+    class DyingMaster(E.FakeMaster):
+        """Master giả 'mất cổng USB' (write lỗi) sau N lần ghi."""
+        def __init__(self, die_after, **kw):
+            super().__init__(**kw)
+            self.left = die_after
+
+        def write(self, data):
+            self.left -= 1
+            if self.left < 0:
+                raise OSError(6, 'Device not configured')
+            return super().write(data)
+
+    class NeverHomes(E.FakeMaster):
+        """Master giả: node không bao giờ home được."""
+        def __init__(self, **kw):
+            super().__init__(homed=False, **kw)
+
+        def _cmd(self, line):
+            if line == 'home':
+                self.received.append((self.clock(), line))
+                self._p('ERR n1 HOME_NOT_FOUND pos=-30.000')
+                return
+            super()._cmd(line)
+
+    def setUp(self):
+        self.fc = FakeClock()
+        self.logs = []
+        self.opened = []
+
+    def go(self, factory, **kw):
+        sender = E.CommandSender(None)
+        src = E.SyntheticGaze(seed=21)
+
+        attempts = [0]
+
+        def open_port():
+            attempts[0] += 1
+            p = factory(attempts[0] - 1)          # đếm cả những lần mở cổng thất bại
+            self.opened.append(p)
+            return p
+        return E.run_forever(open_port, src, sender, clock=self.fc, sleep=self.fc.sleep,
+                             log=self.logs.append, **kw), sender
+
+    def test_reconnects_after_usb_lost(self):
+        # cổng đầu chết sau 300 lần ghi, cổng sau chạy bình thường
+        def factory(i):
+            if i == 0:
+                return self.DyingMaster(300, clock=self.fc)
+            return E.FakeMaster(clock=self.fc)
+        (code, link), sender = self.go(factory, duration=600, forever=True)
+        self.assertEqual(code, 0)
+        self.assertEqual(len(self.opened), 2)
+        self.assertTrue(any('Mất kết nối USB' in l for l in self.logs))
+        self.assertTrue(any('Thử lại sau 5 s' in l for l in self.logs))
+        self.assertGreater(len(self.opened[1].looks), 500)      # chạy tiếp lâu sau khi nối lại
+
+    def test_without_forever_usb_lost_exits(self):
+        (code, link), _ = self.go(lambda i: self.DyingMaster(300, clock=self.fc), duration=600)
+        self.assertEqual(code, 3)
+        self.assertEqual(len(self.opened), 1)
+
+    def test_waits_for_board_to_appear(self):
+        # 3 lần đầu không mở được cổng (board chưa cắm), lần 4 có
+        def factory(i):
+            if i < 3:
+                raise OSError(2, 'No such file or directory')
+            return E.FakeMaster(clock=self.fc)
+        (code, link), _ = self.go(factory, duration=120, forever=True)
+        self.assertEqual(code, 0)
+        waits = [l for l in self.logs if 'Thử lại sau' in l]
+        self.assertEqual([re.search(r'sau (\d+) s', w).group(1) for w in waits],
+                         ['5', '10', '20'])                     # chờ tăng dần
+
+    def test_robot_never_ready_keeps_retrying_with_backoff(self):
+        (code, link), _ = self.go(lambda i: self.NeverHomes(clock=self.fc), forever=True,
+                                  max_restarts=7)
+        self.assertEqual(code, 2)                               # chỉ vì test đặt max_restarts
+        waits = [int(re.search(r'sau (\d+) s', l).group(1)) for l in self.logs if 'Thử lại sau' in l]
+        self.assertEqual(waits, [5, 10, 20, 40, 60, 60, 60])    # tối đa 60 s, không spam robot
+        self.assertTrue(all(p.received[-1][1] != 'look' for p in self.opened))
+
+    def test_without_forever_not_ready_exits(self):
+        (code, link), _ = self.go(lambda i: self.NeverHomes(clock=self.fc))
+        self.assertEqual(code, 1)
+
+    def test_fault_that_never_clears_restarts_instead_of_exit(self):
+        fm_list = []
+
+        def factory():
+            fm = E.FakeMaster(clock=self.fc)
+            fm_list.append(fm)
+            return fm
+        sender = E.CommandSender(None)
+        src = E.SyntheticGaze(seed=3)
+        # chạy 30 s, rồi node 2 khởi động lại liên tục (không home được) trong lúc đang chạy
+        orig_look = E.FakeMaster._look
+
+        def flaky_look(fm, a):
+            if self.fc.t > 30 and self.fc.t < 200:
+                fm.homed[1] = False                             # n2 mất home liên tục
+            orig_look(fm, a)
+        E.FakeMaster._look = flaky_look
+        try:
+            code, link = E.run_forever(factory, src, sender, duration=400, forever=True,
+                                       clock=self.fc, sleep=self.fc.sleep, log=self.logs.append)
+        finally:
+            E.FakeMaster._look = orig_look
+        self.assertEqual(code, 0)                               # vẫn chạy hết 400 s
+        self.assertGreater(len(fm_list[-1].looks), 50)
+
+    def test_log_rotation(self):
+        import os
+        import tempfile
+        d = tempfile.mkdtemp()
+        tl = E.TrafficLog(os.path.join(d, 'eye_x.log'), console=lambda s: None)
+        tl.MAX_LOG_BYTES = 2000
+        for i in range(200):
+            tl.record('>>', 'look {}.0 3.00 0 100'.format(i))
+        tl.close()
+        files = sorted(os.listdir(d))
+        self.assertGreaterEqual(len(files), 3, files)
+        self.assertIn('eye_x_part2.log', files)
+        self.assertTrue(all(os.path.getsize(os.path.join(d, f)) < 2200 for f in files))
 
 
 # ----------------------------------------------------------------------

@@ -1,0 +1,663 @@
+11:17:59.245 ## Bắt đầu: /Users/nguyensean/Library/CloudStorage/OneDrive-Personal/MakerLab.vn/Delta_EYE/pc/eye_movie.py
+11:17:59.753 << ets Jul 29 2019 12:21:46
+11:17:59.753 << rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+11:17:59.753 << configsip: 0, SPIWP:0xee
+11:17:59.753 << clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+11:17:59.753 << mode:DIO, clock div:2
+11:17:59.753 << load:0x3fff0030,len:4200
+11:17:59.753 << load:0x40078000,len:15236
+11:17:59.753 << load:0x40080400,len:3344
+11:17:59.753 << entry 0x400805a8
+11:17:59.753 >> status
+11:18:01.070 << OK master MAC F8:B3:B7:50:DD:D0
+11:18:01.142 << OK neutral = 12.857 12.857 12.857
+11:18:01.143 << Lệnh (gõ qua USB serial):
+11:18:01.143 << look az tilt [twist] [ms] : nhìn theo tọa độ cực (độ): hướng az, nghiêng tilt, xoay twist,
+11:18:01.143 << chạy trong ms mili-giây (3 trục cùng xuất phát, cùng tới đích)
+11:18:01.166 << ik az tilt [twist]  : chỉ tính và in góc 3 động cơ, không chạy
+11:18:01.166 << calib               : lưu vị trí hiện tại làm vị trí nhìn thẳng (az=0 tilt=0 twist=0)
+11:18:01.166 << range [twist]       : in góc nghiêng tối đa theo từng hướng (theo calib hiện tại)
+11:18:01.186 << move d1 d2 d3 [ms]  : 3 trục tới góc d1,d2,d3 (độ), cùng xuất phát và cùng dừng
+11:18:01.186 << goto n deg [ms]     : chỉ node n tới góc deg
+11:18:01.186 << home [n]            : home tất cả hoặc node n
+11:18:01.186 << stop                : dừng khẩn cấp tất cả
+11:18:01.211 << release [n] / enable [n]
+11:18:01.211 << clear [n]           : xóa lỗi
+11:18:01.211 << speed hz [accel]    : tốc độ tối đa (bước/s) và gia tốc (bước/s^2) cho cả 3 node (có lưu)
+11:18:01.211 << status              : bảng trạng thái
+11:18:01.232 << blink [n]           : đèn của node n (hoặc tất cả) nháy trắng 4 giây để nhận diện board
+11:18:01.232 << cfg                 : đọc và in cấu hình của các node
+11:18:01.232 << set <n|all> <tên> <giá trị> : đổi cấu hình node, node tự lưu vào flash
+11:18:01.254 << tên: min max homedir maxhz accel homefast homeslow led
+11:18:01.254 << vd:  set all max 40      set 2 homedir 1      set all maxhz 1500
+11:18:01.254 << EVT n3 ONLINE F8:5B:1B:49:DA:70
+11:18:01.254 << EVT n3 BOOT fw=1 reset=POWER_ON
+===== SỰ CỐ #1 lúc 11:18:01.254: EVT n3 BOOT fw=1 reset=POWER_ON =====
+  1 lệnh gửi trong 5 s trước đó (mới nhất ở dưới):
+    11:17:59.753 >> status
+  Master báo gần nhất:
+    11:18:01.211 << status              : bảng trạng thái
+    11:18:01.232 << blink [n]           : đèn của node n (hoặc tất cả) nháy trắng 4 giây để nhận diện board
+    11:18:01.232 << cfg                 : đọc và in cấu hình của các node
+    11:18:01.232 << set <n|all> <tên> <giá trị> : đổi cấu hình node, node tự lưu vào flash
+    11:18:01.254 << tên: min max homedir maxhz accel homefast homeslow led
+    11:18:01.254 << vd:  set all max 40      set 2 homedir 1      set all maxhz 1500
+    11:18:01.254 << EVT n3 ONLINE F8:5B:1B:49:DA:70
+    11:18:01.254 << EVT n3 BOOT fw=1 reset=POWER_ON
+11:18:01.254 << EVT n1 ONLINE F8:5B:1B:4C:81:C0
+11:18:01.254 << EVT n1 BOOT fw=1 reset=POWER_ON
+11:18:01.759 >> status
+11:18:01.759 << EVT n2 ONLINE F8:5B:1B:4B:83:6C
+11:18:01.759 << EVT n2 BOOT fw=1 reset=POWER_ON
+11:18:01.759 << OK GETCFG
+11:18:01.759 << CFG n3 min=3 max=30 homedir=0 maxhz=2000 accel=6000 homefast=800 homeslow=150 led=0
+11:18:01.759 << OK GETCFG
+11:18:01.759 << CFG n1 min=3 max=30 homedir=0 maxhz=2000 accel=6000 homefast=800 homeslow=150 led=0
+11:18:01.759 << EVT n1 - -> IDLE pos=0.000
+11:18:01.759 << EVT n2 - -> IDLE pos=0.000
+11:18:01.759 << EVT n3 - -> IDLE pos=0.000
+11:18:01.759 << OK GETCFG
+11:18:01.759 << CFG n2 min=2 max=30 homedir=0 maxhz=2000 accel=6000 homefast=800 homeslow=150 led=0
+11:18:01.781 << STAT fault=False queue=0 inflight=-
+11:18:01.781 << STAT n1 ON  IDLE     err=NONE           homed=0 sw=0 pos=   0.000 target=   0.000
+11:18:01.814 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   0.000 target=   0.000
+11:18:01.815 << STAT n3 ON  IDLE     err=NONE           homed=0 sw=0 pos=   0.000 target=   0.000
+11:18:01.815 >> clear
+11:18:01.815 ## .. Chưa home -> gửi lệnh home
+11:18:01.815 >> home
+11:18:02.320 >> status
+11:18:02.320 << OK CLEAR
+11:18:02.320 << OK HOME
+11:18:02.320 << EVT n1 IDLE -> HOMING pos=0.000
+11:18:02.320 << EVT n2 IDLE -> HOMING pos=0.000
+11:18:02.320 << EVT n3 IDLE -> HOMING pos=0.000
+11:18:02.342 << STAT fault=False queue=0 inflight=-
+11:18:02.342 << STAT n1 ON  HOMING   err=NONE           homed=0 sw=0 pos=  -3.246 target=   0.000
+11:18:02.366 << STAT n2 ON  HOMING   err=NONE           homed=0 sw=1 pos=   0.675 target=   0.000
+11:18:02.366 << STAT n3 ON  HOMING   err=NONE           homed=0 sw=0 pos=  -3.198 target=   0.000
+11:18:02.871 >> status
+11:18:02.897 << STAT fault=False queue=0 inflight=-
+11:18:02.897 << STAT n1 ON  HOMING   err=NONE           homed=0 sw=0 pos= -10.736 target=   0.000
+11:18:02.918 << STAT n2 ON  HOMING   err=NONE           homed=0 sw=1 pos=   2.121 target=   0.000
+11:18:02.918 << STAT n3 ON  HOMING   err=NONE           homed=0 sw=0 pos= -10.671 target=   0.000
+11:18:03.424 >> status
+11:18:03.446 << STAT fault=False queue=0 inflight=-
+11:18:03.446 << STAT n1 ON  HOMING   err=NONE           homed=0 sw=0 pos= -18.257 target=   0.000
+11:18:03.470 << STAT n2 ON  HOMING   err=NONE           homed=0 sw=1 pos=   3.552 target=   0.000
+11:18:03.470 << STAT n3 ON  HOMING   err=NONE           homed=0 sw=0 pos= -18.193 target=   0.000
+11:18:03.975 >> status
+11:18:03.995 << STAT fault=False queue=0 inflight=-
+11:18:03.995 << STAT n1 ON  HOMING   err=NONE           homed=0 sw=0 pos= -25.795 target=   0.000
+11:18:04.019 << STAT n2 ON  HOMING   err=NONE           homed=0 sw=1 pos=   5.014 target=   0.000
+11:18:04.019 << STAT n3 ON  HOMING   err=NONE           homed=0 sw=0 pos= -25.730 target=   0.000
+11:18:04.523 >> status
+11:18:04.543 << STAT fault=False queue=0 inflight=-
+11:18:04.544 << STAT n1 ON  HOMING   err=NONE           homed=0 sw=0 pos= -30.841 target=   0.000
+11:18:04.568 << STAT n2 ON  HOMING   err=NONE           homed=0 sw=1 pos=   5.979 target=   0.000
+11:18:04.568 << STAT n3 ON  HOMING   err=NONE           homed=0 sw=0 pos= -30.777 target=   0.000
+11:18:05.073 >> status
+11:18:05.073 << EVT n1 HOMING -> ERROR pos=-38.973
+11:18:05.073 << ERR n1 HOME_NOT_FOUND pos=-38.973
+===== SỰ CỐ #2 lúc 11:18:05.073: ERR n1 HOME_NOT_FOUND pos=-38.973 =====
+  9 lệnh gửi trong 5 s trước đó (mới nhất ở dưới):
+    11:18:02.320 >> status
+    11:18:02.871 >> status
+    11:18:03.424 >> status
+    11:18:03.975 >> status
+    11:18:04.523 >> status
+    11:18:05.073 >> status
+  Master báo gần nhất:
+    11:18:04.019 << STAT n2 ON  HOMING   err=NONE           homed=0 sw=1 pos=   5.014 target=   0.000
+    11:18:04.019 << STAT n3 ON  HOMING   err=NONE           homed=0 sw=0 pos= -25.730 target=   0.000
+    11:18:04.543 << STAT fault=False queue=0 inflight=-
+    11:18:04.544 << STAT n1 ON  HOMING   err=NONE           homed=0 sw=0 pos= -30.841 target=   0.000
+    11:18:04.568 << STAT n2 ON  HOMING   err=NONE           homed=0 sw=1 pos=   5.979 target=   0.000
+    11:18:04.568 << STAT n3 ON  HOMING   err=NONE           homed=0 sw=0 pos= -30.777 target=   0.000
+    11:18:05.073 << EVT n1 HOMING -> ERROR pos=-38.973
+    11:18:05.073 << ERR n1 HOME_NOT_FOUND pos=-38.973
+11:18:05.073 ## !! ERR n1 HOME_NOT_FOUND pos=-38.973
+11:18:05.073 << FAULT n1 HOME_NOT_FOUND
+11:18:05.073 ## !! FAULT n1 HOME_NOT_FOUND
+11:18:05.073 << WARN STOP tất cả (n1 HOME_NOT_FOUND)
+11:18:05.073 ## !! WARN STOP tất cả (n1 HOME_NOT_FOUND)
+11:18:05.073 << EVT n3 HOMING -> ERROR pos=-38.973
+11:18:05.073 << ERR n3 HOME_NOT_FOUND pos=-38.973
+11:18:05.073 ## !! ERR n3 HOME_NOT_FOUND pos=-38.973
+11:18:05.073 << FAULT n3 HOME_NOT_FOUND
+11:18:05.073 ## !! FAULT n3 HOME_NOT_FOUND
+11:18:05.073 << WARN STOP tất cả (n3 HOME_NOT_FOUND)
+11:18:05.073 ## !! WARN STOP tất cả (n3 HOME_NOT_FOUND)
+11:18:05.073 << EVT n2 HOMING -> IDLE pos=7.650
+11:18:05.099 << OK STOP
+11:18:05.124 << STAT fault=True queue=0 inflight=-
+11:18:05.124 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:05.124 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:05.124 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:05.629 >> status
+11:18:05.652 << STAT fault=True queue=0 inflight=-
+11:18:05.652 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:05.676 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:05.676 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:06.180 >> status
+11:18:06.203 << STAT fault=True queue=0 inflight=-
+11:18:06.203 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:06.229 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:06.229 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:06.730 >> status
+11:18:06.752 << STAT fault=True queue=0 inflight=-
+11:18:06.752 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:06.777 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:06.777 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:07.279 >> status
+11:18:07.305 << STAT fault=True queue=0 inflight=-
+11:18:07.305 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:07.305 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:07.326 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:07.830 >> status
+11:18:07.852 << STAT fault=True queue=0 inflight=-
+11:18:07.852 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:07.875 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:07.875 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:08.377 >> status
+11:18:08.402 << STAT fault=True queue=0 inflight=-
+11:18:08.402 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+===== SỰ CỐ #3 lúc 11:18:08.402: STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973 =====
+  10 lệnh gửi trong 5 s trước đó (mới nhất ở dưới):
+    11:18:05.629 >> status
+    11:18:06.180 >> status
+    11:18:06.730 >> status
+    11:18:07.279 >> status
+    11:18:07.830 >> status
+    11:18:08.377 >> status
+  Master báo gần nhất:
+    11:18:07.305 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+    11:18:07.326 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+    11:18:07.852 << STAT fault=True queue=0 inflight=-
+    11:18:07.852 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+    11:18:07.875 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+    11:18:07.875 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+    11:18:08.402 << STAT fault=True queue=0 inflight=-
+    11:18:08.402 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:08.426 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:08.426 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:08.931 >> status
+11:18:08.956 << STAT fault=True queue=0 inflight=-
+11:18:08.956 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:08.981 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:08.982 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:09.487 >> status
+11:18:09.509 << STAT fault=True queue=0 inflight=-
+11:18:09.509 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:09.533 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:09.533 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:10.037 >> status
+11:18:10.063 << STAT fault=True queue=0 inflight=-
+11:18:10.063 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:10.088 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:10.088 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:10.593 >> status
+11:18:10.618 << STAT fault=True queue=0 inflight=-
+11:18:10.618 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:10.641 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:10.641 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:11.143 >> status
+11:18:11.168 << STAT fault=True queue=0 inflight=-
+11:18:11.168 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:11.168 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:11.189 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:11.695 >> status
+11:18:11.718 << STAT fault=True queue=0 inflight=-
+11:18:11.718 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+===== SỰ CỐ #4 lúc 11:18:11.718: STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973 =====
+  10 lệnh gửi trong 5 s trước đó (mới nhất ở dưới):
+    11:18:08.931 >> status
+    11:18:09.487 >> status
+    11:18:10.037 >> status
+    11:18:10.593 >> status
+    11:18:11.143 >> status
+    11:18:11.695 >> status
+  Master báo gần nhất:
+    11:18:10.641 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+    11:18:10.641 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+    11:18:11.168 << STAT fault=True queue=0 inflight=-
+    11:18:11.168 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+    11:18:11.168 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+    11:18:11.189 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+    11:18:11.718 << STAT fault=True queue=0 inflight=-
+    11:18:11.718 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:11.742 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:11.742 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:12.247 >> status
+11:18:12.271 << STAT fault=True queue=0 inflight=-
+11:18:12.271 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:12.293 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:12.293 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:12.799 >> status
+11:18:12.824 << STAT fault=True queue=0 inflight=-
+11:18:12.824 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:12.848 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:12.849 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:13.354 >> status
+11:18:13.376 << STAT fault=True queue=0 inflight=-
+11:18:13.376 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:13.401 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:13.402 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:13.906 >> status
+11:18:13.930 << STAT fault=True queue=0 inflight=-
+11:18:13.930 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:13.955 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:13.955 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:14.460 >> status
+11:18:14.481 << STAT fault=True queue=0 inflight=-
+11:18:14.481 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:14.503 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:14.503 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:15.004 >> status
+11:18:15.030 << STAT fault=True queue=0 inflight=-
+11:18:15.030 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+===== SỰ CỐ #5 lúc 11:18:15.030: STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973 =====
+  10 lệnh gửi trong 5 s trước đó (mới nhất ở dưới):
+    11:18:12.247 >> status
+    11:18:12.799 >> status
+    11:18:13.354 >> status
+    11:18:13.906 >> status
+    11:18:14.460 >> status
+    11:18:15.004 >> status
+  Master báo gần nhất:
+    11:18:13.955 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+    11:18:13.955 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+    11:18:14.481 << STAT fault=True queue=0 inflight=-
+    11:18:14.481 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+    11:18:14.503 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+    11:18:14.503 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+    11:18:15.030 << STAT fault=True queue=0 inflight=-
+    11:18:15.030 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:15.055 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:15.055 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:15.560 >> status
+11:18:15.584 << STAT fault=True queue=0 inflight=-
+11:18:15.585 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:15.607 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:15.607 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:16.110 >> status
+11:18:16.133 << STAT fault=True queue=0 inflight=-
+11:18:16.133 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:16.157 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:16.157 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:16.662 >> status
+11:18:16.687 << STAT fault=True queue=0 inflight=-
+11:18:16.688 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:16.710 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:16.711 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:17.216 >> status
+11:18:17.258 << STAT fault=True queue=0 inflight=-
+11:18:17.258 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:17.282 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:17.282 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:17.787 >> status
+11:18:17.809 << STAT fault=True queue=0 inflight=-
+11:18:17.809 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:17.833 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:17.833 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:18.334 >> status
+11:18:18.359 << STAT fault=True queue=0 inflight=-
+11:18:18.359 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+===== SỰ CỐ #6 lúc 11:18:18.359: STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973 =====
+  9 lệnh gửi trong 5 s trước đó (mới nhất ở dưới):
+    11:18:15.560 >> status
+    11:18:16.110 >> status
+    11:18:16.662 >> status
+    11:18:17.216 >> status
+    11:18:17.787 >> status
+    11:18:18.334 >> status
+  Master báo gần nhất:
+    11:18:17.282 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+    11:18:17.282 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+    11:18:17.809 << STAT fault=True queue=0 inflight=-
+    11:18:17.809 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+    11:18:17.833 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+    11:18:17.833 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+    11:18:18.359 << STAT fault=True queue=0 inflight=-
+    11:18:18.359 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:18.383 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:18.383 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:18.883 >> status
+11:18:18.909 << STAT fault=True queue=0 inflight=-
+11:18:18.909 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:18.932 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:18.932 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:19.437 >> status
+11:18:19.462 << STAT fault=True queue=0 inflight=-
+11:18:19.462 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:19.483 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:19.483 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:19.985 >> status
+11:18:20.009 << STAT fault=True queue=0 inflight=-
+11:18:20.009 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:20.034 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:20.034 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:20.539 >> status
+11:18:20.564 << STAT fault=True queue=0 inflight=-
+11:18:20.564 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:20.589 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:20.589 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:21.093 >> status
+11:18:21.119 << STAT fault=True queue=0 inflight=-
+11:18:21.119 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:21.119 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:21.144 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:21.649 >> status
+11:18:21.672 << STAT fault=True queue=0 inflight=-
+11:18:21.672 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+===== SỰ CỐ #7 lúc 11:18:21.672: STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973 =====
+  9 lệnh gửi trong 5 s trước đó (mới nhất ở dưới):
+    11:18:18.883 >> status
+    11:18:19.437 >> status
+    11:18:19.985 >> status
+    11:18:20.539 >> status
+    11:18:21.093 >> status
+    11:18:21.649 >> status
+  Master báo gần nhất:
+    11:18:20.589 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+    11:18:20.589 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+    11:18:21.119 << STAT fault=True queue=0 inflight=-
+    11:18:21.119 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+    11:18:21.119 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+    11:18:21.144 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+    11:18:21.672 << STAT fault=True queue=0 inflight=-
+    11:18:21.672 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:21.697 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:21.697 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:22.199 >> status
+11:18:22.224 << STAT fault=True queue=0 inflight=-
+11:18:22.225 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:22.225 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:22.246 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:22.747 >> status
+11:18:22.772 << STAT fault=True queue=0 inflight=-
+11:18:22.772 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:22.796 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:22.796 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:23.301 >> status
+11:18:23.321 << STAT fault=True queue=0 inflight=-
+11:18:23.321 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:23.345 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:23.345 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:23.850 >> status
+11:18:23.873 << STAT fault=True queue=0 inflight=-
+11:18:23.873 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:23.895 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:23.895 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:24.400 >> status
+11:18:24.426 << STAT fault=True queue=0 inflight=-
+11:18:24.426 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:24.446 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:24.446 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:24.951 >> status
+11:18:24.977 << STAT fault=True queue=0 inflight=-
+11:18:24.977 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+===== SỰ CỐ #8 lúc 11:18:24.977: STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973 =====
+  10 lệnh gửi trong 5 s trước đó (mới nhất ở dưới):
+    11:18:22.199 >> status
+    11:18:22.747 >> status
+    11:18:23.301 >> status
+    11:18:23.850 >> status
+    11:18:24.400 >> status
+    11:18:24.951 >> status
+  Master báo gần nhất:
+    11:18:23.895 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+    11:18:23.895 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+    11:18:24.426 << STAT fault=True queue=0 inflight=-
+    11:18:24.426 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+    11:18:24.446 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+    11:18:24.446 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+    11:18:24.977 << STAT fault=True queue=0 inflight=-
+    11:18:24.977 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:24.999 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:24.999 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:25.504 >> status
+11:18:25.529 << STAT fault=True queue=0 inflight=-
+11:18:25.529 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:25.549 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:25.550 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:26.054 >> status
+11:18:26.078 << STAT fault=True queue=0 inflight=-
+11:18:26.078 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:26.099 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:26.099 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:26.599 >> status
+11:18:26.625 << STAT fault=True queue=0 inflight=-
+11:18:26.625 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:26.645 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:26.645 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:27.148 >> status
+11:18:27.169 << STAT fault=True queue=0 inflight=-
+11:18:27.169 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:27.194 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:27.194 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:27.699 >> status
+11:18:27.722 << STAT fault=True queue=0 inflight=-
+11:18:27.722 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:27.744 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:27.745 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:28.246 >> status
+11:18:28.270 << STAT fault=True queue=0 inflight=-
+11:18:28.292 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+===== SỰ CỐ #9 lúc 11:18:28.292: STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973 =====
+  10 lệnh gửi trong 5 s trước đó (mới nhất ở dưới):
+    11:18:25.504 >> status
+    11:18:26.054 >> status
+    11:18:26.599 >> status
+    11:18:27.148 >> status
+    11:18:27.699 >> status
+    11:18:28.246 >> status
+  Master báo gần nhất:
+    11:18:27.194 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+    11:18:27.194 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+    11:18:27.722 << STAT fault=True queue=0 inflight=-
+    11:18:27.722 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+    11:18:27.744 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+    11:18:27.745 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+    11:18:28.270 << STAT fault=True queue=0 inflight=-
+    11:18:28.292 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:28.292 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:28.292 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:28.797 >> status
+11:18:28.822 << STAT fault=True queue=0 inflight=-
+11:18:28.822 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:28.843 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:28.843 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:29.348 >> status
+11:18:29.370 << STAT fault=True queue=0 inflight=-
+11:18:29.371 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:29.391 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:29.392 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:29.896 >> status
+11:18:29.920 << STAT fault=True queue=0 inflight=-
+11:18:29.920 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:29.946 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:29.946 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:30.446 >> status
+11:18:30.467 << STAT fault=True queue=0 inflight=-
+11:18:30.488 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:30.489 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:30.489 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:30.992 >> status
+11:18:31.018 << STAT fault=True queue=0 inflight=-
+11:18:31.018 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:31.041 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:31.041 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:31.544 >> status
+11:18:31.568 << STAT fault=True queue=0 inflight=-
+11:18:31.568 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+===== SỰ CỐ #10 lúc 11:18:31.568: STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973 =====
+  10 lệnh gửi trong 5 s trước đó (mới nhất ở dưới):
+    11:18:28.797 >> status
+    11:18:29.348 >> status
+    11:18:29.896 >> status
+    11:18:30.446 >> status
+    11:18:30.992 >> status
+    11:18:31.544 >> status
+  Master báo gần nhất:
+    11:18:30.489 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+    11:18:30.489 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+    11:18:31.018 << STAT fault=True queue=0 inflight=-
+    11:18:31.018 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+    11:18:31.041 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+    11:18:31.041 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+    11:18:31.568 << STAT fault=True queue=0 inflight=-
+    11:18:31.568 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:31.593 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:31.593 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:32.095 >> status
+11:18:32.118 << STAT fault=True queue=0 inflight=-
+11:18:32.118 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:32.141 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:32.141 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:32.646 >> status
+11:18:32.667 << STAT fault=True queue=0 inflight=-
+11:18:32.691 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:32.691 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:32.691 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:33.195 >> status
+11:18:33.216 << STAT fault=True queue=0 inflight=-
+11:18:33.217 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:33.239 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:33.240 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:33.742 >> status
+11:18:33.765 << STAT fault=True queue=0 inflight=-
+11:18:33.766 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:33.790 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:33.791 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:34.295 >> status
+11:18:34.319 << STAT fault=True queue=0 inflight=-
+11:18:34.319 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:34.342 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:34.342 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:34.844 >> status
+11:18:34.867 << STAT fault=True queue=0 inflight=-
+11:18:34.867 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+===== SỰ CỐ #11 lúc 11:18:34.867: STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973 =====
+  10 lệnh gửi trong 5 s trước đó (mới nhất ở dưới):
+    11:18:32.095 >> status
+    11:18:32.646 >> status
+    11:18:33.195 >> status
+    11:18:33.742 >> status
+    11:18:34.295 >> status
+    11:18:34.844 >> status
+  Master báo gần nhất:
+    11:18:33.790 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+    11:18:33.791 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+    11:18:34.319 << STAT fault=True queue=0 inflight=-
+    11:18:34.319 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+    11:18:34.342 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+    11:18:34.342 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+    11:18:34.867 << STAT fault=True queue=0 inflight=-
+    11:18:34.867 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:34.890 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:34.890 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:35.390 >> status
+11:18:35.412 << STAT fault=True queue=0 inflight=-
+11:18:35.412 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:35.434 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:35.434 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:35.939 >> status
+11:18:35.960 << STAT fault=True queue=0 inflight=-
+11:18:35.961 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:35.982 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:35.982 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:36.485 >> status
+11:18:36.509 << STAT fault=True queue=0 inflight=-
+11:18:36.509 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:36.534 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:36.534 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:37.037 >> status
+11:18:37.061 << STAT fault=True queue=0 inflight=-
+11:18:37.061 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:37.086 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:37.086 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:37.590 >> status
+11:18:37.614 << STAT fault=True queue=0 inflight=-
+11:18:37.614 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:37.636 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:37.636 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:38.141 >> status
+11:18:38.166 << STAT fault=True queue=0 inflight=-
+11:18:38.166 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+===== SỰ CỐ #12 lúc 11:18:38.166: STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973 =====
+  10 lệnh gửi trong 5 s trước đó (mới nhất ở dưới):
+    11:18:35.390 >> status
+    11:18:35.939 >> status
+    11:18:36.485 >> status
+    11:18:37.037 >> status
+    11:18:37.590 >> status
+    11:18:38.141 >> status
+  Master báo gần nhất:
+    11:18:37.086 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+    11:18:37.086 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+    11:18:37.614 << STAT fault=True queue=0 inflight=-
+    11:18:37.614 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+    11:18:37.636 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+    11:18:37.636 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+    11:18:38.166 << STAT fault=True queue=0 inflight=-
+    11:18:38.166 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:38.187 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:38.187 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:38.691 >> status
+11:18:38.716 << STAT fault=True queue=0 inflight=-
+11:18:38.716 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:38.741 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:38.741 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:39.245 >> status
+11:18:39.270 << STAT fault=True queue=0 inflight=-
+11:18:39.270 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:39.293 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:39.294 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:39.798 >> status
+11:18:39.823 << STAT fault=True queue=0 inflight=-
+11:18:39.823 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:39.847 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:39.847 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:40.350 >> status
+11:18:40.375 << STAT fault=True queue=0 inflight=-
+11:18:40.375 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:40.398 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:40.399 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:40.904 >> status
+11:18:40.927 << STAT fault=True queue=0 inflight=-
+11:18:40.927 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:40.952 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:40.952 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:41.453 >> status
+11:18:41.474 << STAT fault=True queue=0 inflight=-
+11:18:41.474 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+===== SỰ CỐ #13 lúc 11:18:41.474: STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973 =====
+  10 lệnh gửi trong 5 s trước đó (mới nhất ở dưới):
+    11:18:38.691 >> status
+    11:18:39.245 >> status
+    11:18:39.798 >> status
+    11:18:40.350 >> status
+    11:18:40.904 >> status
+    11:18:41.453 >> status
+  Master báo gần nhất:
+    11:18:40.398 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+    11:18:40.399 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+    11:18:40.927 << STAT fault=True queue=0 inflight=-
+    11:18:40.927 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+    11:18:40.952 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+    11:18:40.952 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+    11:18:41.474 << STAT fault=True queue=0 inflight=-
+    11:18:41.474 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:41.500 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:41.500 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:42.005 >> status
+11:18:42.027 << STAT fault=True queue=0 inflight=-
+11:18:42.027 << STAT n1 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:42.051 << STAT n2 ON  IDLE     err=NONE           homed=0 sw=1 pos=   7.650 target=   7.650
+11:18:42.051 << STAT n3 ON  ERROR    err=HOME_NOT_FOUND homed=0 sw=0 pos= -38.973 target= -38.973
+11:18:42.051 ## !! Home không xong sau 40 s
+11:18:42.051 ## !! Robot chưa sẵn sàng (thiếu node online hoặc home không xong)
+11:18:42.051 ## Đã gửi 0 lệnh look.
+11:18:42.052 ## Tổng kết: 13 sự cố.
+11:18:42.052 ##    n1 HOME_NOT_FOUND              12 lần
+11:18:42.052 ##    n3 BOOT                        1 lần

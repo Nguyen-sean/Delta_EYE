@@ -45,7 +45,8 @@ NEUTRAL_FILE = 'neutral.txt'
 # Hành trình (min/max), tốc độ, gia tốc: master ĐỌC TỪ TỪNG NODE (lệnh 'cfg', sửa bằng 'set').
 # Các giá trị dưới đây chỉ dùng khi chưa đọc được cấu hình của node.
 CFG_FALLBACK = {'min': 0.5, 'max': 25.71, 'maxhz': 2000, 'accel': 6000}
-STEPS_PER_DEG  = 200 * 8 * 14 / 360.0   # PHẢI GIỐNG motor_node.py
+VBUS_WARN_MV   = 10500                  # VBUS node dưới mức này -> cảnh báo sụt áp
+STEPS_PER_DEG  = 200 * 8 * 14 / 360.0   # PHẢI GIỐNG motor_node.py (A4988 1/8)
 NODE_START_HZ  = 300                    # START_HZ trong motor_node.py
 
 HELP = """Lệnh (gõ qua USB serial):
@@ -86,6 +87,11 @@ class NodeInfo:
         self.boot_id = None
         self.cfg = None       # cấu hình đọc từ node (dict theo P.CFG_KEYS)
         self.no_rehome = False   # mất home do người dùng đổi homedir -> không tự home lại
+        self.vbus = 0            # mV, điện áp nguồn USB-C PD của node
+        self.vmin = 0            # mV, thấp nhất trong 2 s gần nhất
+        self.vmin_all = 0        # mV, thấp nhất từ khi master chạy
+        self.prev_shown = False  # đã in VBUS trước lần reset của node chưa
+        self.last_vwarn = 0
 
     def c(self, key):
         """Thông số cấu hình của node, hoặc giá trị dự phòng nếu chưa đọc được."""
@@ -215,6 +221,26 @@ class Master:
                 self._on_ack(n, payload)
             elif typ == P.MSG_HELLO and len(payload) == struct.calcsize(P.HELLO_FMT):
                 self._on_hello(n, payload)
+            elif typ == P.MSG_POWER and len(payload) == struct.calcsize(P.POWER_FMT):
+                self._on_power(n, payload)
+
+    def _on_power(self, n, payload):
+        vbus, vmin, prev_min, prev_last = struct.unpack(P.POWER_FMT, payload)
+        n.vbus, n.vmin = vbus, vmin
+        if not n.vmin_all or vmin < n.vmin_all:
+            n.vmin_all = vmin
+        if not n.prev_shown:
+            n.prev_shown = True
+            if prev_min:
+                print("PWR n{} trước lần reset vừa rồi: VBUS thấp nhất {:.2f} V, lần đo cuối {:.2f} V".format(
+                    n.id, prev_min / 1000, prev_last / 1000))
+                if prev_last < VBUS_WARN_MV:
+                    print("WARN n{} VBUS đang thấp ({:.2f} V) ngay trước khi reset -> nghi do nguồn".format(
+                        n.id, prev_last / 1000))
+        now = ticks_ms()
+        if vmin < VBUS_WARN_MV and ticks_diff(now, n.last_vwarn) > 1000:
+            n.last_vwarn = now
+            print("WARN n{} VBUS sụt {:.2f} V (hiện {:.2f} V)".format(n.id, vmin / 1000, vbus / 1000))
 
     def _on_cfg(self, n, payload):
         vals = struct.unpack(P.CFG_FMT, payload)
@@ -283,6 +309,7 @@ class Master:
             print("WARN n{} vừa bị watchdog reset!".format(n.id))
         rebooted = n.boot_id is not None
         n.boot_id = boot_id
+        n.prev_shown = False
         # node khởi động lại giữa chừng -> mất home -> báo lỗi hệ thống
         if rebooted:
             n.flags = 0
@@ -631,6 +658,9 @@ class Master:
                 P.name(P.ERR_NAMES, n.err),
                 int(n.homed), int(bool(n.flags & P.F_HOME_SW)),
                 n.pos / 1000, n.target / 1000))
+        for n in self.nodes:
+            print("PWR n{} VBUS={:.2f} V  thấp nhất 2 s={:.2f} V  thấp nhất từ đầu={:.2f} V".format(
+                n.id, n.vbus / 1000, n.vmin / 1000, n.vmin_all / 1000))
 
 
 class LineReader:
@@ -654,14 +684,15 @@ class LineReader:
 
 
 def main():
-    if ENABLE_WDT:
+    use_wdt = ENABLE_WDT and P.wdt_allowed()
+    if use_wdt:
         print("Master khởi động sau {} s (Ctrl+C để dừng trước khi bật watchdog)".format(
             BOOT_DELAY_MS // 1000))
         sleep_ms(BOOT_DELAY_MS)
 
     m = Master()
     reader = LineReader()
-    wdt = WDT(timeout=WDT_TIMEOUT_MS) if ENABLE_WDT else None
+    wdt = WDT(timeout=WDT_TIMEOUT_MS) if use_wdt else None
     print(HELP)
 
     try:
